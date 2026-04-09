@@ -42,7 +42,7 @@ source .venv/bin/activate
 pip install -e .
 
 # 3. Start the Bridge Server
-agbridge-server --host 127.0.0.1 --port 8000
+agbridge-server --log-level ERROR
 ```
 > **Note**: During the first execution, it is mandatory to manually grant **Accessibility** and **Screen Recording** permissions in the macOS System Settings to the executing Python process so it can properly scan the display and window hierarchy.
 

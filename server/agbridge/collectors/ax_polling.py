@@ -77,28 +77,41 @@ class PollAborted(Exception):
     """Raised when poll_until() is aborted by PollController.shutdown()."""
 
 
-def poll_until(predicate, controller, interval=0.2, label=""):
+class PollTimeout(Exception):
+    """Raised when poll_until() exceeds its timeout."""
+
+
+def poll_until(predicate, controller, interval=0.2, timeout=None, label=""):
     """Run predicate() every *interval* seconds until it returns truthy.
 
     Args:
         predicate:   callable returning falsy to continue, truthy to stop.
         controller:  PollController instance (workspace-scoped).
         interval:    seconds between polls (default 0.2).
+        timeout:     max seconds before giving up (None = no limit).
         label:       human-readable tag for debug logging.
 
     Returns:
         The truthy value returned by predicate().
 
     Raises:
-        PollAborted: if controller.shutdown() was called.
+        PollAborted:  if controller.shutdown() was called.
+        PollTimeout:  if timeout exceeded without predicate returning truthy.
     """
     controller._register()
     poll_count = 0
+    start = time.monotonic()
 
     try:
         while True:
             if controller.is_stopped:
                 raise PollAborted(f"[{label}] polling aborted by controller shutdown")
+
+            if timeout is not None and (time.monotonic() - start) >= timeout:
+                raise PollTimeout(
+                    f"[{label}] polling timed out after {timeout:.1f}s "
+                    f"({poll_count} attempts)"
+                )
 
             result = predicate()
             if result:

@@ -128,7 +128,9 @@ class MessageItem(Static):
             
         # Assistant core content using proper Markdown
         if self.msg_content:
-            yield Markdown(self.msg_content, classes="agent-msg-body")
+            # Escape @[...] pill syntax so Rich doesn't interpret [/x] as close tags
+            safe_content = self.msg_content.replace("[/", "\\[/").replace("[@", "\\[@")
+            yield Markdown(safe_content, classes="agent-msg-body")
             
         # Assistant actions
         parts = []

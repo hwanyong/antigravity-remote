@@ -10,10 +10,15 @@ from textual.app import ComposeResult
 from textual.containers import Vertical, Horizontal
 from textual.screen import ModalScreen
 from textual.widgets import Button, Label
+from textual.message import Message
 
 
 class ConfirmModal(ModalScreen):
     """Confirmation dialog for dangerous operations."""
+
+    class ConfirmRequested(Message):
+        """Emitted when confirm is pressed in async_mode."""
+        pass
 
     CSS = """
     ConfirmModal {
@@ -42,11 +47,12 @@ class ConfirmModal(ModalScreen):
     }
     """
 
-    def __init__(self, title="Confirm", message="", confirm_label="Confirm", **kwargs):
+    def __init__(self, title="Confirm", message="", confirm_label="Confirm", async_mode=False, **kwargs):
         super().__init__(**kwargs)
         self._title = title
         self._message = message
         self._confirm_label = confirm_label
+        self._async_mode = async_mode
 
     def compose(self) -> ComposeResult:
         with Vertical(id="dialog"):
@@ -57,6 +63,10 @@ class ConfirmModal(ModalScreen):
                 yield Button(self._confirm_label, variant="error", id="confirm")
 
     def on_button_pressed(self, event: Button.Pressed):
+        if event.button.id == "confirm" and self._async_mode:
+            self.query_one("#dialog").loading = True
+            self.post_message(self.ConfirmRequested())
+            return
         self.dismiss(event.button.id == "confirm")
 
     def on_click(self, event):

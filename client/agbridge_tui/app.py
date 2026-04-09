@@ -15,6 +15,7 @@ import time
 
 from textual.app import App, ComposeResult
 from textual.binding import Binding
+from textual import on
 from textual.reactive import reactive
 from textual.widgets import Footer, Header, TextArea
 from rich.markup import escape as rich_escape
@@ -274,6 +275,12 @@ class AgbridgeTUI(App):
                     "has_agent_update": "agent_update" in data if data else False,
                     "restored_prompt": repr((data.get("restored_prompt", "") or "")[:80]) if data else "N/A",
                 })
+
+                # Dismiss the processing modal if it's open
+                if getattr(self, "_active_confirm_modal", None):
+                    self._active_confirm_modal.dismiss(True)
+                    self._active_confirm_modal = None
+
                 if data and data.get("ok"):
                     agent_update = data.get("agent_update")
                     if agent_update:
@@ -885,19 +892,42 @@ class AgbridgeTUI(App):
             for fc in file_changes:
                 msg_parts.append(f"  \u2022 {fc.get('detail', fc.get('file', ''))}")
 
-        def on_confirm(confirmed):
-            self._undo_modal_active = False
-            cmd = "CMD_CONFIRM_UNDO" if confirmed else "CMD_CANCEL_UNDO"
-            self.run_worker(self.conn.ws_send_command(ws_id, cmd))
+        def on_dismiss(confirmed):
+            if not confirmed:
+                self.run_worker(self.conn.ws_send_command(ws_id, "CMD_CANCEL_UNDO"))
+            # Keep guard active briefly — stale polling events may arrive
+            # after the dialog is dismissed in IDE
+            self.set_timer(2.0, self._reset_undo_modal_guard)
+            self._active_confirm_modal = None
 
-        self.push_screen(
-            ConfirmModal(
-                title="Confirm Undo",
-                message="\n".join(msg_parts),
-                confirm_label="Confirm",
-            ),
-            on_confirm,
+        modal = ConfirmModal(
+            title="Confirm Undo",
+            message="\n".join(msg_parts),
+            confirm_label="Confirm",
+            async_mode=True,
         )
+        self._active_confirm_modal = modal
+        self.push_screen(modal, on_dismiss)
+
+    @on(ConfirmModal.ConfirmRequested)
+    def _on_undo_confirm_requested(self, event: ConfirmModal.ConfirmRequested):
+        """Send the undo command when the modal switches to the processing state."""
+        event.stop()
+        ws_id = self.ws_mgr.active_id
+        if ws_id:
+            self.run_worker(self.conn.ws_send_command(ws_id, "CMD_CONFIRM_UNDO"))
+            # Failsafe in case server never replies to CMD_CONFIRM_UNDO
+            self.set_timer(15.0, self._force_dismiss_undo_modal)
+
+    def _force_dismiss_undo_modal(self):
+        """Forcefully clear the modal if it hangs."""
+        if getattr(self, "_active_confirm_modal", None):
+            self._active_confirm_modal.dismiss(False)
+            self._active_confirm_modal = None
+
+    def _reset_undo_modal_guard(self):
+        """Reset the undo modal guard after a brief delay."""
+        self._undo_modal_active = False
 
     def _set_agent_input_text(self, text):
         """Set text in the Agent Panel's input TextArea.

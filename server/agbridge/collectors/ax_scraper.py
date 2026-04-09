@@ -2211,11 +2211,10 @@ def select_conversation_by_title(window, target_title, controller):
 import re
 import time as _time
 
-_RE_WORKFLOW = re.compile(r"@\[/(\w+)\]")
-_RE_MENTION = re.compile(r"@\[([^\]]+)\]")
+_RE_DIRECTIVE = re.compile(r"@\[([^\]]+)\]")
 
 
-def _simulate_keypress(keycode, cmd=False):
+def _simulate_keypress(keycode, cmd=False, shift=False):
     """Press and release a single key via CGEvent."""
     from Quartz import (
         CGEventCreateKeyboardEvent,
@@ -2223,8 +2222,13 @@ def _simulate_keypress(keycode, cmd=False):
         CGEventSetFlags,
         kCGHIDEventTap,
         kCGEventFlagMaskCommand,
+        kCGEventFlagMaskShift,
     )
-    flags = kCGEventFlagMaskCommand if cmd else 0
+    flags = 0
+    if cmd:
+        flags |= kCGEventFlagMaskCommand
+    if shift:
+        flags |= kCGEventFlagMaskShift
 
     event_down = CGEventCreateKeyboardEvent(None, keycode, True)
     event_up = CGEventCreateKeyboardEvent(None, keycode, False)
@@ -2364,24 +2368,43 @@ def _apply_mention_typeahead(window, msg_input, path, controller):
     return result is not None
 
 
-def _parse_directives(text):
+def _tokenize_prompt(text):
     """
-    Extract workflow and mentions from prompt text.
+    Tokenize prompt into ordered sequence of (type, value) tuples.
+
+    Types:
+        "workflow"  — @[/name] → ("workflow", "name")
+        "mention"   — @[path]  → ("mention", "path")
+        "text"      — plain text between directives
 
     Returns:
-        (workflow, mentions, clean_text)
+        list[tuple[str, str]]: ordered tokens preserving original position
     """
-    workflow = None
-    wf_match = _RE_WORKFLOW.search(text)
-    if wf_match:
-        workflow = wf_match.group(1)
-    remaining = _RE_WORKFLOW.sub("", text)
+    tokens = []
+    pos = 0
 
-    mentions = [m.group(1).strip() for m in _RE_MENTION.finditer(remaining)]
-    remaining = _RE_MENTION.sub("", remaining)
+    for match in _RE_DIRECTIVE.finditer(text):
+        # Collect plain text before this match
+        if match.start() > pos:
+            gap = text[pos:match.start()]
+            if gap:
+                tokens.append(("text", gap))
 
-    clean_text = remaining.strip()
-    return workflow, mentions, clean_text
+        inner = match.group(1).strip()
+        if inner.startswith("/"):
+            tokens.append(("workflow", inner[1:]))
+        else:
+            tokens.append(("mention", inner))
+
+        pos = match.end()
+
+    # Collect trailing text after last match
+    if pos < len(text):
+        trailing = text[pos:]
+        if trailing.strip():
+            tokens.append(("text", trailing))
+
+    return tokens
 
 
 # ── Message input injection ─────────────────────────────────
@@ -2425,28 +2448,11 @@ def read_input_text(window):
     return value or ""
 
 
-def _clear_and_refocus(msg_input):
-    """Clear all text in the prompt and re-establish focus.
-
-    1. Cmd+A — select all text in the focused input
-    2. Backspace — delete the selection
-    3. Re-focus — restore focus that may be lost after deletion
-    """
-    _simulate_keypress(0, cmd=True)   # Cmd+A (select all)
-    _time.sleep(0.05)
-    _simulate_keypress(51)            # Backspace (delete selection)
-    _time.sleep(0.05)
-
-    # Re-focus after deletion — Backspace can cause focus loss
-    AXUIElementSetAttributeValue(msg_input, kAXFocusedAttribute, True)
-    _time.sleep(0.1)
-
-
 def inject_prompt(window, text, controller):
     """
     Inject text into the Message Input and press the Send button.
 
-    Clears any existing content first, then applies directives:
+    Supports directives:
         @[/workflow]  → applied via typeahead ('/' trigger)
         @[path]       → applied via typeahead ('@' trigger)
         plain text    → pasted via clipboard
@@ -2461,29 +2467,26 @@ def inject_prompt(window, text, controller):
     AXUIElementSetAttributeValue(msg_input, kAXFocusedAttribute, True)
     _time.sleep(0.1)
 
-    # Clear existing content and re-establish focus
-    _clear_and_refocus(msg_input)
+    tokens = _tokenize_prompt(text)
 
-    workflow, mentions, clean_text = _parse_directives(text)
+    for token_type, token_value in tokens:
+        if token_type == "workflow":
+            ok = _apply_workflow_typeahead(window, msg_input, token_value, controller)
+            if not ok:
+                logger.error("Typeahead failed for workflow '%s', injecting as text", token_value)
+                _paste_text(f"@[/{token_value}]")
+                _time.sleep(0.2)
 
-    # 1. Apply workflow via typeahead
-    if workflow:
-        ok = _apply_workflow_typeahead(window, msg_input, workflow, controller)
-        if not ok:
-            logger.warning("Typeahead failed for workflow '%s', injecting as text", workflow)
-            clean_text = f"@[/{workflow}] {clean_text}"
+        elif token_type == "mention":
+            ok = _apply_mention_typeahead(window, msg_input, token_value, controller)
+            if not ok:
+                logger.error("Typeahead failed for mention '%s', injecting as text", token_value)
+                _paste_text(f"@[{token_value}]")
+                _time.sleep(0.2)
 
-    # 2. Apply mentions via typeahead
-    for mention_path in mentions:
-        ok = _apply_mention_typeahead(window, msg_input, mention_path, controller)
-        if not ok:
-            logger.warning("Typeahead failed for mention '%s', injecting as text", mention_path)
-            clean_text = f"@[{mention_path}] {clean_text}"
-
-    # 3. Paste remaining clean text
-    if clean_text:
-        _paste_text(clean_text)
-        _time.sleep(0.2)
+        elif token_type == "text":
+            _paste_text(token_value)
+            _time.sleep(0.2)
 
     # 4. Press Send
     agent_section = _find_agent_section(window)
@@ -2492,6 +2495,22 @@ def inject_prompt(window, text, controller):
     if not send_btn:
         return False
     AXUIElementPerformAction(send_btn, "AXPress")
+    return True
+
+
+def clear_message_input(window):
+    """
+    Clear the Message Input text via keyboard simulation (Cmd+A -> Delete).
+    """
+    msg_input = find_message_input(window)
+    if not msg_input:
+        return False
+
+    AXUIElementSetAttributeValue(msg_input, kAXFocusedAttribute, True)
+    _time.sleep(0.05)
+    _simulate_keypress(0, cmd=True)  # Select All (Cmd + A)
+    _time.sleep(0.05)
+    _simulate_keypress(51)           # Delete (Backspace)
     return True
 
 

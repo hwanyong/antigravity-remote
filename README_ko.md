@@ -42,7 +42,7 @@ source .venv/bin/activate
 pip install -e .
 
 # 3. 브릿지 서버 구동
-agbridge-server --host 127.0.0.1 --port 8000
+agbridge-server --log-level ERROR
 ```
 > **Note**: 최초 실행 시 시스템 환경설정에서 파이썬 실행 파일에 대해 **손쉬운 사용 (Accessibility)** 및 **화면 기록 (Screen Recording)** 권한을 허용해야 합니다.
 

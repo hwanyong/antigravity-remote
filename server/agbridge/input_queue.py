@@ -94,11 +94,11 @@ class InputQueue:
                 job.result.set_result(result)
 
             except Exception as e:
-                from agbridge.collectors.ax_polling import PollAborted
-                if isinstance(e, PollAborted):
+                from agbridge.collectors.ax_polling import PollAborted, PollTimeout
+                if isinstance(e, (PollAborted, PollTimeout)):
                     logger.info(
-                        "InputQueue job aborted (IDE shutdown): ws=%s action=%s",
-                        job.workspace_id, job.action,
+                        "InputQueue job aborted: ws=%s action=%s reason=%s",
+                        job.workspace_id, job.action, type(e).__name__,
                     )
                 else:
                     logger.error(
@@ -114,6 +114,7 @@ class InputQueue:
         """Dispatch job to the appropriate AX write handler."""
         from agbridge.collectors.ax_scraper import (
             inject_prompt,
+            clear_message_input,
             press_edit_action,
             press_cancel_button,
             press_retry_button,
@@ -322,6 +323,10 @@ class InputQueue:
                 pc,
                 label="confirm_undo_idle",
             )
+
+            # IDE restores the prompt right after returning to idle. Wait a bit, then clear it.
+            time.sleep(0.15)
+            clear_message_input(engine.ide.windows[0])
 
             # Re-scrape conversation — included in response for instant TUI update
             # NOTE: do NOT call engine.store.update here — let Engine poll
