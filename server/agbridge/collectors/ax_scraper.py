@@ -2425,19 +2425,21 @@ def read_input_text(window):
     return value or ""
 
 
-def _clear_input():
-    """Select all text in the focused input and delete it.
+def _clear_and_refocus(msg_input):
+    """Clear all text in the prompt and re-establish focus.
 
-    Uses Cmd+A (select all) followed by Backspace (delete selection).
-    HW-level timing — not a polling target.
+    1. Cmd+A — select all text in the focused input
+    2. Backspace — delete the selection
+    3. Re-focus — restore focus that may be lost after deletion
     """
-    _KC_A = 0       # keycode for 'A'
-    _KC_BACKSPACE = 51
+    _simulate_keypress(0, cmd=True)   # Cmd+A (select all)
+    _time.sleep(0.05)
+    _simulate_keypress(51)            # Backspace (delete selection)
+    _time.sleep(0.05)
 
-    _simulate_keypress(_KC_A, cmd=True)
-    _time.sleep(0.02)
-    _simulate_keypress(_KC_BACKSPACE)
-    _time.sleep(0.02)
+    # Re-focus after deletion — Backspace can cause focus loss
+    AXUIElementSetAttributeValue(msg_input, kAXFocusedAttribute, True)
+    _time.sleep(0.1)
 
 
 def inject_prompt(window, text, controller):
@@ -2459,8 +2461,8 @@ def inject_prompt(window, text, controller):
     AXUIElementSetAttributeValue(msg_input, kAXFocusedAttribute, True)
     _time.sleep(0.1)
 
-    # Clear any existing content in the prompt
-    _clear_input()
+    # Clear existing content and re-establish focus
+    _clear_and_refocus(msg_input)
 
     workflow, mentions, clean_text = _parse_directives(text)
 
