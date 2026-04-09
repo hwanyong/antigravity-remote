@@ -1,0 +1,195 @@
+{
+  "timestamp": "2026-04-04T02:07:40",
+  "explorer_elements": [
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "title": "",
+      "desc": "Explorer Section: __analysis_target",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXOutline",
+      "title": "",
+      "desc": "Files Explorer",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "title": "",
+      "desc": "Outline Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "title": "",
+      "desc": "Timeline Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "title": "",
+      "desc": "Code Search Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXOutline",
+      "title": "",
+      "desc": "Search",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "title": "",
+      "desc": "Agent Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "title": "",
+      "desc": "Terminal Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "section_buttons": [
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Explorer Section: __analysis_target",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 22,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "",
+      "desc": "Explorer Section: __analysis_target",
+      "value": "3",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Outline Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Timeline Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Code Search Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Agent Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Terminal Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "note": "__analysis_target is empty folder, so file tree may be empty"
+}

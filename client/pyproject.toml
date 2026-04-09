@@ -1,0 +1,21 @@
+[project]
+name = "agbridge-tui"
+version = "0.1.0"
+description = "Antigravity Remote Bridge — TUI Test Client"
+requires-python = ">=3.11"
+dependencies = [
+    "textual>=1.0",
+    "websockets>=14.0",
+    "httpx>=0.28",
+]
+
+[project.scripts]
+agbridge-tui = "agbridge_tui.app:main"
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agbridge_tui*"]

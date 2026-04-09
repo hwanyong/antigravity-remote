@@ -1,0 +1,757 @@
+{
+  "total_elements": 33,
+  "buttons": [
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Account",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Agent",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Browser",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Notifications",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Models",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Customizations",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Tab",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Editor",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Provide Feedback",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Open Editor Settings",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "texts": [
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Settings - ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Editor",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "GLOBAL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "MARKETPLACE",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Marketplace Item URL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Changes the base URL on each extension page. You must restart Antigravity to use the new marketplace after changing this value.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Marketplace Gallery URL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Changes the base URL for marketplace search results. You must restart Antigravity to use the new marketplace after changing this value.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "SELECTION ACTIONS",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Show Selection Actions",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Show \"Edit\" and \"Chat\" buttons when selecting text in the editor.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "GENERAL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Editor Settings",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "To modify editor settings, open Settings within the editor window.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "checkboxes": [
+    {
+      "depth": 11,
+      "role": "AXCheckBox",
+      "subrole": "AXSwitch",
+      "title": "",
+      "desc": "",
+      "value": "1",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "text_fields": [
+    {
+      "depth": 10,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "popups": [],
+  "links": [],
+  "all_elements": [
+    {
+      "depth": 0,
+      "role": "AXWindow",
+      "subrole": "AXStandardWindow",
+      "title": "Settings",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXRaise"
+      ]
+    },
+    {
+      "depth": 1,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "Settings",
+      "desc": "",
+      "value": "",
+      "actions": []
+    },
+    {
+      "depth": 7,
+      "role": "AXWebArea",
+      "subrole": null,
+      "title": "Settings",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Settings - ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Editor",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Account",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "GLOBAL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Agent",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Browser",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Notifications",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Models",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Customizations",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Tab",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Editor",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Provide Feedback",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "MARKETPLACE",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "MARKETPLACE",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Marketplace Item URL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Changes the base URL on each extension page. You must restart Antigravity to use the new marketplace after changing this value.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Marketplace Gallery URL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Changes the base URL for marketplace search results. You must restart Antigravity to use the new marketplace after changing this value.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "SELECTION ACTIONS",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "SELECTION ACTIONS",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Show Selection Actions",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Show \"Edit\" and \"Chat\" buttons when selecting text in the editor.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXCheckBox",
+      "subrole": "AXSwitch",
+      "title": "",
+      "desc": "",
+      "value": "1",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "GENERAL",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "GENERAL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Editor Settings",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "To modify editor settings, open Settings within the editor window.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Open Editor Settings",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ]
+}

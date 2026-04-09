@@ -1,0 +1,261 @@
+{
+  "generated_at": "2026-04-04T02:09:00",
+  "target_window": "__analysis_target",
+  "phases": {
+    "phase0_baseline": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase0_baseline.json",
+      "size_bytes": 24016,
+      "summary": {
+        "total_elements": 152,
+        "buttons": 26,
+        "static_texts": 63,
+        "text_areas": 3,
+        "text_fields": 1,
+        "lists": 3,
+        "named_groups": 21,
+        "tab_groups": 1
+      }
+    },
+    "phase1_settings_account": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_account.json",
+      "size_bytes": 15461,
+      "summary": {
+        "total_elements": 35
+      }
+    },
+    "phase1_settings_agent": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_agent.json",
+      "size_bytes": 50039,
+      "summary": {
+        "total_elements": 97
+      }
+    },
+    "phase1_settings_browser": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_browser.json",
+      "size_bytes": 105067,
+      "summary": {
+        "total_elements": 219
+      }
+    },
+    "phase1_settings_customizations": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_customizations.json",
+      "size_bytes": 17017,
+      "summary": {
+        "total_elements": 38
+      }
+    },
+    "phase1_settings_editor": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_editor.json",
+      "size_bytes": 14893,
+      "summary": {
+        "total_elements": 33
+      }
+    },
+    "phase1_settings_models": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_models.json",
+      "size_bytes": 19562,
+      "summary": {
+        "total_elements": 42
+      }
+    },
+    "phase1_settings_notifications": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_notifications.json",
+      "size_bytes": 8727,
+      "summary": {
+        "total_elements": 20
+      }
+    },
+    "phase1_settings_overview": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_overview.json",
+      "size_bytes": 1961,
+      "summary": {
+        "Account": {
+          "total_elements": 35,
+          "buttons": 10,
+          "texts": 16,
+          "checkboxes": 2,
+          "text_fields": 0,
+          "popups": 0,
+          "links": 1
+        },
+        "Agent": {
+          "total_elements": 97,
+          "buttons": 15,
+          "texts": 56,
+          "checkboxes": 13,
+          "text_fields": 1,
+          "popups": 2,
+          "links": 0
+        },
+        "Browser": {
+          "total_elements": 219,
+          "buttons": 100,
+          "texts": 108,
+          "checkboxes": 1,
+          "text_fields": 2,
+          "popups": 1,
+          "links": 0
+        },
+        "Notifications": {
+          "total_elements": 20,
+          "buttons": 10,
+          "texts": 6,
+          "checkboxes": 0,
+          "text_fields": 0,
+          "popups": 0,
+          "links": 0
+        },
+        "Models": {
+          "total_elements": 42,
+          "buttons": 10,
+          "texts": 24,
+          "checkboxes": 1,
+          "text_fields": 0,
+          "popups": 0,
+          "links": 2
+        },
+        "Customizations": {
+          "total_elements": 38,
+          "buttons": 15,
+          "texts": 17,
+          "checkboxes": 0,
+          "text_fields": 0,
+          "popups": 0,
+          "links": 0
+        },
+        "Tab": {
+          "total_elements": 42,
+          "buttons": 9,
+          "texts": 20,
+          "checkboxes": 6,
+          "text_fields": 0,
+          "popups": 1,
+          "links": 0
+        },
+        "Editor": {
+          "total_elements": 33,
+          "buttons": 10,
+          "texts": 14,
+          "checkboxes": 1,
+          "text_fields": 2,
+          "popups": 0,
+          "links": 0
+        }
+      }
+    },
+    "phase1_settings_tab": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_tab.json",
+      "size_bytes": 19448,
+      "summary": {
+        "total_elements": 42
+      }
+    },
+    "phase2_knowledge": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase2_knowledge.json",
+      "size_bytes": 102,
+      "summary": {
+        "error": "Knowledge button not found in __analysis_target"
+      }
+    },
+    "phase3_manager": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase3_manager.json",
+      "size_bytes": 39266,
+      "summary": {
+        "total": 155,
+        "buttons": 26,
+        "texts": 24,
+        "total_elements": 155
+      }
+    },
+    "phase4_explorer": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase4_explorer.json",
+      "size_bytes": 3768,
+      "summary": {}
+    },
+    "phase5_add_context": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase5_add_context.json",
+      "size_bytes": 3271,
+      "summary": {
+        "new_elements_count": 5,
+        "button_desc": "Add context",
+        "key_elements": [
+          {
+            "role": "AXMenuItem",
+            "title": "Media",
+            "desc": ""
+          },
+          {
+            "role": "AXMenuItem",
+            "title": "Mentions",
+            "desc": ""
+          },
+          {
+            "role": "AXMenuItem",
+            "title": "Workflows",
+            "desc": ""
+          }
+        ]
+      }
+    },
+    "phase5_mode_popup": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase5_mode_popup.json",
+      "size_bytes": 5302,
+      "summary": {
+        "new_elements_count": 8,
+        "button_desc": "Select conversation mode, current: Planning",
+        "key_elements": [
+          {
+            "role": "AXMenuItem",
+            "title": "Planning Agent can plan before executing tasks. Use for deep research, complex tasks, or collaborative work",
+            "desc": ""
+          },
+          {
+            "role": "AXMenuItem",
+            "title": "Fast Agent will execute tasks directly. Use for simple tasks that can be completed faster",
+            "desc": ""
+          }
+        ]
+      }
+    },
+    "phase5_model_popup": {
+      "file": "/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase5_model_popup.json",
+      "size_bytes": 6138,
+      "summary": {
+        "new_elements_count": 11,
+        "button_desc": "Select model, current: Claude Opus 4.6 (Thinking)",
+        "key_elements": [
+          {
+            "role": "AXButton",
+            "title": "Gemini 3.1 Pro (High) New",
+            "desc": ""
+          },
+          {
+            "role": "AXButton",
+            "title": "Gemini 3.1 Pro (Low) New",
+            "desc": ""
+          },
+          {
+            "role": "AXButton",
+            "title": "Gemini 3 Flash",
+            "desc": ""
+          },
+          {
+            "role": "AXButton",
+            "title": "Claude Sonnet 4.6 (Thinking)",
+            "desc": ""
+          },
+          {
+            "role": "AXButton",
+            "title": "Claude Opus 4.6 (Thinking)",
+            "desc": ""
+          },
+          {
+            "role": "AXButton",
+            "title": "GPT-OSS 120B (Medium)",
+            "desc": ""
+          }
+        ]
+      }
+    }
+  }
+}

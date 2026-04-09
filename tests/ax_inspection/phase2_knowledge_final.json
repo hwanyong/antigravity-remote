@@ -1,0 +1,3239 @@
+{
+  "timestamp": "2026-04-04T03:02:18",
+  "total": 288,
+  "elements": [
+    {
+      "depth": 0,
+      "role": "AXWindow",
+      "title": "Manager",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXRaise"
+      ]
+    },
+    {
+      "depth": 1,
+      "role": "AXGroup",
+      "title": "Manager",
+      "desc": null,
+      "value": null,
+      "actions": []
+    },
+    {
+      "depth": 2,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": []
+    },
+    {
+      "depth": 3,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": []
+    },
+    {
+      "depth": 4,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": []
+    },
+    {
+      "depth": 5,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": []
+    },
+    {
+      "depth": 6,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": []
+    },
+    {
+      "depth": 7,
+      "role": "AXWebArea",
+      "title": "Manager",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 8,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 9,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "title": "arrow_back",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "title": "arrow_forward",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "dock_to_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "__analysis_target",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Open Editor",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "title": "add New Conversation",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "add",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "New Conversation",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "title": "history Conversation History",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "history",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Conversation History",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Workspaces",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": null,
+      "desc": "Open Workspace",
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "agbridge",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "keyboard_arrow_down",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "No chats yet",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "antigravity-remote",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "keyboard_arrow_down",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "progress_activity Antigravity Integration Code Analysis now",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "progress_activity",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Antigravity Integration Code Analysis",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "now",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Setting Up Bare Git Repository 7h",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Setting Up Bare Git Repository",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "7h",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "__analysis_target",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "keyboard_arrow_down",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Generating Project Dummy Files 31m",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Generating Project Dummy Files",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "31m",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "integrate_antigravity",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "keyboard_arrow_down",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Deploying Antigravity Bridge Daemon 4h",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Deploying Antigravity Bridge Daemon",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "4h",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Testing Agbridge Session Command 5d",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Testing Agbridge Session Command",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "5d",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Renaming Context Analyzer Skill 5d",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Renaming Context Analyzer Skill",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "5d",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Creating Project README Documentation 5d",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Creating Project README Documentation",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "5d",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "See all (13)",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "main",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "keyboard_arrow_down",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "No chats yet",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "orchestrator",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "keyboard_arrow_down",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Analyzing LaTeX Calculator Architecture 3h",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Analyzing LaTeX Calculator Architecture",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "3h",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Implementing Decentralized Agent Orchestration 7h",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Implementing Decentralized Agent Orchestration",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "7h",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Configuring Project Gitignore 7h",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Configuring Project Gitignore",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "7h",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Debugging Hive Orchestrator JSON Errors 11h",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Debugging Hive Orchestrator JSON Errors",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "11h",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "See all (8)",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "calculate-test",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "keyboard_arrow_down",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "No chats yet",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Helldyinger",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "keyboard_arrow_down",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Fixing Emulator Shutdown Issues 7d",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Fixing Emulator Shutdown Issues",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "7d",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Committing And Pushing Changes 7d",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Committing And Pushing Changes",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "7d",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Optimizing Character Creation Flow 7d",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Optimizing Character Creation Flow",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "7d",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "Playroom Integration System Audit 7d",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Playroom Integration System Audit",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "7d",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "title": "See all (7)",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "01.product",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "develop",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "keyboard_arrow_down",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "No chats yet",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "0.playroom",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "1.map",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "hwanyong.github.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "InstantReality-Server",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "InstantReality-Vision-to-Motion",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "iohook-macos",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "mcp-debug-tools",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "basic-debugging",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "mcp-macos-control",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "vanilla_components",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "vanilla_state",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Pawsite",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "assignments",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Roo-Code",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "chevron_right",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "title": "import_contacts Knowledge",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "import_contacts",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Knowledge",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "title": "settings Settings",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "settings",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Settings",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "title": "lightbulb Provide Feedback",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "lightbulb",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Provide Feedback",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Knowledge",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "info",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Google Antigravity IDE: Agent-First Development Platform",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Google Antigravity is an agent-centric development environment built on a forked version of Visual Studio Code. It features autonomous AI agents powered by Gemini 3 that can plan, write, test, and validate code. This KI covers its core architecture, dual-interface design, remote SSH integration, and",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Features",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Overview",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Security advisory",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Ssh remote setup",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Helldyinger Systems: Combat, Physics, and Stratagems",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "The definitive reference for Helldyinger's combat systems, physical interactions, and stratagem support. Documents the Weapon Strategy pattern (IWeaponBehavior), projectile pool architecture, and consolidated physics-driven entity interactions (explodeAt). Includes the complete overhaul of the strat",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Blood staining",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Blood staining sync evaluation",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Projectile system",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Server authority insights",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Stratagem workflow",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Weapon strategy",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Character death timing",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "New content checklist",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Blood staining client",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Bug fixes",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Projectile knockback",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "State cleanup",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Stratagem signal mechanics",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Visual effects",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Overview",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Knockback mechanics",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Terrain destruction particles",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Stratagem messages",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "InstantReality: Gemini Robotics Server Analysis & Web UI Implementation",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Full implementation blueprint for the InstantReality Server and Gemini Robotics ecosystem. Key components include a unified Server v2 architecture with hybrid transport (WebRTC/REST Polling) and a dual-phase robotics workflow. Recent updates confirmed the feasibility of web-based vertex calibration ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "System architecture reference",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Ai vision and robot coordination",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Auto calibration internals",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Client and frontend architecture",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Gemini robotics calibration blueprint",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Homography calibration logic",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Robot control module design",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Server config and deployment",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Vertical approach calibration",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Webrtc v2 migration",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Overview",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Web app implementation roadmap",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Coordinate transformation inquiry",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Vision strategies",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Visual regression analysis",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "NotebookLM Research Workflow & Tooling",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "This Knowledge Item covers the integration of Google NotebookLM into the robotics research process. It details the architecture of the .agent/skills/notebooklm skill, the workflow for grounding answers in project documentation, and the hybrid automation strategy utilizing both CLI scripts and browse",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Image upload strategy",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Overview",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Skill architecture",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "title": null,
+      "desc": null,
+      "value": "Open an artifact from the left pane to view its content here.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 6,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": []
+    },
+    {
+      "depth": 1,
+      "role": "AXButton",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress"
+      ]
+    },
+    {
+      "depth": 1,
+      "role": "AXButton",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXZoomWindow",
+        "AXShowMenu"
+      ]
+    },
+    {
+      "depth": 2,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": []
+    },
+    {
+      "depth": 3,
+      "role": "AXGroup",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": []
+    },
+    {
+      "depth": 1,
+      "role": "AXButton",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress"
+      ]
+    }
+  ]
+}

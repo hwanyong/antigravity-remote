@@ -1,0 +1,5395 @@
+{
+  "total_elements": 219,
+  "buttons": [
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Account",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Agent",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Browser",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Notifications",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Models",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Customizations",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Tab",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Editor",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Provide Feedback",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "add Add",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "texts": [
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Settings - ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "GLOBAL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "GENERAL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Enable Browser Tools",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "When enabled, Agent can use browser tools to open URLs, read web pages, and interact with browser content. This allows the Agent access to important (and often critical) knowledge and methods of validation, but any browser integration does increase exposure to external malicious parties for security exploits.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser Javascript Execution Policy",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "• Disabled - Agent will never run Javascript code in the browser.\n• Request Review - Agent will always stop to ask for permission to run Javascript code in the browser.\n• Always Proceed - Agent will not stop to ask for permission to run Javascript in the browser. This provides the Agent with maximum autonomy to perform complex actions and validation in the browser, but also has the highest exposure to security exploits.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "ALLOWLIST",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser URL Allowlist",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Control which URLs the browser can access. Add domains or full URLs to the allowlist.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "add",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Add",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "github.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "gitlab.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "bitbucket.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "atlassian.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "axure.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "linear.app",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "jenkins.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "docker.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "kubernetes.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "spacelift.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "nodejs.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "getbootstrap.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "firebase.google.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "mysql.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "postman.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "dynatrace.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "treblle.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "moesif.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "sematext.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "middleware.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "datadoghq.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "checklyhq.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "papertrail.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "betterstack.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "saucelabs.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "aws.amazon.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "azure.microsoft.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "cloud.google.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "freecodecamp.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codecademy.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "geeksforgeeks.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "developer.mozilla.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "w3schools.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "theodinproject.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "udemy.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "scaler.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "sqlzoo.net",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "javascript.info",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "learnpython.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "doc.rust-lang.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "learngitbranching.js.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "linuxjourney.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "promptingguide.ai",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "see.stanford.edu",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "bash.academy",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "learnshell.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "hackr.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "explainshell.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "speaking.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "leetcode.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "hackerrank.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codeforces.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codewars.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codility.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codingame.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "stackoverflow.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "stackexchange.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "dev.to",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "news.ycombinator.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "app.diagrams.net",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "coolors.co",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "lottiefiles.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "iconscout.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "yqnn.github.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "excalidraw.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "figma.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "google.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "regex101.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "crontab.guru",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "gitignore.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "repl.it",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "webhook.site",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "it-tools.tech",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "opensource.google.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "summerofcode.withgoogle.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "firsttimersonly.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "localhost",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "www.kaggle.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "www.youtube.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "hwanyong.github.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "127.0.0.1",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "0.0.0.0",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "75.157.138.99",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "192.168.1.119",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "www.threads.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "tmsearch.uspto.gov",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "chromewebdata",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "zone01.ashfront-ws.hwanyong.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "ADVANCED",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Chrome Binary Path",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Path to the Chrome/Chromium executable. Leave empty for auto-detection.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser User Profile Path",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Custom path for the browser user profile directory. Leave empty for default (~/.gemini/antigravity-browser-profile).",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser CDP Port",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Port number for Chrome DevTools Protocol remote debugging. Leave empty for default (9222).",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "checkboxes": [
+    {
+      "depth": 12,
+      "role": "AXCheckBox",
+      "subrole": "AXSwitch",
+      "title": "",
+      "desc": "",
+      "value": "1",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "text_fields": [
+    {
+      "depth": 11,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "popups": [
+    {
+      "depth": 11,
+      "role": "AXPopUpButton",
+      "subrole": null,
+      "title": "Always Proceed keyboard_arrow_down",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "links": [],
+  "all_elements": [
+    {
+      "depth": 0,
+      "role": "AXWindow",
+      "subrole": "AXStandardWindow",
+      "title": "Settings",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXRaise"
+      ]
+    },
+    {
+      "depth": 1,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "Settings",
+      "desc": "",
+      "value": "",
+      "actions": []
+    },
+    {
+      "depth": 7,
+      "role": "AXWebArea",
+      "subrole": null,
+      "title": "Settings",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Settings - ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Account",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "GLOBAL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Agent",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Browser",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Notifications",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Models",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Customizations",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Tab",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Editor",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Provide Feedback",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "GENERAL",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "GENERAL",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Enable Browser Tools",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "When enabled, Agent can use browser tools to open URLs, read web pages, and interact with browser content. This allows the Agent access to important (and often critical) knowledge and methods of validation, but any browser integration does increase exposure to external malicious parties for security exploits.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXCheckBox",
+      "subrole": "AXSwitch",
+      "title": "",
+      "desc": "",
+      "value": "1",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser Javascript Execution Policy",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "• Disabled - Agent will never run Javascript code in the browser.\n• Request Review - Agent will always stop to ask for permission to run Javascript code in the browser.\n• Always Proceed - Agent will not stop to ask for permission to run Javascript in the browser. This provides the Agent with maximum autonomy to perform complex actions and validation in the browser, but also has the highest exposure to security exploits.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXPopUpButton",
+      "subrole": null,
+      "title": "Always Proceed keyboard_arrow_down",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "ALLOWLIST",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "ALLOWLIST",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser URL Allowlist",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Control which URLs the browser can access. Add domains or full URLs to the allowlist.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "add Add",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "add",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Add",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "github.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "gitlab.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "bitbucket.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "atlassian.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "axure.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "linear.app",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "jenkins.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "docker.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "kubernetes.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "spacelift.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "nodejs.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "getbootstrap.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "firebase.google.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "mysql.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "postman.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "dynatrace.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "treblle.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "moesif.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "sematext.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "middleware.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "datadoghq.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "checklyhq.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "papertrail.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "betterstack.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "saucelabs.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "aws.amazon.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "azure.microsoft.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "cloud.google.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "freecodecamp.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codecademy.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "geeksforgeeks.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "developer.mozilla.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "w3schools.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "theodinproject.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "udemy.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "scaler.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "sqlzoo.net",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "javascript.info",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "learnpython.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "doc.rust-lang.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "learngitbranching.js.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "linuxjourney.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "promptingguide.ai",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "see.stanford.edu",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "bash.academy",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "learnshell.org",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "hackr.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "explainshell.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "speaking.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "leetcode.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "hackerrank.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codeforces.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codewars.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codility.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "codingame.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "stackoverflow.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "stackexchange.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "dev.to",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "news.ycombinator.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "app.diagrams.net",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "coolors.co",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "lottiefiles.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "iconscout.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "yqnn.github.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "excalidraw.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "figma.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "google.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "regex101.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "crontab.guru",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "gitignore.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "repl.it",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "webhook.site",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "it-tools.tech",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "opensource.google.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "summerofcode.withgoogle.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "firsttimersonly.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "localhost",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "www.kaggle.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "www.youtube.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "hwanyong.github.io",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "127.0.0.1",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "0.0.0.0",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "75.157.138.99",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "192.168.1.119",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "www.threads.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "tmsearch.uspto.gov",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "chromewebdata",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "zone01.ashfront-ws.hwanyong.com",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Delete command",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "ADVANCED",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "ADVANCED",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Chrome Binary Path",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Path to the Chrome/Chromium executable. Leave empty for auto-detection.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser User Profile Path",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Custom path for the browser user profile directory. Leave empty for default (~/.gemini/antigravity-browser-profile).",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser CDP Port",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Port number for Chrome DevTools Protocol remote debugging. Leave empty for default (9222).",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXIncrementor",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "9222.0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXIncrement",
+        "AXDecrement"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "button_desc": "Add context",
+  "baseline_count": 163,
+  "after_click_count": 8,
+  "new_elements": [
+    {
+      "depth": 9,
+      "role": "AXMenu",
+      "subrole": null,
+      "title": "",
+      "desc": "Add context",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Add context",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Media",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Mentions",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Workflows",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    }
+  ],
+  "all_after_click": [
+    {
+      "depth": 0,
+      "role": "AXWindow",
+      "subrole": "AXStandardWindow",
+      "title": "__analysis_target",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXRaise"
+      ]
+    },
+    {
+      "depth": 1,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "__analysis_target",
+      "desc": "",
+      "value": "",
+      "actions": []
+    },
+    {
+      "depth": 7,
+      "role": "AXWebArea",
+      "subrole": null,
+      "title": "__analysis_target",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 9,
+      "role": "AXMenu",
+      "subrole": null,
+      "title": "",
+      "desc": "Add context",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Add context",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Media",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Mentions",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Workflows",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    }
+  ]
+}

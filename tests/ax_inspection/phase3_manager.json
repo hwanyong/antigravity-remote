@@ -1,0 +1,1938 @@
+{
+  "timestamp": "2026-04-04T02:07:38",
+  "manager_elements": [
+    {
+      "depth": 0,
+      "role": "AXWindow",
+      "subrole": "AXStandardWindow",
+      "title": "__analysis_target",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXRaise"
+      ]
+    },
+    {
+      "depth": 1,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "__analysis_target",
+      "desc": "",
+      "value": "",
+      "actions": []
+    },
+    {
+      "depth": 7,
+      "role": "AXWebArea",
+      "subrole": null,
+      "title": "__analysis_target",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "__analysis_target",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXLink",
+      "subrole": null,
+      "title": "",
+      "desc": "Open Agent Manager",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Open Agent Manager",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXToolbar",
+      "subrole": null,
+      "title": "",
+      "desc": "Title actions",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Customize Layout...",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXCheckBox",
+      "subrole": null,
+      "title": "",
+      "desc": "Toggle Primary Side Bar (⌘B)",
+      "value": "1",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXCheckBox",
+      "subrole": null,
+      "title": "",
+      "desc": "Toggle Panel (⌘J)",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXCheckBox",
+      "subrole": null,
+      "title": "",
+      "desc": "Toggle Agent (⌥⌘B)",
+      "value": "1",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Quick Open",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Open Browser (Preview)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "金",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Editor-Specific Settings",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXPopUpButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Profile",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXImage",
+      "subrole": null,
+      "title": "",
+      "desc": "/ACg8ocKTszIn0JNotqKuMS9qyEo4-P_WomoaJNvECq3muNtY37kSAAyBKg=s96-c",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Profile",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXTabGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Active View Switcher",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "subrole": "AXTabButton",
+      "title": "Explorer (⇧⌘E)",
+      "desc": "",
+      "value": "1",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Explorer (⇧⌘E)",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "subrole": "AXTabButton",
+      "title": "",
+      "desc": "Source Control (⌃⇧G) - 12 pending changes",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Source Control (⌃⇧G) - 12 pending changes",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Source Control (⌃⇧G) - 12 pending changes",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "12",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "subrole": "AXTabButton",
+      "title": "Run and Debug (⇧⌘D)",
+      "desc": "",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Run and Debug (⇧⌘D)",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "subrole": "AXTabButton",
+      "title": "Remote Explorer",
+      "desc": "",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Remote Explorer",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "subrole": "AXTabButton",
+      "title": "Extensions (⇧⌘X)",
+      "desc": "",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Extensions (⇧⌘X)",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "subrole": "AXTabButton",
+      "title": "Claude Code",
+      "desc": "",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Claude Code",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "subrole": "AXTabButton",
+      "title": "",
+      "desc": "Antigravity Cockpit",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Antigravity Cockpit",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "Explorer",
+      "desc": "",
+      "value": "2",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Explorer",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXToolbar",
+      "subrole": null,
+      "title": "",
+      "desc": "Explorer actions",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 20,
+      "role": "AXPopUpButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Views and More Actions...",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Explorer Section: __analysis_target",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 22,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "",
+      "desc": "Explorer Section: __analysis_target",
+      "value": "3",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "__analysis_target",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXOutline",
+      "subrole": null,
+      "title": "",
+      "desc": "Files Explorer",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Outline Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 22,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "Outline",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Outline",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Timeline Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 22,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "Timeline",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Timeline",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Code Search Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 22,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "Code Search",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Code Search",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 22,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Toggle Replace",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 24,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 26,
+      "role": "AXTextArea",
+      "subrole": null,
+      "title": "",
+      "desc": "Search: Type Search Term and press Enter to search",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 25,
+      "role": "AXCheckBox",
+      "subrole": null,
+      "title": "",
+      "desc": "Match Case (⌥⌘C)",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 25,
+      "role": "AXCheckBox",
+      "subrole": null,
+      "title": "",
+      "desc": "Match Whole Word (⌥⌘W)",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 25,
+      "role": "AXCheckBox",
+      "subrole": null,
+      "title": "",
+      "desc": "Use Regular Expression (⌥⌘R)",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 27,
+      "role": "AXTextArea",
+      "subrole": null,
+      "title": "",
+      "desc": "Replace: Type replace term and press Enter to preview",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 26,
+      "role": "AXCheckBox",
+      "subrole": null,
+      "title": "",
+      "desc": "Preserve Case (⌥⌘P)",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 24,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Replace All (Submit Search to Enable)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 26,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 22,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Toggle Search Details",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXOutline",
+      "subrole": null,
+      "title": "",
+      "desc": "Search",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Editor Group 1 (empty)",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 26,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Antigravity",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 27,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Switch to Agent Manager",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 26,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "E",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 27,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "⌘",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 27,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "E",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 27,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Code with Agent",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 26,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "L",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 27,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "⌘",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 27,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "L",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Agent Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 22,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "Agent",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Agent",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Terminal Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 22,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "Terminal",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Terminal",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "remote",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "remote",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "main (Git) - main*, Checkout Branch/Tag...",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "main (Git) - main*, Checkout Branch/Tag...",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " main*",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "main (Git) - Publish to GitHub",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "main (Git) - Publish to GitHub",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "No Problems",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "No Problems",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " 0 ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " 0",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Notifications",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Notifications",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Antigravity - Settings",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Antigravity - Settings",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "🟢 Group 1: 100% | 🟡 Group 2: 20%, **🚀 Antigravity 할당량 모니터** --- | | | | | :--- | :--- | :--- | | **Group 1** | | | | &nbsp;&nbsp;&nbsp;&nbsp;🟢 **Gemini 3.1 Pro (High)** | `■■■■■■■■■■` | 100.00% → 5h 0m (07:07) | | &nbsp;&nbsp;&nbsp;&nbsp;🟢 **Gemini 3.1 Pro (Low)** | `■■■■■■■■■■` | 100.00% → 5h 0m (07:07) | | | | | | **Group 2** | | | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **Claude Sonnet 4.6 (Thinking)** | `■■□□□□□□□□` | 20.00% → 13m (02:19) | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **Claude Opus 4.6 (Thinking)** | `■■□□□□□□□□` | 20.00% → 13m (02:19) | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **GPT-OSS 120B (Medium)** | `■■□□□□□□□□` | 20.00% → 13m (02:19) | --- *클릭하여 할당량 모니터 열기*",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "🟢 Group 1: 100% | 🟡 Group 2: 20%, **🚀 Antigravity 할당량 모니터** --- | | | | | :--- | :--- | :--- | | **Group 1** | | | | &nbsp;&nbsp;&nbsp;&nbsp;🟢 **Gemini 3.1 Pro (High)** | `■■■■■■■■■■` | 100.00% → 5h 0m (07:07) | | &nbsp;&nbsp;&nbsp;&nbsp;🟢 **Gemini 3.1 Pro (Low)** | `■■■■■■■■■■` | 100.00% → 5h 0m (07:07) | | | | | | **Group 2** | | | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **Claude Sonnet 4.6 (Thinking)** | `■■□□□□□□□□` | 20.00% → 13m (02:19) | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **Claude Opus 4.6 (Thinking)** | `■■□□□□□□□□` | 20.00% → 13m (02:19) | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **GPT-OSS 120B (Medium)** | `■■□□□□□□□□` | 20.00% → 13m (02:19) | --- *클릭하여 할당량 모니터 열기*",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "Screen Reader Optimized",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Screen Reader Optimized",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Agent",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXPopUpButton",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "__analysis_target",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 18,
+      "role": "AXTextArea",
+      "subrole": null,
+      "title": "",
+      "desc": "Message input",
+      "value": "\n",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 20,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "\n",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 19,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Ask anything, @ to mention, / for workflows",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXPopUpButton",
+      "subrole": null,
+      "title": "Add context",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Add context",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXPopUpButton",
+      "subrole": null,
+      "title": "Select conversation mode, current: Planning",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Select conversation mode, current: Planning",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXPopUpButton",
+      "subrole": null,
+      "title": "Select model, current: Claude Opus 4.6 (Thinking)",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 17,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Select model, current: Claude Opus 4.6 (Thinking)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Record voice memo",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Send message",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "AI may make mistakes. Double-check all generated code.",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Info: ⚠️ Group 2 할당량 부족 (20.0%)",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 13,
+      "role": "AXList",
+      "subrole": "AXContentList",
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "(base) uhd@UHDs-Mac-miniM1-2020 __analysis_target % ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "(base) uhd@UHDs-Mac-miniM1-2020 __analysis_target % ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": " ",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 14,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "% (base) uhd@UHDs-Mac-miniM1-2020 __analysis_target % % (base) uhd@UHDs-Mac-miniM1-2020 __analysis_target %",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 14,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "Terminal 2 environment is stale, run the 'Show Environment Information' command for more information",
+      "value": "(base) uhd@UHDs-Mac-miniM1-2020 __analysis_target % ",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 15,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 9,
+      "role": "AXList",
+      "subrole": null,
+      "title": "",
+      "desc": "Typeahead menu",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 9,
+      "role": "AXList",
+      "subrole": null,
+      "title": "",
+      "desc": "Typeahead menu",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "summary": {
+    "total": 155,
+    "buttons": 26,
+    "texts": 24
+  }
+}

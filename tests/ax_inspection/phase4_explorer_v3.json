@@ -1,0 +1,224 @@
+{
+  "timestamp": "2026-04-04T02:37:07",
+  "total_rows": 27,
+  "folders": 6,
+  "files": 21,
+  "rows": [
+    {
+      "desc": "images",
+      "name": "",
+      "status": "images",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "web",
+      "name": "",
+      "status": "web",
+      "disclosing": true,
+      "disclosure_level": 1,
+      "is_folder": true
+    },
+    {
+      "desc": "app.scss",
+      "name": "app.scss",
+      "status": "U",
+      "disclosing": false,
+      "disclosure_level": 2,
+      "is_folder": false
+    },
+    {
+      "desc": "favicon.svg",
+      "name": "favicon.svg",
+      "status": "U",
+      "disclosing": false,
+      "disclosure_level": 2,
+      "is_folder": false
+    },
+    {
+      "desc": "index.html",
+      "name": "index.html",
+      "status": "U",
+      "disclosing": false,
+      "disclosure_level": 2,
+      "is_folder": false
+    },
+    {
+      "desc": "styles.css",
+      "name": "styles.css",
+      "status": "U",
+      "disclosing": false,
+      "disclosure_level": 2,
+      "is_folder": false
+    },
+    {
+      "desc": "languages",
+      "name": "",
+      "status": "languages",
+      "disclosing": true,
+      "disclosure_level": 0,
+      "is_folder": true
+    },
+    {
+      "desc": "c",
+      "name": "",
+      "status": "c",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "cpp",
+      "name": "",
+      "status": "cpp",
+      "disclosing": true,
+      "disclosure_level": 1,
+      "is_folder": true
+    },
+    {
+      "desc": "main.cpp",
+      "name": "main.cpp",
+      "status": "U",
+      "disclosing": false,
+      "disclosure_level": 2,
+      "is_folder": false
+    },
+    {
+      "desc": "utils.hpp",
+      "name": "utils.hpp",
+      "status": "U",
+      "disclosing": false,
+      "disclosure_level": 2,
+      "is_folder": false
+    },
+    {
+      "desc": "dart",
+      "name": "",
+      "status": "dart",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "go",
+      "name": "",
+      "status": "go",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "java",
+      "name": "",
+      "status": "java",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "javascript",
+      "name": "",
+      "status": "javascript",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "kotlin",
+      "name": "",
+      "status": "kotlin",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "lua",
+      "name": "",
+      "status": "lua",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "python",
+      "name": "",
+      "status": "python",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "ruby",
+      "name": "",
+      "status": "ruby",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "rust",
+      "name": "",
+      "status": "rust",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "shell",
+      "name": "",
+      "status": "shell",
+      "disclosing": true,
+      "disclosure_level": 1,
+      "is_folder": true
+    },
+    {
+      "desc": "script.sh",
+      "name": "script.sh",
+      "status": "U",
+      "disclosing": false,
+      "disclosure_level": 2,
+      "is_folder": false
+    },
+    {
+      "desc": "script.zsh",
+      "name": "script.zsh",
+      "status": "U",
+      "disclosing": false,
+      "disclosure_level": 2,
+      "is_folder": false
+    },
+    {
+      "desc": "swift",
+      "name": "",
+      "status": "swift",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "typescript",
+      "name": "",
+      "status": "typescript",
+      "disclosing": false,
+      "disclosure_level": 1,
+      "is_folder": false
+    },
+    {
+      "desc": "web",
+      "name": "",
+      "status": "web",
+      "disclosing": true,
+      "disclosure_level": 1,
+      "is_folder": true
+    },
+    {
+      "desc": "assets",
+      "name": "",
+      "status": "assets",
+      "disclosing": true,
+      "disclosure_level": 0,
+      "is_folder": true
+    }
+  ]
+}

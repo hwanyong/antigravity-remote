@@ -1,0 +1,243 @@
+{
+  "button_desc": "Select conversation mode, current: Planning",
+  "baseline_count": 166,
+  "after_click_count": 11,
+  "new_elements": [
+    {
+      "depth": 9,
+      "role": "AXMenu",
+      "subrole": null,
+      "title": "",
+      "desc": "Conversation mode",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Conversation mode",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Planning Agent can plan before executing tasks. Use for deep research, complex tasks, or collaborative work",
+      "desc": "",
+      "value": "1",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Planning",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Agent can plan before executing tasks. Use for deep research, complex tasks, or collaborative work",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Fast Agent will execute tasks directly. Use for simple tasks that can be completed faster",
+      "desc": "",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Fast",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Agent will execute tasks directly. Use for simple tasks that can be completed faster",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ],
+  "all_after_click": [
+    {
+      "depth": 0,
+      "role": "AXWindow",
+      "subrole": "AXStandardWindow",
+      "title": "__analysis_target",
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXRaise"
+      ]
+    },
+    {
+      "depth": 1,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "__analysis_target",
+      "desc": "",
+      "value": "",
+      "actions": []
+    },
+    {
+      "depth": 7,
+      "role": "AXWebArea",
+      "subrole": null,
+      "title": "__analysis_target",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 9,
+      "role": "AXMenu",
+      "subrole": null,
+      "title": "",
+      "desc": "Conversation mode",
+      "value": "",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 11,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Conversation mode",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Planning Agent can plan before executing tasks. Use for deep research, complex tasks, or collaborative work",
+      "desc": "",
+      "value": "1",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Planning",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Agent can plan before executing tasks. Use for deep research, complex tasks, or collaborative work",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 10,
+      "role": "AXMenuItem",
+      "subrole": null,
+      "title": "Fast Agent will execute tasks directly. Use for simple tasks that can be completed faster",
+      "desc": "",
+      "value": "0",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible",
+        "AXCancel"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Fast",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    },
+    {
+      "depth": 12,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Agent will execute tasks directly. Use for simple tasks that can be completed faster",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ]
+    }
+  ]
+}

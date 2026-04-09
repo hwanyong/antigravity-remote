@@ -1,0 +1,111 @@
+{
+  "timestamp": "2026-04-04T02:06:03",
+  "tab_buttons_found": [
+    {
+      "title": "Account",
+      "depth": 10
+    },
+    {
+      "title": "Agent",
+      "depth": 10
+    },
+    {
+      "title": "Browser",
+      "depth": 10
+    },
+    {
+      "title": "Notifications",
+      "depth": 10
+    },
+    {
+      "title": "Models",
+      "depth": 10
+    },
+    {
+      "title": "Customizations",
+      "depth": 10
+    },
+    {
+      "title": "Tab",
+      "depth": 10
+    },
+    {
+      "title": "Editor",
+      "depth": 10
+    }
+  ],
+  "tabs_summary": {
+    "Account": {
+      "total_elements": 35,
+      "buttons": 10,
+      "texts": 16,
+      "checkboxes": 2,
+      "text_fields": 0,
+      "popups": 0,
+      "links": 1
+    },
+    "Agent": {
+      "total_elements": 97,
+      "buttons": 15,
+      "texts": 56,
+      "checkboxes": 13,
+      "text_fields": 1,
+      "popups": 2,
+      "links": 0
+    },
+    "Browser": {
+      "total_elements": 219,
+      "buttons": 100,
+      "texts": 108,
+      "checkboxes": 1,
+      "text_fields": 2,
+      "popups": 1,
+      "links": 0
+    },
+    "Notifications": {
+      "total_elements": 20,
+      "buttons": 10,
+      "texts": 6,
+      "checkboxes": 0,
+      "text_fields": 0,
+      "popups": 0,
+      "links": 0
+    },
+    "Models": {
+      "total_elements": 42,
+      "buttons": 10,
+      "texts": 24,
+      "checkboxes": 1,
+      "text_fields": 0,
+      "popups": 0,
+      "links": 2
+    },
+    "Customizations": {
+      "total_elements": 38,
+      "buttons": 15,
+      "texts": 17,
+      "checkboxes": 0,
+      "text_fields": 0,
+      "popups": 0,
+      "links": 0
+    },
+    "Tab": {
+      "total_elements": 42,
+      "buttons": 9,
+      "texts": 20,
+      "checkboxes": 6,
+      "text_fields": 0,
+      "popups": 1,
+      "links": 0
+    },
+    "Editor": {
+      "total_elements": 33,
+      "buttons": 10,
+      "texts": 14,
+      "checkboxes": 1,
+      "text_fields": 2,
+      "popups": 0,
+      "links": 0
+    }
+  }
+}

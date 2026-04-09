@@ -1,0 +1,399 @@
+{
+  "timestamp": "2026-04-04T02:35:26",
+  "outline_0_unknown": {
+    "title": "",
+    "depth": 21,
+    "rows": [
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "images",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "web",
+        "value": "",
+        "disclosing": true,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "app.scss",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 2,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "favicon.svg",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 2,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "index.html",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 2,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "styles.css",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 2,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "languages",
+        "value": "",
+        "disclosing": true,
+        "disclosure_level": 0,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "c",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "cpp",
+        "value": "",
+        "disclosing": true,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "main.cpp",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 2,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "utils.hpp",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 2,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "dart",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "go",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "java",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "javascript",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "kotlin",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "lua",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "python",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "ruby",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "rust",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "shell",
+        "value": "",
+        "disclosing": true,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "script.sh",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 2,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "script.zsh",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 2,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "swift",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "typescript",
+        "value": "",
+        "disclosing": false,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "web",
+        "value": "",
+        "disclosing": true,
+        "disclosure_level": 1,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      },
+      {
+        "depth": 2,
+        "title": "",
+        "desc": "assets",
+        "value": "",
+        "disclosing": true,
+        "disclosure_level": 0,
+        "actions": [
+          "AXShowMenu",
+          "AXScrollToVisible"
+        ],
+        "inner_texts": []
+      }
+    ]
+  },
+  "outline_1_unknown": {
+    "title": "",
+    "depth": 21,
+    "rows": []
+  },
+  "section_buttons": [
+    {
+      "depth": 21,
+      "desc": "Explorer Section: __analysis_target"
+    },
+    {
+      "depth": 21,
+      "desc": "Outline Section"
+    },
+    {
+      "depth": 21,
+      "desc": "Timeline Section"
+    },
+    {
+      "depth": 21,
+      "desc": "Code Search Section"
+    },
+    {
+      "depth": 21,
+      "desc": "Dependencies Section"
+    },
+    {
+      "depth": 21,
+      "desc": "Java Projects Section"
+    },
+    {
+      "depth": 21,
+      "desc": "Agent Section"
+    },
+    {
+      "depth": 21,
+      "desc": "Terminal Section"
+    }
+  ]
+}

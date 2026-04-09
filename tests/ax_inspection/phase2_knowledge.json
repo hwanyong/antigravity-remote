@@ -1,0 +1,291 @@
+{
+  "timestamp": "2026-04-04T02:17:33",
+  "window": "integrate_antigravity — SKILL.md",
+  "all_buttons_for_debug": [
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Customize Layout..."
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Quick Open"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Open Browser (Preview)"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Editor-Specific Settings"
+    },
+    {
+      "depth": 21,
+      "title": "",
+      "desc": "Changes Section"
+    },
+    {
+      "depth": 24,
+      "title": "",
+      "desc": "Commit"
+    },
+    {
+      "depth": 24,
+      "title": "",
+      "desc": "Refresh"
+    },
+    {
+      "depth": 26,
+      "title": "",
+      "desc": "Commit Changes on \"main\""
+    },
+    {
+      "depth": 21,
+      "title": "",
+      "desc": "Graph Section"
+    },
+    {
+      "depth": 30,
+      "title": "",
+      "desc": "Close (⌘W)"
+    },
+    {
+      "depth": 30,
+      "title": "",
+      "desc": "Close (⌘W)"
+    },
+    {
+      "depth": 30,
+      "title": "",
+      "desc": "Close (⌘W)"
+    },
+    {
+      "depth": 30,
+      "title": "",
+      "desc": "Close (⌘W)"
+    },
+    {
+      "depth": 30,
+      "title": "",
+      "desc": "Close (⌘W)"
+    },
+    {
+      "depth": 30,
+      "title": "",
+      "desc": "Close (⌘W)"
+    },
+    {
+      "depth": 30,
+      "title": "",
+      "desc": "Close (⌘W)"
+    },
+    {
+      "depth": 30,
+      "title": "",
+      "desc": "Close (⌘W)"
+    },
+    {
+      "depth": 30,
+      "title": "",
+      "desc": "Close (⌘W)"
+    },
+    {
+      "depth": 28,
+      "title": "",
+      "desc": "Claude Code: Open"
+    },
+    {
+      "depth": 28,
+      "title": "",
+      "desc": "Nogic: Open Visualizer"
+    },
+    {
+      "depth": 28,
+      "title": "",
+      "desc": "Open Preview to the Side (⌘K V) [⌥] Open Preview (⇧⌘V)"
+    },
+    {
+      "depth": 28,
+      "title": "",
+      "desc": "Split Editor Right (⌘\\) [⌥] Split Editor Down"
+    },
+    {
+      "depth": 28,
+      "title": "",
+      "desc": "Go Back (⌃-)"
+    },
+    {
+      "depth": 28,
+      "title": "",
+      "desc": "Go Forward (⌃⇧-)"
+    },
+    {
+      "depth": 21,
+      "title": "",
+      "desc": "Agent Section"
+    },
+    {
+      "depth": 21,
+      "title": "",
+      "desc": "Terminal Section"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "remote"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "main (Git) - main+, Checkout Branch/Tag..."
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "main (Git) - Push 1 commits to origin/main"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "No Problems"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Notifications"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Antigravity - Settings, Autocomplete Speed: Fast"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "🟢 Group 1: 100% | 🟡 Group 2: 20%, **🚀 Antigravity 할당량 모니터** --- | | | | | :--- | :--- | :--- | | **Group 1** | | | | &nbsp;&nbsp;&nbsp;&nbsp;🟢 **Gemini 3.1 Pro (High)** | `■■■■■■■■■■` | 100.00% → 5h 0m (07:15) | | &nbsp;&nbsp;&nbsp;&nbsp;🟢 **Gemini 3.1 Pro (Low)** | `■■■■■■■■■■` | 100.00% → 5h 0m (07:15) | | | | | | **Group 2** | | | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **Claude Sonnet 4.6 (Thinking)** | `■■□□□□□□□□` | 20.00% → 4m (02:19) | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **Claude Opus 4.6 (Thinking)** | `■■□□□□□□□□` | 20.00% → 4m (02:19) | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **GPT-OSS 120B (Medium)** | `■■□□□□□□□□` | 20.00% → 4m (02:19) | --- *클릭하여 할당량 모니터 열기*"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Markdown"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Editor Language Status: Markdown link validation disabled, next: $(copilot) No inline suggestion available, Inline suggestions"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "LF"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "UTF-8"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Spaces: 2"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Ln 1, Col 1"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Screen Reader Optimized"
+    },
+    {
+      "depth": 17,
+      "title": "undo",
+      "desc": ""
+    },
+    {
+      "depth": 17,
+      "title": "Worked for 20s",
+      "desc": ""
+    },
+    {
+      "depth": 20,
+      "title": "Explored 2 commands",
+      "desc": ""
+    },
+    {
+      "depth": 21,
+      "title": "Thought for 2s",
+      "desc": ""
+    },
+    {
+      "depth": 22,
+      "title": "content_copy",
+      "desc": ""
+    },
+    {
+      "depth": 22,
+      "title": "content_copy",
+      "desc": ""
+    },
+    {
+      "depth": 17,
+      "title": "undo",
+      "desc": ""
+    },
+    {
+      "depth": 17,
+      "title": "Worked for 23s",
+      "desc": ""
+    },
+    {
+      "depth": 19,
+      "title": "Explored 2 commands",
+      "desc": ""
+    },
+    {
+      "depth": 20,
+      "title": "Thought for 2s",
+      "desc": ""
+    },
+    {
+      "depth": 21,
+      "title": "content_copy",
+      "desc": ""
+    },
+    {
+      "depth": 21,
+      "title": "content_copy",
+      "desc": ""
+    },
+    {
+      "depth": 17,
+      "title": "",
+      "desc": "Add context"
+    },
+    {
+      "depth": 17,
+      "title": "",
+      "desc": "Select conversation mode, current: Planning"
+    },
+    {
+      "depth": 17,
+      "title": "",
+      "desc": "Select model, current: Claude Opus 4.6 (Thinking)"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Record voice memo"
+    },
+    {
+      "depth": 16,
+      "title": "",
+      "desc": "Send message"
+    }
+  ]
+}

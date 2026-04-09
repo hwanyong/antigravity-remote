@@ -1,0 +1,562 @@
+/* agbridge TUI — Textual CSS Stylesheet */
+/* Mobile-Only: Single Panel + 4-Tier Layer System */
+
+/* ── Main Screen — vertical layout, NO grid ───────────── */
+Screen {
+    layout: vertical;
+}
+
+/* ── Panels: hidden by default, shown via display toggle ─ */
+#workspace-list,
+#agent-panel,
+#explorer-panel,
+#git-panel {
+    display: none;
+    height: 1fr;
+}
+
+/* ── Workspace List ──────────────────────────────────── */
+
+#workspace-list {
+    border: solid $primary;
+    border-title-color: $text;
+    border-title-style: bold;
+    padding: 0;
+}
+
+#workspace-list #ws-list-title {
+    display: none;
+}
+
+#workspace-list #ws-list-view {
+    height: 1fr;
+    border: none;
+    background: transparent;
+}
+
+WorkspaceItem {
+    layout: horizontal;
+    height: 1;
+    padding: 0 1;
+}
+
+WorkspaceItem > .ws-name {
+    width: 1fr;
+    height: 1;
+}
+
+WorkspaceItem > .ws-state {
+    width: auto;
+    height: 1;
+    margin-right: 1;
+}
+
+WorkspaceItem > .ws-close-btn {
+    width: 3;
+    min-width: 3;
+    height: 1;
+    border: none;
+    padding: 0;
+    background: transparent;
+    color: $text-muted;
+}
+
+WorkspaceItem:hover > .ws-close-btn,
+WorkspaceItem:focus-within > .ws-close-btn {
+    color: $error;
+}
+
+WorkspaceItem > .ws-close-btn:hover {
+    background: $error;
+    color: $text;
+}
+
+OpenActionItem {
+    padding: 1 1;
+    height: 3;
+}
+
+OpenActionItem > .ws-open-label {
+    color: $accent;
+    text-style: bold;
+}
+
+/* ── Agent Panel ─────────────────────────────────────── */
+
+#agent-panel {
+    border: solid $secondary;
+    border-title-color: $text;
+    border-title-style: bold;
+    padding: 0;
+}
+
+/* Header */
+.agent-header {
+    height: 1;
+    padding: 0 1;
+}
+
+#agent-state-dot {
+    width: 2;
+    height: 1;
+}
+
+.agent-title {
+    width: 1fr;
+    height: 1;
+    text-style: bold;
+    overflow: hidden;
+}
+
+.agent-edit-actions {
+    width: auto;
+    height: 1;
+}
+
+.agent-header-actions {
+    width: auto;
+    height: 1;
+}
+
+.agent-icon-btn {
+    width: 3;
+    min-width: 3;
+    height: 1;
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-height: 1;
+    background: transparent;
+    color: $text-muted;
+}
+
+.agent-icon-btn:hover {
+    background: $panel;
+    color: $text;
+}
+
+.agent-accept-btn, .agent-reject-btn {
+    width: 3;
+    min-width: 3;
+    height: 1;
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-height: 1;
+    background: transparent;
+    color: $text-muted;
+}
+
+.agent-accept-btn.agent-btn-active {
+    color: $success;
+}
+
+.agent-reject-btn.agent-btn-active {
+    color: $error;
+}
+
+.agent-accept-btn:hover, .agent-reject-btn:hover {
+    background: $panel;
+}
+
+/* Error Recovery Hub */
+.agent-error-recovery-hub {
+    display: none;
+    height: auto;
+    padding: 1 1;
+    align: left middle;
+    background: $error 15%;
+    border-top: solid $error;
+}
+
+.agent-error-label {
+    width: 1fr;
+    height: 1;
+    color: $error;
+    text-style: bold;
+    margin-right: 1;
+}
+
+.agent-retry-btn {
+    width: auto;
+    min-width: 8;
+    height: 1;
+    border: none;
+    padding: 0 1;
+    margin: 0 1;
+    min-height: 1;
+    background: $error;
+    color: $text;
+}
+
+.agent-edit-retry-btn {
+    width: auto;
+    min-width: 12;
+    height: 1;
+    border: none;
+    padding: 0 1;
+    margin: 0;
+    min-height: 1;
+    background: $surface;
+    color: $text;
+}
+
+.agent-dismiss-btn {
+    width: auto;
+    min-width: 8;
+    height: 1;
+    border: none;
+    padding: 0 1;
+    margin: 0 0 0 1;
+    min-height: 1;
+    background: transparent;
+    color: $text-muted;
+}
+
+.agent-retry-btn:hover {
+    background: $error-lighten-2;
+}
+
+.agent-edit-retry-btn:hover {
+    background: $panel;
+    color: $primary;
+}
+
+.agent-dismiss-btn:hover {
+    background: $panel;
+    color: $error;
+}
+
+/* Permission Auth Hub */
+.agent-permission-auth-hub {
+    display: none;
+    height: auto;
+    padding: 1 1;
+    background: $warning 15%;
+    border-top: solid $warning;
+}
+
+.agent-permission-label {
+    width: 1fr;
+    height: auto;
+    color: $warning;
+    text-style: bold;
+    margin-bottom: 0;
+}
+
+.agent-permission-buttons {
+    height: auto;
+    align: right middle;
+}
+
+.agent-deny-btn {
+    width: auto;
+    min-width: 8;
+    height: 1;
+    border: none;
+    padding: 0 1;
+    margin: 0 1;
+    min-height: 1;
+    background: transparent;
+    color: $error;
+}
+
+.agent-deny-btn:hover {
+    background: $panel;
+}
+
+.agent-allow-btn {
+    width: auto;
+    min-width: 8;
+    height: 1;
+    border: none;
+    padding: 0 1;
+    margin: 0 0;
+    min-height: 1;
+    background: $primary;
+    color: $text;
+}
+
+.agent-allow-btn:hover {
+    background: $primary-lighten-2;
+}
+
+.agent-perm-chevron-btn {
+    width: 3;
+    height: 1;
+    border: none;
+    padding: 0;
+    margin: 0 0 0 0;
+    min-height: 1;
+    min-width: 3;
+    background: $primary-darken-1;
+    color: $text;
+}
+
+.agent-perm-chevron-btn:hover {
+    background: $primary-lighten-1;
+}
+
+/* Message scroll */
+#agent-messages {
+    height: 1fr;
+    border: none;
+    padding: 0 1;
+    scrollbar-size: 1 1;
+}
+
+/* Message items */
+.agent-msg-user {
+    margin: 1 0 0 2;
+    padding: 0;
+}
+
+.agent-msg-assistant {
+    margin: 1 0 0 0;
+    padding: 0;
+}
+
+.agent-msg-body {
+    height: auto;
+}
+
+.agent-undo-btn {
+    width: auto;
+    min-width: 8;
+    height: 1;
+    border: none;
+    padding: 0 1;
+    margin: 0;
+    min-height: 1;
+    background: transparent;
+    color: $text-muted;
+}
+
+/* ── Markdown Headings ─────────────────────────────── */
+Markdown MarkdownH1 {
+    color: #61AFEF;
+    text-style: bold;
+    margin: 1 0;
+    content-align: left middle;
+}
+
+Markdown MarkdownH2 {
+    color: #C678DD;
+    text-style: bold;
+    margin: 1 0 0 0;
+}
+
+Markdown MarkdownH3 {
+    color: #E5C07B;
+    text-style: bold;
+    margin: 1 0 0 0;
+}
+
+Markdown MarkdownH4 {
+    color: #56B6C2;
+    text-style: bold;
+    margin: 1 0 0 0;
+}
+
+Markdown MarkdownH5 {
+    color: #98C379;
+    text-style: bold;
+    margin: 1 0 0 0;
+}
+
+/* ── Markdown Code Blocks ──────────────────────────── */
+Markdown MarkdownFence {
+    margin: 1 0;
+    padding: 1 2;
+    background: #1E1E2E;
+    border: round #3E4451;
+}
+
+/* ── Markdown Blockquote ───────────────────────────── */
+Markdown MarkdownBlockQuote {
+    margin: 1 0;
+    padding: 0 1 0 2;
+    background: #2C313A;
+    border-left: thick #61AFEF;
+    color: #ABB2BF;
+}
+
+.agent-empty-state {
+    height: auto;
+    color: $text-muted;
+}
+
+/* Workspace label */
+.agent-workspace-label {
+    height: 1;
+    padding: 0 1;
+    color: $text-muted;
+}
+
+/* Input bar — auto-grow container */
+#agent-input-container {
+    height: auto;
+}
+
+.agent-input-bar {
+    height: auto;
+    padding: 0 1;
+    align: left bottom;
+}
+
+#agent-input {
+    width: 1fr;
+    min-height: 3;
+    max-height: 10;
+    height: 3;
+    scrollbar-size: 0 1;
+}
+
+.agent-send-btn {
+    width: 5;
+    min-width: 5;
+    height: 3;
+    border: none;
+    margin: 0;
+    background: $accent;
+    color: $text;
+}
+
+.agent-send-btn:hover {
+    background: $accent-lighten-1;
+}
+
+.agent-send-btn.agent-cancel-mode {
+    background: $error;
+}
+
+/* Bottom bar */
+.agent-bottom-bar {
+    height: 1;
+    padding: 0 1;
+}
+
+.agent-mode-btn, .agent-model-btn {
+    height: 1;
+    min-height: 1;
+    width: 1fr;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    color: $text-muted;
+    text-style: none;
+}
+
+.agent-mode-btn:hover, .agent-model-btn:hover {
+    color: $accent;
+}
+
+/* ── Explorer Panel ──────────────────────────────────── */
+
+#explorer-panel {
+    border: solid $primary;
+    border-title-color: $text;
+    border-title-style: bold;
+    padding: 0;
+}
+
+#explorer-panel Tree {
+    height: 1fr;
+    border: none;
+}
+
+/* ── Git Panel (Multi-Worktree) ──────────────────────── */
+
+#git-panel {
+    border: solid $primary;
+    border-title-color: $text;
+    border-title-style: bold;
+    padding: 0;
+}
+
+#git-scroll-area {
+    height: 1fr;
+}
+
+/* ── WorktreeSection ─────────────────────────────────── */
+
+WorktreeSection {
+    height: auto;
+    border-bottom: solid $panel;
+}
+
+.wt-section {
+    padding: 0;
+}
+
+.wt-col-staged, .wt-col-changes {
+    padding: 0;
+}
+
+.wt-list-staged, .wt-list-changes {
+    height: auto;
+    max-height: 20;
+}
+
+/* ── Git File Items ──────────────────────────────────── */
+
+GitFileItem {
+    layout: horizontal;
+    height: 1;
+    padding: 0 1;
+}
+
+.git-file-row {
+    height: 1;
+    width: 1fr;
+}
+
+.git-status {
+    width: 3;
+    color: $text;
+}
+
+.git-status-M {
+    color: $warning;
+}
+
+.git-status-S {
+    color: $accent;
+}
+
+.git-status-U {
+    color: $success;
+}
+
+.git-status-D {
+    color: $error;
+}
+
+.git-filename {
+    color: $text;
+}
+
+.git-filepath {
+    color: $text-muted;
+}
+
+.git-actions {
+    width: auto;
+}
+
+.git-action-btn {
+    width: 3;
+    min-width: 3;
+    height: 1;
+    border: none;
+    padding: 0;
+    margin: 0;
+    min-height: 1;
+    background: transparent;
+}
+
+.git-action-btn:hover {
+    background: $panel;
+    color: $primary;
+}

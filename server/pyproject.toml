@@ -1,0 +1,26 @@
+[project]
+name = "agbridge-server"
+version = "0.1.0"
+description = "Antigravity Remote Bridge — Daemon Server"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "websockets>=14.0",
+    "watchdog>=6.0",
+    "pyobjc-core>=11.0",
+    "pyobjc-framework-Cocoa>=11.0",
+    "pyobjc-framework-ApplicationServices>=11.0",
+    "pyobjc-framework-Quartz>=11.0",
+]
+
+[project.scripts]
+agbridge-server = "agbridge.main:run"
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agbridge*"]

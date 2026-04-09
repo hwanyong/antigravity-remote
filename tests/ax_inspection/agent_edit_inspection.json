@@ -1,0 +1,2298 @@
+{
+  "window_title": "antigravity-remote — api.py — Untracked",
+  "timestamp": "2026-04-04T04:48:33",
+  "buttons": [
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Customize Layout...",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Quick Open",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Open Browser (Preview)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Editor-Specific Settings",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Explorer Section: antigravity-remote",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Outline Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Timeline Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Code Search Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 22,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Toggle Replace",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 24,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Replace All (Submit Search to Enable)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 22,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Toggle Search Details",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 30,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Close (⌘W)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 29,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Run Python File",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 28,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Claude Code: Open",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 28,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Nogic: Open Visualizer",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 28,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Open Changes",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 28,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Split Editor Right (⌘\\) [⌥] Split Editor Down",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 28,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Go Back (⌃-)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 28,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Go Forward (⌃⇧-)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Agent Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Terminal Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "remote",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "main (Git) - main*, Checkout Branch/Tag...",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "main (Git) - Publish to GitHub",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "No Problems",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Notifications",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Antigravity - Settings, Autocomplete Speed: Fast",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "🟢 Group 1: 80% | 🟡 Group 2: 20%, **🚀 Antigravity 할당량 모니터** --- | | | | | :--- | :--- | :--- | | **Group 1** | | | | &nbsp;&nbsp;&nbsp;&nbsp;🟢 **Gemini 3.1 Pro (High)** | `■■■■■■■■□□` | 80.00% → 3h 14m (08:01) | | &nbsp;&nbsp;&nbsp;&nbsp;🟢 **Gemini 3.1 Pro (Low)** | `■■■■■■■■□□` | 80.00% → 3h 14m (08:01) | | | | | | **Group 2** | | | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **Claude Sonnet 4.6 (Thinking)** | `■■□□□□□□□□` | 20.00% → 2h 33m (07:19) | | &nbsp;&nbsp;&nbsp;&nbsp;🟡 **Claude Opus 4.6 (Thinking)** | ",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Select Python Interpreter, Select Python Interpreter",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "3.14.3 64-bit, /opt/homebrew/bin/python3",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Python",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Editor Language Status: $(copilot) No inline suggestion available, Inline suggestions",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "LF",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "UTF-8",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Spaces: 4",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Ln 221, Col 1",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Screen Reader Optimized",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "undo",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Worked for 2m",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 18,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Thought for 3s",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 19,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Explored 1 file, 1 folder, 1 command",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "content_copy",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 19,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Explored 1 command",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "content_copy",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 19,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Edited 1 file",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 20,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "difference",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 19,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Explored 1 command",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "content_copy",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "undo",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 18,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Thought for 12s",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 19,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Edited 1 file",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 20,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "difference",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 19,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Explored 1 command",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "content_copy",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 19,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Edited 1 file",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 20,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "difference",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 19,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Exploring 1 command",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "content_copy",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 20,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "Cancel",
+      "desc": "",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Add context",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Select conversation mode, current: Planning",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Select model, current: Claude Opus 4.6 (Thinking)",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Record voice memo",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Cancel",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "dom_id": ""
+    },
+    {
+      "depth": 1,
+      "role": "AXButton",
+      "subrole": "AXCloseButton",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress"
+      ],
+      "dom_id": null
+    },
+    {
+      "depth": 1,
+      "role": "AXButton",
+      "subrole": "AXFullScreenButton",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress",
+        "AXZoomWindow",
+        "AXShowMenu"
+      ],
+      "dom_id": null
+    },
+    {
+      "depth": 1,
+      "role": "AXButton",
+      "subrole": "AXMinimizeButton",
+      "title": null,
+      "desc": null,
+      "value": null,
+      "actions": [
+        "AXPress"
+      ],
+      "dom_id": null
+    }
+  ],
+  "edit_action_buttons": [],
+  "status_elements": [
+    {
+      "depth": 15,
+      "role": "AXToolbar",
+      "title": "",
+      "desc": "",
+      "value": ""
+    },
+    {
+      "depth": 15,
+      "role": "AXToolbar",
+      "title": "",
+      "desc": "Title actions",
+      "value": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXTabGroup",
+      "title": "",
+      "desc": "Active View Switcher",
+      "value": ""
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "title": "Explorer (⇧⌘E)",
+      "desc": "",
+      "value": "1"
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Source Control (⌃⇧G) - 116 pending changes",
+      "value": "0"
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "title": "Run and Debug (⇧⌘D)",
+      "desc": "",
+      "value": "0"
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "title": "Remote Explorer",
+      "desc": "",
+      "value": "0"
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "title": "Extensions (⇧⌘X)",
+      "desc": "",
+      "value": "0"
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "title": "Testing",
+      "desc": "",
+      "value": "0"
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "title": "Claude Code",
+      "desc": "",
+      "value": "0"
+    },
+    {
+      "depth": 18,
+      "role": "AXRadioButton",
+      "title": "Antigravity Cockpit",
+      "desc": "",
+      "value": "0"
+    },
+    {
+      "depth": 17,
+      "role": "AXToolbar",
+      "title": "",
+      "desc": "Antigravity Cockpit: Accounts actions",
+      "value": ""
+    },
+    {
+      "depth": 27,
+      "role": "AXTabGroup",
+      "title": "",
+      "desc": "",
+      "value": ""
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Agbridge Codebase Analysis Ko",
+      "value": "0"
+    },
+    {
+      "depth": 29,
+      "role": "AXToolbar",
+      "title": "",
+      "desc": "Tab actions",
+      "value": ""
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Remote App Feasibility Analysis En",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Remote App Feasibility Analysis Ko",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_send_image_prompt.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_extract_knowledge.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_knowledge_via_manager.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_phase3_4_v2.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_send_prompt.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_knowledge_collect.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Walkthrough",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Ax Explorer Analysis En",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Ax Explorer Analysis Ko",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Implementation Plan Ko",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "main.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "api.py",
+      "value": "1"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "_ax_trigger_test.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_agent_edit_inspection.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "engine.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_scraper.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "git_tracker.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "__init__.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ide_monitor.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "state_store.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "dependency_links.txt, preview",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "protocol.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "config.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": ".gitignore",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "README.md",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "pyproject.toml",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Payload Analysis Ko",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Implementation Plan En",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_click_and_scroll.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_unfold_and_scroll.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_explorer_full_extract.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_phase5_popups.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_phase2_4.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_phase1_settings.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "ax_phase0_baseline.py",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Task",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Ax Inspection Strategy En",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Ax Inspection Strategy Ko",
+      "value": "0"
+    },
+    {
+      "depth": 28,
+      "role": "AXRadioButton",
+      "title": "",
+      "desc": "Agbridge Codebase Analysis En",
+      "value": "0"
+    },
+    {
+      "depth": 27,
+      "role": "AXToolbar",
+      "title": "",
+      "desc": "Editor actions",
+      "value": ""
+    },
+    {
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Terminal Section",
+      "value": "",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "match_reason": "keyword_match"
+    },
+    {
+      "depth": 22,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "Terminal",
+      "desc": "",
+      "value": "3",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "match_reason": "keyword_match"
+    },
+    {
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Terminal",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "match_reason": "keyword_match"
+    },
+    {
+      "depth": 14,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "Terminal 2 environment is stale, run the 'Show Environment Information' command for more information",
+      "value": "(base) uhd@UHDs-Mac-miniM1-2020 antigravity-remote % ",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "match_reason": "keyword_match"
+    }
+  ],
+  "rows": [
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": ".bare",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "main",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "__analysis_target",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "server",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": ".venv",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "agbridge",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "__pycache__",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "collectors",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "__init__.py",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "_ax_trigger_test.py",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "api.py",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "config.py",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "engine.py",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "ide_monitor.py",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "main.py",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "protocol.py",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "state_store.py",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "agbridge_server.egg-info",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": ".gitignore",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "pyproject.toml",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "README.md",
+      "value": ""
+    },
+    {
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "tests",
+      "value": ""
+    },
+    {
+      "depth": 18,
+      "role": "AXRow",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXRow",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXRow",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXRow",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXRow",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXRow",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXRow",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": ""
+    },
+    {
+      "depth": 17,
+      "role": "AXRow",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": ""
+    }
+  ],
+  "tree_structure": {
+    "depth": 0,
+    "role": "AXWindow",
+    "subrole": "AXStandardWindow",
+    "title": "antigravity-remote — api.py — Untracked",
+    "childCount": 4,
+    "children": [
+      {
+        "depth": 1,
+        "role": "AXGroup",
+        "title": "antigravity-remote — api.py — Untracked",
+        "childCount": 1,
+        "children": [
+          {
+            "depth": 2,
+            "role": "AXGroup",
+            "childCount": 1,
+            "children": [
+              {
+                "depth": 3,
+                "role": "AXGroup",
+                "childCount": 1,
+                "children": [
+                  {
+                    "depth": 4,
+                    "role": "AXGroup",
+                    "childCount": 1,
+                    "children": [
+                      {
+                        "_truncated": true,
+                        "_depth": 5
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "depth": 1,
+        "role": "AXButton",
+        "subrole": "AXCloseButton"
+      },
+      {
+        "depth": 1,
+        "role": "AXButton",
+        "subrole": "AXFullScreenButton",
+        "childCount": 1,
+        "children": [
+          {
+            "depth": 2,
+            "role": "AXGroup",
+            "childCount": 1,
+            "children": [
+              {
+                "depth": 3,
+                "role": "AXGroup"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "depth": 1,
+        "role": "AXButton",
+        "subrole": "AXMinimizeButton"
+      }
+    ]
+  }
+}

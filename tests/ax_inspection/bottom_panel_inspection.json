@@ -1,0 +1,1510 @@
+{
+  "window_title": "antigravity-remote — _ax_trigger_test.py — Untracked",
+  "timestamp": "2026-04-04T04:57:07",
+  "total_elements": 3189,
+  "tab_matches": [
+    {
+      "idx": 42,
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Open Browser (Preview)",
+      "value": "",
+      "role_desc": "button",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 549,
+      "depth": 23,
+      "role": "AXRow",
+      "subrole": "AXOutlineRow",
+      "title": "",
+      "desc": "phase1_settings_browser.json",
+      "value": "",
+      "role_desc": "outline row",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 554,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_browser.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 558,
+      "depth": 27,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "phase1_settings_browser.json",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1444,
+      "depth": 21,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "Terminal Section",
+      "value": "",
+      "role_desc": "button",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1447,
+      "depth": 22,
+      "role": "AXHeading",
+      "subrole": null,
+      "title": "Terminal",
+      "desc": "",
+      "value": "3",
+      "role_desc": "heading",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1448,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Terminal",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1462,
+      "depth": 15,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "No Problems",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1463,
+      "depth": 16,
+      "role": "AXButton",
+      "subrole": null,
+      "title": "",
+      "desc": "No Problems",
+      "value": "",
+      "role_desc": "button",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1921,
+      "depth": 22,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "16 Files With Changes",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1969,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "<truncated 112 lines>\n  [d=16] AXButton             title=\"\" desc=\"No Problems\" actions=['AXPress', 'AXShowMenu', 'AXScrollToVisible']\r\n  [d=17] AXStaticText         title=\"\" desc=\"\" actions=['AXShowMenu', 'AXScrollToVisible']\r\n  [d=17] AXStaticText         title=\"\" desc=\"\" actions=['AXShowMenu', 'A",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2107,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\"17 Files With Changes\"",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2231,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\"17 Files With Changes\"",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2298,
+      "depth": 22,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\"17 Files With Changes\"",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2326,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "--- Context around \"17 Files With Changes\" (index 2583) ---\r\n  [2580] d=18 AXGroup              title=\"\" desc=\"\" value=\"\" actions=['AXShowMenu', 'AXScrollToVisible']\r\n  [2581] d=19 AXGroup              title=\"\" desc=\"\" value=\"\" actions=['AXShowMenu', 'AXScrollToVisible']\r\n  [2582] d=19 AXGroup      ",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2341,
+      "depth": 22,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "depth=16  AXStaticText  value=\"17 Files With Changes\"     ← 변경 파일 수 레이블",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2428,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\\d+ Files With Changes",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2532,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\\d+ Files With Changes",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2665,
+      "depth": 20,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "N Files With Changes",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2675,
+      "depth": 20,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\\d+ Files With Changes",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2719,
+      "depth": 20,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "N Files With Changes",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2765,
+      "depth": 20,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\\d+ Files With Changes",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2953,
+      "depth": 22,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\"Changes Overview (16 Files With Changes)\" - with some icons below",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2956,
+      "depth": 22,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\"Terminal (0 Background Processes Running)\" - with some icons below",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2959,
+      "depth": 22,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\"Artifacts (18 Files for Conversation)\" - with some icons below",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2962,
+      "depth": 22,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "\"Browser\" - with an icon below",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 3039,
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Changes Overview (16 Files With Changes)",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 3043,
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Terminal (0 Background Processes Running)",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 3047,
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Artifacts (18 Files for Conversation)",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 3051,
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "Browser",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 3174,
+      "depth": 14,
+      "role": "AXTextField",
+      "subrole": null,
+      "title": "",
+      "desc": "Terminal 2 environment is stale, run the 'Show Environment Information' command for more information",
+      "value": "(base) uhd@UHDs-Mac-miniM1-2020 antigravity-remote % ",
+      "role_desc": "text field",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    }
+  ],
+  "edit_action_matches": [],
+  "file_list_matches": [
+    {
+      "idx": 278,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/__init__.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 291,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/api.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 304,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/config.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 317,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/engine.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 330,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/ide_monitor.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 343,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/main.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 356,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/protocol.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 369,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/state_store.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 393,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/.gitignore • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 405,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/pyproject.toml • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 417,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/README.md • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 446,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/agent_deep_scan.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 458,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/agent_edit_inspection.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 470,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/full_ui_map.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 506,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase0_baseline.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 530,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_account.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 542,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_agent.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 554,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_browser.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 566,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_customizations.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 578,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_editor.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 590,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_models.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 602,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_notifications.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 614,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_overview.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 626,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase1_settings_tab.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 638,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase2_knowledge_final.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 662,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase2_knowledge_v2.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 674,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase2_knowledge.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 686,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase3_manager_v2.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 698,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase3_manager.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 710,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase4_explorer_full_tree.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 734,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase4_explorer_v2.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 746,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase4_explorer_v3.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 758,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase4_explorer.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 770,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase5_add_context.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 782,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase5_mode_popup.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 794,
+      "depth": 25,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/phase5_model_popup.json • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1008,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/main.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1020,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/api.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1042,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/_ax_trigger_test.py • Deleted",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1073,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/engine.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1085,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/collectors/ax_scraper.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1097,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/collectors/git_tracker.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1109,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/collectors/__init__.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1122,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/ide_monitor.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1134,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/state_store.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1156,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/protocol.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1168,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/config.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1180,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/__init__.py • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1193,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/.gitignore • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1205,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/README.md • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1217,
+      "depth": 29,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/pyproject.toml • Untracked",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1402,
+      "depth": 28,
+      "role": "AXGroup",
+      "subrole": null,
+      "title": "",
+      "desc": "~/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/_ax_trigger_test.py • Deleted",
+      "value": "",
+      "role_desc": "group",
+      "actions": [
+        "AXPress",
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1771,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "cd /Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/server && source .venv/bin/activate && python3 /tmp/ax_agent_edit_inspection.py 2>&1",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1803,
+      "depth": 21,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "+265 -0 engine.py",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1834,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "sleep 2 && cd /Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/server && source .venv/bin/activate && python3 /tmp/ax_agent_edit_inspection.py 2>&1",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1965,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "cd /Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/server && source .venv/bin/activate && python3 /tmp/ax_agent_deep_scan.py 2>&1",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 1987,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "cd /Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/server && source .venv/bin/activate && python3 -c \"\nimport json\ndata = json.load(open('/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/agent_deep_scan.json'))\nprint(f'Total elements: {data[\\\"total_elements\\\"]}')\np",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2322,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "cd /Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/server && source .venv/bin/activate && python3 -c \"\nimport json\ndata = json.load(open('/Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/tests/ax_inspection/agent_deep_scan.json'))\n\n# Find the exact context around the bottom 'Reject al",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 2585,
+      "depth": 23,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "rm -f /Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/server/agbridge/_ax_trigger_test.py && echo \"Cleaned up\"",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    },
+    {
+      "idx": 3081,
+      "depth": 22,
+      "role": "AXStaticText",
+      "subrole": null,
+      "title": "",
+      "desc": "",
+      "value": "cd /Users/uhd/LOCAL/01-01_Projects/antigravity-remote/main/server && source .venv/bin/activate && python3 /tmp/ax_bottom_panel_inspect.py 2>&1",
+      "role_desc": "text",
+      "actions": [
+        "AXShowMenu",
+        "AXScrollToVisible"
+      ],
+      "selected": "False",
+      "enabled": "True"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-04-04T03:17:47",
+  "total": 1,
+  "files": 0,
+  "folders": 1,
+  "tree_flattened": [
+    {
+      "desc": ".bare",
+      "name": ".bare",
+      "status": null,
+      "is_folder": true,
+      "is_expanded": false,
+      "disclosure_level": 0,
+      "texts": [
+        ".bare"
+      ]
+    }
+  ]
+}
