@@ -11,9 +11,9 @@
 
 *[한국어로 읽기](README_ko.md)*
 
-**Antigravity Remote Bridge** (`agbridge`) is a headless automation daemon and rich Terminal UI (TUI) client that lets you **remotely control and monitor** instances of the [Antigravity IDE](https://github.com/nicolo-ribaudo/tc39-proposal-bigint) (a VS Code–based, agent-first development environment) entirely from your terminal.
+**Antigravity Remote Bridge** (`agbridge`) is an advanced headless automation daemon and rich Terminal UI (TUI) client engineered to let you **remotely control, monitor, and automate AI Agents** within the [Antigravity IDE](https://github.com/nicolo-ribaudo/tc39-proposal-bigint) (a VS Code–based, agent-centric development platform) entirely from your terminal. Ideal for developer productivity, AI assistant telemetry, and remote agent orchestration.
 
-Inject prompts into AI agents, review and accept/reject code edits, browse the file tree, and manage Git — all over a real-time WebSocket connection, with **zero editor extensions** or plugins. The server leverages native **macOS Accessibility (AX) APIs** and **Quartz Window Services** to observe and interact with the IDE at the OS level.
+Inject prompts into AI agents, review and accept/reject code edits, browse the remote file tree, and manage Git workflows — all over a real-time WebSocket connection, with **zero editor extensions** or plugins. The server leverages native **macOS Accessibility (AX) APIs** and **Quartz Window Services** to observe and interact with the IDE at the OS level, avoiding fragile CDP setups entirely.
 
 ---
 
@@ -44,7 +44,16 @@ Modern AI-powered IDEs like Antigravity run autonomous agents that can plan, wri
 - **Accept or reject AI code edits** from a lightweight terminal dashboard?
 - **Observe file system and Git changes** in real time without opening the IDE GUI?
 
-Antigravity Remote Bridge solves these problems by providing a **headless bridge** between your terminal and the IDE's internal state — no extensions, no plugins, just native OS-level integration.
+Antigravity Remote Bridge (`agbridge`) solves these problems by providing a **headless bridge** between your terminal and the IDE's internal state — no extensions, no plugins, just robust OS-level integration.
+
+### 🌟 Unmatched Technical Advantages
+
+Unlike other web-centric remote monitoring tools for Antigravity that rely on fragile Chrome DevTools Protocol (CDP) debugging connections or risky DOM-injection scripts, `agbridge` offers unparalleled control, stability, and security:
+
+1. **Zero Editor Extensions (Zero Footprint)**: Operates purely at the OS level using native macOS Accessibility (AX) APIs. There are no VS Code IDE plugins to install, update, or maintain.
+2. **Secure by Default via Endpoint Isolation**: Completely avoids exposing or polling internal Chromium CDP debugging ports. Eradicates the massive security vulnerabilities and rate-limits associated with unsecured CDP web sockets.
+3. **Immune to DOM Breakage**: Visual interfaces break when the IDE's internal CSS/HTML structure updates. By reading the universal macOS native window hierarchy and accessibility tree, we bypass brittle DOM-scraping completely, ensuring long-term compatibility.
+4. **Terminal-First (TUI) Performance**: Designed specifically as a high-speed, keyboard-driven Terminal UI rather than a heavyweight Web/PWA client. Perfectly tuned for power users, SSH telemetry, and developer CI/CD pipelines.
 
 ---
 

@@ -11,9 +11,11 @@
 
 *[Read this in English](README.md)*
 
-**Antigravity Remote Bridge** (`agbridge`)는 [Antigravity IDE](https://github.com/nicolo-ribaudo/tc39-proposal-bigint)(VS Code 기반의 에이전트 중심 개발 환경) 인스턴스를 터미널에서 **원격 제어 및 모니터링**할 수 있는 백그라운드 자동화 데몬과 리치 터미널 UI (TUI) 클라이언트 시스템입니다.
+**Antigravity Remote Bridge** (`agbridge`)는 [Antigravity IDE](https://github.com/nicolo-ribaudo/tc39-proposal-bigint)(VS Code 기반의 에이전트 중심 AI 개발 플랫폼) 인스턴스 내의 AI 에이전트들을 터미널에서 **원격 제어, 모니터링 및 자동화**할 수 있게 해주는 고성능 백그라운드 자동화 데몬이자 컴포넌트 기반 리치 터미널 UI (TUI) 클라이언트 프로젝트입니다. 개발 생산성 극대화, 원격 AI 에이전트 오케스트레이션, 그리고 엔터프라이즈 SSH 개발 환경에 최적화되어 있습니다.
 
-AI 에이전트에 프롬프트를 주입하고, 코드 수정사항을 검토·수락·거절하고, 파일 트리를 탐색하고, Git을 관리하세요 — 모든 것이 실시간 WebSocket 연결을 통해, **에디터 확장 프로그램이나 플러그인 없이** 동작합니다. 서버는 네이티브 **macOS Accessibility (AX) API** 및 **Quartz Window Services**를 활용하여 OS 수준에서 IDE와 상호작용합니다.
+원격 환경에서도 AI 에이전트에 프롬프트를 자유롭게 주입하고, 코드 수정사항을 검토·수락·거절하며, 워크스페이스의 파일 트리를 탐색 및 Git 버전을 통합 관리하세요. 이 모든 제어 과정은 실시간 WebSocket 연결을 통해 매우 빠르고 안정적으로 처리되며, 기존 IDE 환경에 **에디터 확장 프로그램이나 별도 플러그인 설치를 일절 요구하지 않습니다(Zero Footprint)**. 
+
+서버 엔진은 웹 기반의 프시케(Psyche)나 CDP 기반 스크래퍼들의 한계를 극복하기 위해 네이티브 **macOS Accessibility (AX) API** 및 **Quartz Window Services**를 독자적으로 융합 활용하여 OS 커널 최하단 수준에서 IDE의 상태를 안전하게 관찰하고 상호작용합니다.
 
 ---
 
@@ -44,7 +46,16 @@ Antigravity 같은 최신 AI 기반 IDE는 코드를 계획·작성·테스트·
 - 가벼운 터미널 대시보드에서 **AI 코드 수정을 수락 또는 거절**하고 싶을 때
 - IDE GUI를 열지 않고 **파일 시스템과 Git 변경사항을 실시간 관찰**하고 싶을 때
 
-Antigravity Remote Bridge는 터미널과 IDE 내부 상태 사이의 **헤드리스 브릿지**를 제공하여 이러한 문제를 해결합니다 — 확장 프로그램도, 플러그인도 없이, 오직 네이티브 OS 수준 통합만으로.
+Antigravity Remote Bridge(`agbridge`)는 터미널과 IDE 내부 상태 사이의 견고한 **헤드리스 브릿지**를 제공하여 이러한 문제를 완벽히 해결합니다. 확장 프로그램도, 플러그인도 설치할 필요 없이, 가장 순수하고 안전한 네이티브 OS 수준 통합 환경을 경험하세요.
+
+### 🌟 독보적인 기술적 장점 (Why agbridge?)
+
+단순히 화면을 복제하기 위해 취약한 Chrome DevTools Protocol(CDP) 디버깅 연결 포트에 의존하거나 위험한 DOM 스크립트 강제 주입(Injection) 방식을 사용하는 타 브릿지 도구들과 달리, `agbridge`는 구조적인 안정성과 보안 측면에서 차원이 다른 완성도를 제공합니다:
+
+1. **에디터 확장 프로그램 제로 (Zero Footprint)**: 전적으로 네이티브 macOS 접근성(AX) API를 사용하여 순수 OS 수준에서만 작동합니다. 무거운 VS Code 내부 플러그인을 설치하거나 유지보수, 업데이트할 필요가 전혀 없습니다.
+2. **원천적인 데몬 보안성 확보 (Secure by Default)**: 구동 시 내부 IDE의 Chromium CDP 디버깅 포트를 개방하거나 주기적으로 폴링하는 낡은 방식을 완전히 배제했습니다. 인증 절차가 없거나 암호화되지 않은 CDP 웹소켓 포트 개방과 관련된 막대한 보안 취약점과 포트 충돌 리스크를 시스템 단계에서 차단합니다.
+3. **DOM 구조 변경으로부터의 면역 기능**: IDE의 내부 CSS/HTML 렌더링 구조나 클래스명(class names)이 업데이트되면 기존 웹 스크래핑 툴들은 즉시 구동이 정지됩니다. 반면 `agbridge`는 OS가 표준적으로 제공하는 범용적인 macOS 네이티브 창 계층구조(Accessibility Tree)를 직접 해독하기 때문에, 불안정한 DOM 스크래핑의 한계를 완벽히 우회하며 IDE의 잦은 업데이트에도 파손되지 않는 장기적인 호환성을 보장합니다.
+4. **터미널 퍼스트 전용 고속 렌더러 (TUI Performance)**: 배터리와 메모리를 다량 소모하는 무거운 웹 브라우저(Web/PWA) 클라이언트가 아닌, 시스템 자원 점유가 극도로 적은 초고속 키보드 주도형 터미널 UI(TUI) 엔진으로 정밀하게 튜닝되었습니다. 숙련된 개발자(Power User), SSH 기반 텔레메트리 연동, 그리고 CI/CD 컨테이너 파이프라인 자동화에 완벽하게 부합합니다.
 
 ---
 
