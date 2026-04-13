@@ -72,14 +72,7 @@ async def inject_prompt(bridge, text):
             var stateJSON = new TextDecoder().decode(bytes);
             var newState = lex.parseEditorState(stateJSON);
             lex.setEditorState(newState);
-            
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    editor.focus();
-                    document.execCommand('insertText', false, ' ');
-                    resolve(true);
-                }, 50);
-            });
+            return true;
         }})();
     """)
 

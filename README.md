@@ -13,7 +13,7 @@
 
 **Antigravity Remote Bridge** (`agbridge`) is an advanced headless automation daemon and rich Terminal UI (TUI) client engineered to let you **remotely control, monitor, and automate AI Agents** within the [Antigravity IDE](https://github.com/nicolo-ribaudo/tc39-proposal-bigint) (a VS Code–based, agent-centric development platform) entirely from your terminal. Ideal for developer productivity, AI assistant telemetry, and remote agent orchestration.
 
-Inject prompts into AI agents, review and accept/reject code edits, browse the remote file tree, and manage Git workflows — all over a real-time WebSocket connection, with **zero editor extensions** or plugins. The server leverages native **macOS Accessibility (AX) APIs** and **Quartz Window Services** to observe and interact with the IDE at the OS level, avoiding fragile CDP setups entirely.
+Inject prompts into AI agents, review and accept/reject code edits, browse the remote file tree, and manage Git workflows — all over a real-time event-driven WebSocket connection, with **zero editor extensions** or plugins. The server leverages a hybrid architecture combining native **macOS Accessibility (AX) APIs** for strict window isolation and targeted **Chrome DevTools Protocol (CDP)** bindings for deterministic, real-time DOM event dispatching.
 
 ---
 
@@ -40,20 +40,19 @@ Inject prompts into AI agents, review and accept/reject code edits, browse the r
 Modern AI-powered IDEs like Antigravity run autonomous agents that can plan, write, test, and validate code. But what if you want to:
 
 - **Monitor agent activity** while working in another window or on a different machine?
-- **Queue and inject prompts** into the IDE's AI agent without switching contexts?
+- **Queue and inject prompts** deterministically into the IDE's AI agent without clipboard-paste hacks?
 - **Accept or reject AI code edits** from a lightweight terminal dashboard?
 - **Observe file system and Git changes** in real time without opening the IDE GUI?
 
-Antigravity Remote Bridge (`agbridge`) solves these problems by providing a **headless bridge** between your terminal and the IDE's internal state — no extensions, no plugins, just robust OS-level integration.
+Antigravity Remote Bridge (`agbridge`) solves these problems by providing a **headless bridge** between your terminal and the IDE's internal state — no extensions, no plugins, just robust OS-level and CDP integration.
 
 ### 🌟 Unmatched Technical Advantages
 
-Unlike other web-centric remote monitoring tools for Antigravity that rely on fragile Chrome DevTools Protocol (CDP) debugging connections or risky DOM-injection scripts, `agbridge` offers unparalleled control, stability, and security:
-
-1. **Zero Editor Extensions (Zero Footprint)**: Operates purely at the OS level using native macOS Accessibility (AX) APIs. There are no VS Code IDE plugins to install, update, or maintain.
-2. **Secure by Default via Endpoint Isolation**: Completely avoids exposing or polling internal Chromium CDP debugging ports. Eradicates the massive security vulnerabilities and rate-limits associated with unsecured CDP web sockets.
-3. **Immune to DOM Breakage**: Visual interfaces break when the IDE's internal CSS/HTML structure updates. By reading the universal macOS native window hierarchy and accessibility tree, we bypass brittle DOM-scraping completely, ensuring long-term compatibility.
-4. **Terminal-First (TUI) Performance**: Designed specifically as a high-speed, keyboard-driven Terminal UI rather than a heavyweight Web/PWA client. Perfectly tuned for power users, SSH telemetry, and developer CI/CD pipelines.
+1. **Zero Editor Extensions (Zero Footprint)**: Operates using native macOS Accessibility (AX) APIs and isolated CDP targets. There are no VS Code IDE plugins to install, update, or maintain.
+2. **Hybrid AX + CDP Event-Driven Architecture**: Bypasses legacy polling by utilizing `MutationObserver` (DOMWatcher) and `Runtime.addBinding` via CDP. State mutations trigger instant WebSocket push events (ACK/DONE/FAIL lifecycle), ensuring ultra-responsive UI updates (like loading spinners and generation tracking) without sacrificing performance.
+3. **Deterministic Lexical Prompt Injection**: Instead of relying on fragile, timing-dependent clipboard pasting, `agbridge` serializes prompt tokens (workflows, mentions) into JSON and injects them programmatically via `editor.parseEditorState()` directly into the IDE's Lexical editor. This guarantees correct UTF-8 encoding and whitespace preservation, and prevents typeahead dropdown failures.
+4. **Strict Workspace Isolation**: Enforces exact OS window title matching and isolated CDP targets to ensure prompt injections and command routing operate reliably without cross-workspace interference or race conditions.
+5. **Terminal-First (TUI) Resilience**: The Textual-based client features fully decoupled lifecycle management with automatic WebSocket reconnection and diagnostic logging, ensuring it gracefully survives server restarts and network dips. Perfectly tuned for SSH telemetry and CI/CD.
 
 ---
 
@@ -61,13 +60,13 @@ Unlike other web-centric remote monitoring tools for Antigravity that rely on fr
 
 | Feature | Description |
 |---|---|
-| **📱 TUI-First Dashboard** | A rich, keyboard-driven terminal interface built with [Textual](https://textual.textualize.io/), featuring workspace panels, agent chat, file explorer, and Git controls. |
-| **🔌 Multi-Workspace Support** | Automatically discovers and connects to all active Antigravity IDE windows simultaneously, each managed independently. |
-| **🤖 AI Agent Remote Control** | Inject prompts, monitor agent state transitions, and accept or reject AI-generated code changes — all from the terminal. |
-| **🕵️ Extension-Free macOS Scraping** | Reads IDE state natively via macOS Accessibility (`AX`) and Quartz Window Capture APIs through [PyObjC](https://pyobjc.readthedocs.io/). No editor plugins needed. |
-| **⚡ Real-Time WebSocket Streaming** | Push-based delta events for file system changes, Git status updates, and agent state mutations over persistent WebSocket connections. |
-| **🔐 Permission Hub** | Built-in split-button UI for managing IDE agent permissions (Allow / Deny / Workspace / Global / Sandbox) directly from the TUI. |
-| **📋 Event Log & Diagnostics** | Full action event log, network status diagnostics, and settings panel accessible via `F10`. |
+| **📱 TUI-First Dashboard** | Keyboard-driven terminal interface built with Textual, featuring workspace panels, agent chat, Git controls, and a dedicated multi-line `TextArea` for complex prompt input. |
+| **📁 File Viewer & Explorer** | Integrated file tree explorer in a dedicated Files panel with overlay support, filtering out binary/media files for seamless remote code inspection. |
+| **🔌 Multi-Workspace Support** | Automatically discovers active Antigravity IDE windows simultaneously, isolating each via exact title-matching CDP targets. |
+| **🤖 AI Agent Remote Control** | Inject sequence-preserving tokenized prompts, monitor agent state transitions, and accept/reject AI-generated code changes. |
+| **🧠 Deterministic Undo/Reset** | Robust undo mechanism that performs "Select All + Delete" via AX simulation after confirmation to reliably clear IDE state. |
+| **⚡ Real-Time WebSocket Streaming** | Push-based delta events for file system changes, AI action steps, and UI state mutations over an ACK/DONE/FAIL WebSocket protocol. |
+| **📋 Advanced Diagnostics** | Context-aware `DiagnosticRecorder` and `RotatingFileHandler` capture complete UI states and AX-tree snapshots when anomalies occur, accessible via `F10`. |
 
 ---
 
@@ -81,21 +80,22 @@ Unlike other web-centric remote monitoring tools for Antigravity that rely on fr
 │  │   Antigravity IDE    │     │   Antigravity IDE        │  │
 │  │   (Workspace A)      │     │   (Workspace B)          │  │
 │  └──────────┬───────────┘     └──────────┬───────────────┘  │
-│             │ AX API + Quartz            │                  │
+│             │ AX API + Quartz + CDP      │                  │
 │             └──────────┬─────────────────┘                  │
 │                        ▼                                    │
 │  ┌─────────────────────────────────────────────────────┐    │
 │  │              agbridge-server (Daemon)                │    │
 │  │                                                     │    │
 │  │  ┌─────────────┐ ┌──────────┐ ┌──────────────────┐  │    │
-│  │  │ AX Scraper  │ │ Git      │ │ File Watcher     │  │    │
-│  │  │ + AX Poller │ │ Tracker  │ │ (watchdog)       │  │    │
+│  │  │ AX Scraper  │ │ Git      │ │ CDP Bridge       │  │    │
+│  │  │ + Lexical   │ │ Tracker  │ │ + DOM Watcher    │  │    │
+│  │  │ Injector    │ │          │ │                  │  │    │
 │  │  └──────┬──────┘ └────┬─────┘ └────────┬─────────┘  │    │
 │  │         └─────────────┼────────────────┘             │    │
 │  │                       ▼                              │    │
 │  │              ┌────────────────┐                      │    │
-│  │              │ State Store    │                      │    │
-│  │              │ + Engine       │                      │    │
+│  │              │ Event Engine   │                      │    │
+│  │              │ (ACK/DONE/FAIL)│                      │    │
 │  │              └───────┬────────┘                      │    │
 │  │                      ▼                               │    │
 │  │              ┌────────────────┐                      │    │
@@ -111,12 +111,12 @@ Unlike other web-centric remote monitoring tools for Antigravity that rely on fr
             │                             │
             │  ┌───────┐ ┌─────────────┐  │
             │  │Agent  │ │ Workspace   │  │
-            │  │Panel  │ │ Manager     │  │
+            │  │Chat   │ │ Manager     │  │
             │  ├───────┤ ├─────────────┤  │
             │  │File   │ │ Git         │  │
-            │  │Explorer│ │ Panel      │  │
+            │  │Tree   │ │ Panel       │  │
             │  ├───────┤ ├─────────────┤  │
-            │  │Event  │ │ Settings    │  │
+            │  │Event  │ │ Diagnostics │  │
             │  │Log    │ │ Panel       │  │
             │  └───────┘ └─────────────┘  │
             └─────────────────────────────┘
@@ -124,8 +124,8 @@ Unlike other web-centric remote monitoring tools for Antigravity that rely on fr
 
 The system is composed of two independently installable Python packages:
 
-1. **`agbridge-server`** — A background WebSocket daemon that continuously scrapes IDE state using native macOS APIs (Accessibility, Quartz) and streams delta updates to connected clients.
-2. **`agbridge-tui`** — A Textual-based terminal dashboard that connects to the server, renders live IDE state, and transmits user commands (prompt injection, permission grants, etc.) back to the IDE.
+1. **`agbridge-server`** — A background WebSocket daemon that discovers IDE instances via macOS APIs and establishes isolated CDP connections. It acts as an event-driven engine dispatching and reacting to AI state changes asynchronously.
+2. **`agbridge-tui`** — A responsive Textual-based terminal dashboard featuring decoupled lifecycle management. It connects to the server, renders multi-line inputs, handles file exploration, and transmits sequence-preserving user commands back to the IDE.
 
 ---
 
@@ -137,19 +137,19 @@ The system is composed of two independently installable Python packages:
 |---|---|---|
 | Runtime | Python 3.11+ | Core language |
 | Web Framework | FastAPI 0.115+ | REST & WebSocket API layer |
-| ASGI Server | Uvicorn 0.34+ | High-performance async server |
-| WebSocket | websockets 14.0+ | Persistent bidirectional communication |
-| File Watching | watchdog 6.0+ | File system change detection |
-| macOS Bridge | PyObjC 11.0+ | Native AX & Quartz API bindings |
+| WebSocket | websockets 14.0+ | ACK/DONE/FAIL Event-Driven Protocol |
+| Browser Automation | PyChromeDevTools | CDP bindings & `MutationObserver` |
+| macOS Bridge | PyObjC 11.0+ | Native AX window discovery & fallback automation |
+| Logging | RotatingFileHandler | Advanced diagnostic recording |
 
 ### Client (`agbridge-tui`)
 
 | Category | Technology | Purpose |
 |---|---|---|
 | Runtime | Python 3.11+ | Core language |
-| TUI Framework | Textual 1.0+ | Rich terminal user interface |
-| WebSocket | websockets 14.0+ | Server connection |
-| HTTP Client | httpx 0.28+ | REST API calls |
+| TUI Framework | Textual 1.0+ | Rich, responsive terminal interface (Grid/Flex) |
+| Layout & Input | Textual TextArea | Multi-line input editing & Modals |
+| Connectivity | Auto-Reconnecting WS | TUI-Server lifecycle decoupling |
 
 ---
 
@@ -157,14 +157,12 @@ The system is composed of two independently installable Python packages:
 
 Before running Antigravity Remote Bridge, ensure you have:
 
-- **macOS** (required — the server uses macOS-exclusive Accessibility and Quartz APIs)
+- **macOS** (required — the server uses macOS exclusive APIs for window discovery)
 - **Python 3.11** or later
 - **Antigravity IDE** (at least one instance running)
 - **macOS Permissions** (granted on first run):
   - **Accessibility** — System Settings → Privacy & Security → Accessibility
   - **Screen Recording** — System Settings → Privacy & Security → Screen Recording
-
-> **Note**: These permissions must be granted to the Python process (or your terminal emulator) that runs `agbridge-server`. Without them, the daemon cannot observe the IDE's window hierarchy or interact with UI elements.
 
 ---
 
@@ -177,15 +175,11 @@ Before running Antigravity Remote Bridge, ensure you have:
 cd server/
 python3 -m venv .venv
 source .venv/bin/activate
-
-# Install the package in editable mode
 pip install -e .
 
 # Start the Bridge Server
-agbridge-server --log-level ERROR
+agbridge-server --log-level INFO
 ```
-
-The server will automatically discover all running Antigravity IDE instances and begin streaming their state.
 
 ### 2. Launch the Client (New Terminal)
 
@@ -194,32 +188,28 @@ The server will automatically discover all running Antigravity IDE instances and
 cd client/
 python3 -m venv .venv
 source .venv/bin/activate
-
-# Install the package in editable mode
 pip install -e .
 
 # Start the TUI Dashboard
 agbridge-tui
 ```
 
-Once connected, you'll see a multi-panel terminal dashboard with live workspace data.
-
 ---
 
 ## ⌨️ TUI Keybindings
 
-Navigate the entire interface without touching your mouse:
+Navigate the entirely responsive interface without touching your mouse:
 
 | Key | Action |
 |---|---|
 | `Ctrl + W` | Switch to Workspaces Panel |
-| `Ctrl + A` | Switch to AI Agent Panel |
-| `Ctrl + E` | Switch to File Explorer |
+| `Ctrl + A` | Switch to AI Agent Chat Panel |
+| `Ctrl + E` | Open File Explorer / Viewer |
 | `Ctrl + G` | Switch to Git Control Panel |
 | `F1` – `F4` | Open feature-specific dropdown menus |
-| `F10` | Settings, diagnostics, and event log |
+| `F10` | Settings, Deep Diagnostics, and Event Log |
 | `Enter` | Submit prompt / confirm action |
-| `Shift + Enter` | Insert newline in prompt input |
+| `Shift + Enter` | Insert newline in the TextArea prompt input |
 
 ---
 
@@ -231,42 +221,33 @@ antigravity-remote/
 │   ├── agbridge/
 │   │   ├── main.py             # Server entry point & lifecycle
 │   │   ├── api.py              # FastAPI routes & WebSocket handlers
-│   │   ├── engine.py           # Core state diffing & event engine
+│   │   ├── engine.py           # Core ACK/DONE/FAIL event engine
 │   │   ├── state_store.py      # In-memory state management
-│   │   ├── input_queue.py      # Command queue (prompt injection, AX actions)
-│   │   ├── window_discovery.py # macOS window enumeration
-│   │   ├── ide_monitor.py      # IDE process lifecycle monitor
-│   │   ├── workspace_supervisor.py # Per-workspace orchestration
-│   │   ├── ui_locators.json    # Externalized AX UI selectors
-│   │   ├── config.py           # Server configuration
-│   │   ├── protocol.py         # WebSocket message protocol
-│   │   ├── auth.py             # Permission handling
-│   │   └── collectors/         # Data collection modules
-│   │       ├── ax_scraper.py   # Accessibility tree parser
-│   │       ├── ax_polling.py   # AX state change polling
+│   │   ├── input_queue.py      # Lexical prompt & action queue
+│   │   ├── window_discovery.py # macOS AX window enumeration
+│   │   ├── ide_monitor.py      # CDP target isolation & lifecycle
+│   │   ├── diagnostics.py      # State-dumping & RotatingFileHandler
+│   │   └── collectors/         # Data pipeline
+│   │       ├── dom_scraper.py  # CDP-based Observation
+│   │       ├── ax_scraper.py   # Native AX execution fallback
 │   │       └── git_tracker.py  # Git status monitor
 │   └── pyproject.toml
 │
 ├── client/                     # agbridge-tui package
 │   ├── agbridge_tui/
-│   │   ├── app.py              # Textual application & layout
-│   │   ├── connection.py       # WebSocket client manager
-│   │   ├── workspace_manager.py # Multi-workspace state handler
-│   │   ├── permissions.py      # Permission UI logic
-│   │   ├── styles.tcss         # Textual CSS stylesheet
+│   │   ├── app.py              # Textual application & responsive layout
+│   │   ├── connection.py       # Auto-reconnecting WS manager
+│   │   ├── workspace_manager.py# Multi-workspace state handler
+│   │   ├── styles.tcss         # Textual CSS stylesheet (Flex/Grid)
 │   │   ├── panels/             # UI panel components
-│   │   │   ├── agent_panel.py  # AI agent chat & prompt input
-│   │   │   ├── workspace_list.py # Workspace selector
+│   │   │   ├── agent_panel.py  # AI agent TextArea & chat
 │   │   │   ├── explorer.py     # File tree browser
-│   │   │   ├── git_panel.py    # Git status & operations
-│   │   │   ├── event_log.py    # Action event logger
-│   │   │   ├── settings_panel.py # Configuration panel
-│   │   │   └── ...             # Nav bar, status header, etc.
-│   │   └── modals/             # Dialog components
+│   │   │   └── event_log.py    # Action event logger
+│   │   └── modals/             # Auto-closing dialogs
 │   └── pyproject.toml
 │
-├── tests/                      # Test suite
-├── LICENSE                     # MIT License
+├── tests/
+├── LICENSE
 └── README.md
 ```
 
@@ -274,21 +255,18 @@ antigravity-remote/
 
 ## 🎯 Use Cases
 
-- **Headless AI Agent Monitoring** — Run the IDE in the background and monitor all agent interactions from a lightweight terminal session.
-- **Multi-Workspace Orchestration** — Manage multiple IDE instances from a single dashboard, switching between projects instantly.
-- **Remote SSH Workflows** — SSH into a development machine, attach to running IDE instances, and control them remotely via the TUI.
-- **CI/CD Integration** — Programmatically inject prompts and monitor agent state through the WebSocket API for automated workflows.
-- **Pair Programming** — One person operates the IDE while another monitors and injects prompts from a separate terminal.
+- **Headless AI Agent Monitoring** — Run the IDE in the background and monitor all event-driven agent interactions from a lightweight terminal session.
+- **Precision Prompt Engineering** — Utilize the Textual TextArea for multi-line inputs with exact token preservation.
+- **Robust Multi-Workspace Orchestration** — Manage multiple isolated IDE instances from a single dashboard, switching between projects instantly without cross-talk.
+- **Remote SSH Workflows** — SSH into a development machine, attach to running IDE instances, and control them remotely via the auto-reconnecting TUI.
 
 ---
 
 ## 🗺️ Roadmap
 
-- [ ] **Linux Support** — Port the server AX layer to AT-SPI/D-Bus for Linux compatibility
-- [ ] **REST API Documentation** — OpenAPI/Swagger auto-generated docs for the server API
-- [ ] **Session Persistence** — Resume TUI sessions across restarts
-- [ ] **Plugin System** — Extensible collector architecture for custom data sources
-- [ ] **Docker Support** — Containerized server deployment for headless macOS environments
+- [ ] **Linux Support** — Port the server AX layer to AT-SPI/D-Bus for full Linux compatibility.
+- [ ] **OpenAPI Documentation** — Auto-generated Swagger docs for the new Event Engine API.
+- [ ] **Session Persistence** — Resume complex TUI sessions and prompts across IDE restarts.
 
 ---
 
@@ -296,43 +274,19 @@ antigravity-remote/
 
 <details>
 <summary><strong>Does this require installing any VS Code / Antigravity extensions?</strong></summary>
-
-No. The server uses native macOS Accessibility (AX) and Quartz APIs to read and interact with the IDE at the OS level. No extensions or plugins are needed inside the editor.
+No. The server uses native macOS Accessibility (AX) APIs and isolated CDP to orchestrate interactions. No extensions or plugins are needed inside the editor.
 </details>
 
 <details>
-<summary><strong>Does it work on Linux or Windows?</strong></summary>
-
-Not yet. The server relies on macOS-specific APIs (PyObjC, ApplicationServices, Quartz). Linux support via AT-SPI is on the roadmap. Windows support via UI Automation is under consideration.
-</details>
-
-<details>
-<summary><strong>Can I use this with regular VS Code (not Antigravity)?</strong></summary>
-
-The AX scraper targets UI elements specific to the Antigravity IDE fork. While some features may partially work with standard VS Code, full compatibility is not guaranteed and not officially supported.
-</details>
-
-<details>
-<summary><strong>Is the WebSocket API documented?</strong></summary>
-
-The protocol is defined in `server/agbridge/protocol.py`. Full OpenAPI documentation is planned for a future release.
-</details>
-
-<details>
-<summary><strong>How do I grant macOS permissions?</strong></summary>
-
-On first run, macOS will prompt you. If the prompts don't appear, manually add your terminal emulator (e.g., iTerm2, Terminal.app) and/or the Python binary to:
-- **System Settings → Privacy & Security → Accessibility**
-- **System Settings → Privacy & Security → Screen Recording**
-
-Then restart your terminal and the server.
+<summary><strong>How is prompt injection so reliable?</strong></summary>
+We moved away from legacy accessibility typing and clipboard-pasting. `agbridge` serializes prompts into JSON editor states and injects them natively into Antigravity's Lexical editor, completely bypassing input-timing issues.
 </details>
 
 ---
 
 ## 🤝 Contributing
 
-Bug reports and pull requests are welcome! Whether it's a bug fix, a new feature, or documentation improvements — all contributions are appreciated.
+Bug reports and pull requests are welcome! 
 
 1. Fork this repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -346,4 +300,4 @@ Bug reports and pull requests are welcome! Whether it's a bug fix, a new feature
 
 Copyright © 2026 Hwanyong Yoo
 
-This project is distributed under the [MIT License](LICENSE). See the `LICENSE` file for details.
+This project is distributed under the [MIT License](LICENSE).
