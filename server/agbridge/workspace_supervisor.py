@@ -328,16 +328,37 @@ class WorkspaceSupervisor:
         await self._send_to_all(msg)
 
     async def _send_to_all(self, msg):
-        """Send a message to all WS clients, evicting stale ones."""
-        stale = set()
-        for ws in self._ws_clients:
+        """Send a message to all WS clients, evicting stale ones.
+
+        Uses a list snapshot of _ws_clients to prevent RuntimeError
+        when concurrent coroutines modify the set during await yields.
+        """
+        snapshot = list(self._ws_clients)
+        stale = []
+        for ws in snapshot:
             try:
                 await ws.send_text(msg)
             except Exception:
-                stale.add(ws)
-        self._ws_clients -= stale
+                stale.append(ws)
         for ws in stale:
+            self._ws_clients.discard(ws)
             self._ws_last_pong.pop(ws, None)
+
+    async def _heartbeat_loop(self):
+        """Send PING to all WS clients at regular intervals.
+
+        Prevents Cloudflare Tunnel's 100-second idle timeout from
+        terminating WebSocket connections. Harmless for direct LAN clients.
+        """
+        from agbridge.config import WS_HEARTBEAT_INTERVAL
+
+        logger.info("WS heartbeat started (interval=%ds)", WS_HEARTBEAT_INTERVAL)
+        while True:
+            await asyncio.sleep(WS_HEARTBEAT_INTERVAL)
+            if not self._ws_clients:
+                continue
+            msg = json.dumps({"type": "PING", "ts": time.time()})
+            await self._send_to_all(msg)
 
     # ── Internal ─────────────────────────────────────────────
 

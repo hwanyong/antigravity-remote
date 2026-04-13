@@ -140,7 +140,7 @@ class EventLogBuffer:
         icon = "✅" if ok else "❌"
         error = result.get("error", "") if isinstance(result, dict) else str(result)
 
-        line = f"[dim]{ts_str}[/] {icon} [cyan]{cmd_type}_RESULT[/]"
+        line = f"[dim]{ts_str}[/] {icon} [cyan]{cmd_type}_DONE[/]"
         if not ok and error:
             line += f"\n       [red]{rich_escape(error)}[/]"
 

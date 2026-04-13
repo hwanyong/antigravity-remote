@@ -122,14 +122,20 @@ def get_window_states():
 
 def launch_ide(path):
     """
-    Launch a new Antigravity IDE instance for the given workspace path.
+    Launch a new Antigravity IDE instance with CDP enabled.
+
+    Automatically adds --remote-debugging-port flag for direct
+    CDP access without SIGUSR1 bootstrap.
 
     Returns:
         int | None: PID of the launched process, or None on failure.
     """
+    from agbridge.config import CDP_LAUNCH_FLAGS
+
+    cmd = [ANTIGRAVITY_CMD, "--disable-workspace-trust"] + CDP_LAUNCH_FLAGS + [path]
     try:
-        proc = subprocess.Popen([ANTIGRAVITY_CMD, "--disable-workspace-trust", path])
-        logger.info("IDE launched: PID=%d path=%s", proc.pid, path)
+        proc = subprocess.Popen(cmd)
+        logger.info("IDE launched (CDP-enabled): PID=%d path=%s", proc.pid, path)
         return proc.pid
     except FileNotFoundError:
         logger.error("Antigravity command not found: %s", ANTIGRAVITY_CMD)

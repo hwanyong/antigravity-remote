@@ -10,6 +10,8 @@ Endpoints:
 - GET  /api/workspaces/{workspace_id}/snapshot  → workspace state snapshot
 - GET  /api/workspaces/{workspace_id}/status    → workspace status
 - POST /api/workspaces/{workspace_id}/command   → workspace command
+- GET  /api/diagnostics                     → list recent diagnostic records
+- GET  /api/diagnostics/{filename}          → individual diagnostic JSON
 - WS   /ws                                  → all events, workspace_id tagged
 """
 
@@ -18,6 +20,7 @@ import json
 import logging
 import os
 import shutil
+import time
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request
 from fastapi.responses import JSONResponse
@@ -158,6 +161,36 @@ def create_app(supervisor, input_queue, lifespan=None):
 
         return JSONResponse(content={"ok": True})
 
+    # ── Diagnostics ───────────────────────────────────────
+
+    @app.get("/api/diagnostics")
+    async def list_diagnostics(request: Request):
+        """Return recent diagnostic records."""
+        auth_error = _check_auth(request)
+        if auth_error:
+            return auth_error
+
+        from agbridge.diagnostics import get_recorder
+        limit = int(request.query_params.get("limit", "20"))
+        records = get_recorder().list_recent(limit=limit)
+        return JSONResponse(content={"diagnostics": records})
+
+    @app.get("/api/diagnostics/{filename}")
+    async def get_diagnostic(filename: str, request: Request):
+        """Return a specific diagnostic record."""
+        auth_error = _check_auth(request)
+        if auth_error:
+            return auth_error
+
+        from agbridge.diagnostics import get_recorder
+        record = get_recorder().get_record(filename)
+        if record is None:
+            return JSONResponse(
+                status_code=404,
+                content={"error": f"diagnostic '{filename}' not found"},
+            )
+        return JSONResponse(content=record)
+
     # ── Per-workspace endpoints ───────────────────────────
 
     @app.get("/api/workspaces/{workspace_id}/snapshot")
@@ -278,9 +311,10 @@ def create_app(supervisor, input_queue, lifespan=None):
 
                     if not engine:
                         await ws.send_text(json.dumps({
-                            "type": f"{msg_type}_RESULT",
+                            "type": f"{msg_type}_FAIL",
                             "workspace_id": ws_id,
                             "data": {"ok": False, "error": "workspace not found"},
+                            "ts": time.time(),
                         }))
                         continue
 
@@ -290,8 +324,14 @@ def create_app(supervisor, input_queue, lifespan=None):
                             "ok": True,
                             "last_prompt": input_queue.get_last_prompt(ws_id),
                         }
-                    # Route AX writes through InputQueue
+                    # Route AX writes through InputQueue — ACK first
                     elif msg_type in _WRITE_COMMANDS:
+                        await ws.send_text(json.dumps({
+                            "type": f"{msg_type}_ACK",
+                            "workspace_id": ws_id,
+                            "data": {},
+                            "ts": time.time(),
+                        }))
                         result = await input_queue.enqueue(
                             ws_id, _WRITE_COMMANDS[msg_type], data,
                         )
@@ -302,10 +342,12 @@ def create_app(supervisor, input_queue, lifespan=None):
                         else:
                             result = {"ok": False, "error": f"unknown command: {msg_type}"}
 
+                    suffix = "_DONE" if result.get("ok") else "_FAIL"
                     await ws.send_text(json.dumps({
-                        "type": f"{msg_type}_RESULT",
+                        "type": f"{msg_type}{suffix}",
                         "workspace_id": ws_id,
                         "data": result,
+                        "ts": time.time(),
                     }))
 
                 except json.JSONDecodeError:
@@ -340,7 +382,12 @@ _WRITE_COMMANDS = {
     protocol.CMD_LIST_MODES: "list_modes",
     protocol.CMD_LIST_CONVERSATIONS: "list_conversations",
     protocol.CMD_SELECT_CONVERSATION: "select_conversation",
+    protocol.CMD_DELETE_CONVERSATION: "delete_conversation",
+    protocol.CMD_EXPAND_CONVERSATIONS: "expand_conversations",
+    protocol.CMD_CLOSE_CONVERSATION_PANEL: "close_conversation_panel",
     protocol.CMD_REFRESH_MODELS: "refresh_models",
+    protocol.CMD_SCROLL_CONVERSATION: "scroll_conversation",
+    protocol.CMD_CLEAR_CACHE: "clear_cache",
     protocol.CMD_UNDO_TO_PROMPT: "undo_to_prompt",
     protocol.CMD_CONFIRM_UNDO: "confirm_undo",
     protocol.CMD_CANCEL_UNDO: "cancel_undo",

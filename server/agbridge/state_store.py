@@ -53,16 +53,17 @@ class StateStore:
 
     # ── Write ────────────────────────────────────────────────
 
-    def update(self, key, value):
+    def update(self, key, value, force=False):
         """
         Update a specific section.
         Returns True if the hash changed, signaling a broadcast is needed.
+        If force=True, always update regardless of hash comparison.
         """
         serialized = json.dumps(value, sort_keys=True, ensure_ascii=False)
         new_hash = hashlib.sha256(serialized.encode()).hexdigest()
         old_hash = self._hashes.get(key)
 
-        if new_hash == old_hash:
+        if not force and new_hash == old_hash:
             return False
 
         self._state[key] = value

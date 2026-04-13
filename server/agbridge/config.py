@@ -14,32 +14,29 @@ BUNDLE_ID = "com.google.antigravity"
 ANTIGRAVITY_CMD = "antigravity"
 
 
-# ── AX UI Identifiers ────────────────────────────────────────
+# ── DOM Selectors ─────────────────────────────────────────────
+#
+# Stable identifiers used by CDP DOM queries.
+# Migrated from AX UI identifiers to standard DOM selectors.
 
-AX_SEND_BUTTON_DESC = "Send message"
-AX_CANCEL_BUTTON_DESC = "Cancel"
-AX_MESSAGE_INPUT_DESC = "Message input"
-AX_MESSAGE_INPUT_ROLE = "AXTextArea"
+DOM_SEND_BUTTON_LABEL = "Send message"
+DOM_CANCEL_BUTTON_LABEL = "Cancel generation"
+DOM_CONVERSATION_ID = "conversation"
+DOM_INPUT_BOX_ID = "antigravity.agentSidePanelInputBox"
+DOM_AGENT_PANEL_CLASS = "antigravity-agent-side-panel"
 
-# Model / Mode popup selectors (AXPopUpButton title prefix)
-AX_MODEL_POPUP_TITLE_PREFIX = "Select model"
-AX_MODE_POPUP_TITLE_PREFIX = "Select conversation mode"
+# Model / Mode selectors (aria-label prefix)
+DOM_MODEL_SELECTOR_PREFIX = "Select model"
+DOM_MODE_SELECTOR_PREFIX = "Select conversation mode"
 
-# Error banner markers (AXHeading title + AXButton titles)
-AX_ERROR_HEADING_TEXT = "Agent terminated due to error"
-AX_RETRY_BUTTON_TITLE = "Retry"
-AX_DISMISS_BUTTON_TITLE = "Dismiss"
-
-# Semantic selectors (stable class / DOM id set by Antigravity itself)
-AX_AGENT_PANEL_CLASS = "antigravity-agent-side-panel"
-AX_CONVERSATION_DOM_ID = "conversation"
-AX_INPUT_BOX_DOM_ID = "antigravity.agentSidePanelInputBox"
+# Error banner markers
+DOM_ERROR_HEADING_TEXT = "Agent terminated due to error"
+DOM_RETRY_BUTTON_TEXT = "Retry"
+DOM_DISMISS_BUTTON_TEXT = "Dismiss"
 
 
-# ── Polling Intervals (seconds) ──────────────────────────────
+# ── Supervisor Reconciliation ─────────────────────────────────
 
-POLL_ACTIVE_INTERVAL = float(os.environ.get("AGBRIDGE_POLL_ACTIVE", "0.5"))
-POLL_IDLE_INTERVAL = float(os.environ.get("AGBRIDGE_POLL_IDLE", "5.0"))
 POLL_AWAIT_IDE_INTERVAL = float(os.environ.get("AGBRIDGE_POLL_AWAIT", "3.0"))
 
 # FS event debouncing: batch events within this window before processing
@@ -50,6 +47,7 @@ FS_DEBOUNCE_SECONDS = 0.3
 
 DEFAULT_HOST = os.environ.get("AGBRIDGE_HOST", "0.0.0.0")
 DEFAULT_PORT = int(os.environ.get("AGBRIDGE_PORT", "18080"))
+KEEP_ALIVE_TIMEOUT = int(os.environ.get("AGBRIDGE_KEEP_ALIVE", "120"))
 
 # StateStore persistence file
 CACHE_DIR_NAME = ".agbridge_cache"
@@ -65,14 +63,25 @@ AUTH_TOKEN_FILE = os.path.expanduser("~/.agbridge/token")
 
 # ── WebSocket ─────────────────────────────────────────────────
 
-MAX_WS_CLIENTS = int(os.environ.get("AGBRIDGE_MAX_CLIENTS", "3"))
-WS_HEARTBEAT_INTERVAL = int(os.environ.get("AGBRIDGE_HEARTBEAT_INTERVAL", "30"))
-WS_HEARTBEAT_TIMEOUT = int(os.environ.get("AGBRIDGE_HEARTBEAT_TIMEOUT", "60"))
+MAX_WS_CLIENTS = int(os.environ.get("AGBRIDGE_MAX_CLIENTS", "10"))
+WS_HEARTBEAT_INTERVAL = int(os.environ.get("AGBRIDGE_WS_HEARTBEAT", "60"))
 
 
-# ── AX Error Recovery ─────────────────────────────────────────
+# ── CDP Settings ─────────────────────────────────────────────
 
-AX_MAX_CONSECUTIVE_FAILURES = 3
+CDP_DIRECT_PORT = int(os.environ.get("AGBRIDGE_CDP_PORT", "9333"))
+CDP_CONNECT_TIMEOUT = float(os.environ.get("AGBRIDGE_CDP_TIMEOUT", "5.0"))
+CDP_RECONNECT_MAX = 3
+CDP_LAUNCH_FLAGS = [
+    f"--remote-debugging-port={CDP_DIRECT_PORT}",
+    "--remote-allow-origins=http://localhost:*",
+]
+
+# Event-driven: heartbeat full scrape interval (safety net)
+CDP_HEARTBEAT_INTERVAL = int(os.environ.get("AGBRIDGE_CDP_HEARTBEAT", "30"))
+
+# MutationObserver debounce delay (ms, injected into JS)
+CDP_DEBOUNCE_MS = int(os.environ.get("AGBRIDGE_CDP_DEBOUNCE_MS", "100"))
 
 
 
@@ -85,7 +94,21 @@ WORKSPACE_STORAGE_DIR = os.path.expanduser(
 )
 
 
-# ── AX Write Operations ──────────────────────────────────
+# ── IDE Window Management ────────────────────────────────
 
-FOCUS_STABILIZE_SECONDS = 0.2   # wait time after focus switch before AX write
-NS_ACTIVATE_OPTIONS = 1 << 1    # NSApplicationActivateIgnoringOtherApps
+NS_ACTIVATE_OPTIONS = 1 << 1    # NSApplicationActivateIgnoringOtherApps (close_ide fallback)
+
+
+# ── Diagnostics & Logging ────────────────────────────────
+#
+# File-based logging with rotation + JSON diagnostic records
+# for post-mortem tracking of polling anomalies and job failures.
+
+LOG_DIR = os.path.expanduser("~/.agbridge/logs")
+LOG_FILE = os.path.join(LOG_DIR, "agbridge.log")
+LOG_MAX_BYTES = 5 * 1024 * 1024          # 5MB per file
+LOG_BACKUP_COUNT = 5                      # keep 5 rotated files → max 25MB
+
+DIAG_DIR = os.path.join(LOG_DIR, "diagnostics")
+DIAG_POLL_THRESHOLD = 50                  # 50 polls → emit diagnostic record
+DIAG_MAX_FILES = 100                      # FIFO cleanup of diagnostic files

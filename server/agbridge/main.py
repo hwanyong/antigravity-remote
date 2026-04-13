@@ -114,6 +114,45 @@ def _check_native_deps():
             time.sleep(3)
     print("  ✓ Screen Recording permissions verified.\n")
 
+def _configure_logging(log_level_name):
+    """Set up dual logging: console (user level) + file (DEBUG).
+
+    Console output matches the original behavior.
+    File output captures everything for post-mortem analysis.
+    """
+    from logging.handlers import RotatingFileHandler
+    from agbridge.config import LOG_DIR, LOG_FILE, LOG_MAX_BYTES, LOG_BACKUP_COUNT
+
+    os.makedirs(LOG_DIR, exist_ok=True)
+
+    root = logging.getLogger()
+    root.setLevel(logging.DEBUG)
+
+    # Console handler — user-specified level (unchanged behavior)
+    console = logging.StreamHandler()
+    console.setLevel(getattr(logging, log_level_name))
+    console.setFormatter(logging.Formatter(
+        "%(asctime)s [%(name)s] %(levelname)s: %(message)s",
+        datefmt="%H:%M:%S",
+    ))
+    root.addHandler(console)
+
+    # File handler — DEBUG (captures everything)
+    file_handler = RotatingFileHandler(
+        LOG_FILE,
+        maxBytes=LOG_MAX_BYTES,
+        backupCount=LOG_BACKUP_COUNT,
+    )
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(logging.Formatter(
+        "%(asctime)s [%(name)s] %(levelname)s [%(threadName)s]: %(message)s",
+    ))
+    root.addHandler(file_handler)
+
+    logging.info("File logging enabled: %s (max %dMB × %d)",
+                 LOG_FILE, LOG_MAX_BYTES // (1024 * 1024), LOG_BACKUP_COUNT)
+
+
 def run():
     _check_native_deps()
 
@@ -139,11 +178,7 @@ def run():
     )
     args = parser.parse_args()
 
-    logging.basicConfig(
-        level=getattr(logging, args.log_level),
-        format="%(asctime)s [%(name)s] %(levelname)s: %(message)s",
-        datefmt="%H:%M:%S",
-    )
+    _configure_logging(args.log_level)
 
     # Disable system display sleep as long as this server daemon is running
     try:
@@ -169,9 +204,11 @@ def run():
         await supervisor.initial_reconcile()
         supervisor_task = asyncio.create_task(supervisor.run())
         input_task = asyncio.create_task(input_queue.run())
+        heartbeat_task = asyncio.create_task(supervisor._heartbeat_loop())
         yield
         supervisor_task.cancel()
         input_task.cancel()
+        heartbeat_task.cancel()
 
     app = create_app(supervisor, input_queue, lifespan=lifespan)
 
@@ -197,11 +234,14 @@ def run():
 
     _ensure_port_available(args.port)
 
+    from agbridge.config import KEEP_ALIVE_TIMEOUT
+
     uvicorn.run(
         app,
         host=args.host,
         port=args.port,
         log_level=args.log_level.lower(),
+        timeout_keep_alive=KEEP_ALIVE_TIMEOUT,
     )
 
 
@@ -209,6 +249,11 @@ def _ensure_port_available(port):
     """
     Check if the port is already in use. If so, terminate the
     occupying process before proceeding.
+
+    IMPORTANT: Only target processes that are LISTENING on the port.
+    Connected clients (e.g. TUI WebSocket connections) must NOT be
+    killed — they share the same port number but are in ESTABLISHED
+    state, not LISTEN.
     """
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
@@ -218,8 +263,8 @@ def _ensure_port_available(port):
     except OSError:
         sock.close()
 
-    # Port is occupied — try multiple strategies to find PIDs
-    pids = _find_port_pids(port)
+    # Port is occupied — find only LISTEN-state PIDs
+    pids = _find_listen_pids(port)
 
     if not pids:
         # No PIDs found but port is busy — likely TIME_WAIT.
@@ -264,22 +309,26 @@ def _ensure_port_available(port):
     print(f"  ✓ Port {port} force-freed.")
 
 
-def _find_port_pids(port):
+def _find_listen_pids(port):
     """
-    Find PIDs occupying the given port using multiple strategies.
+    Find PIDs that are LISTENING on the given port.
+
+    Uses ``lsof -i :PORT -sTCP:LISTEN`` to exclude connected clients
+    (ESTABLISHED state) that happen to use the same port number.
     Returns a list of integer PIDs, or empty list if none found.
     """
-    # Strategy 1: lsof -ti :PORT
-    pids = _try_lsof(["-ti", f":{port}"])
-    if pids:
-        return pids
+    # Strategy 1: lsof with TCP state filter (most precise)
+    try:
+        out = subprocess.check_output(
+            ["lsof", "-i", f":{port}", "-sTCP:LISTEN", "-t"],
+            stderr=subprocess.DEVNULL,
+        ).decode().strip()
+        if out:
+            return [int(p.strip()) for p in out.split("\n") if p.strip().isdigit()]
+    except (subprocess.CalledProcessError, FileNotFoundError, ValueError):
+        pass
 
-    # Strategy 2: lsof -ti TCP:PORT
-    pids = _try_lsof(["-ti", f"TCP:{port}"])
-    if pids:
-        return pids
-
-    # Strategy 3: lsof -i :PORT (parse PID column)
+    # Strategy 2: lsof -i :PORT (parse output, filter LISTEN manually)
     try:
         out = subprocess.check_output(
             ["lsof", "-i", f":{port}"],
@@ -288,7 +337,9 @@ def _find_port_pids(port):
         result = set()
         for line in out.strip().split("\n")[1:]:  # skip header
             parts = line.split()
-            if len(parts) >= 2:
+            # lsof columns: COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
+            # NAME column contains "(LISTEN)" for listening sockets
+            if len(parts) >= 2 and "(LISTEN)" in line:
                 try:
                     result.add(int(parts[1]))
                 except ValueError:
@@ -299,20 +350,6 @@ def _find_port_pids(port):
         pass
 
     return []
-
-
-def _try_lsof(args):
-    """Run lsof with given args, return list of PIDs or empty list."""
-    try:
-        out = subprocess.check_output(
-            ["lsof"] + args,
-            stderr=subprocess.DEVNULL,
-        ).decode().strip()
-        if not out:
-            return []
-        return [int(p.strip()) for p in out.split("\n") if p.strip().isdigit()]
-    except (subprocess.CalledProcessError, FileNotFoundError, ValueError):
-        return []
 
 
 if __name__ == "__main__":

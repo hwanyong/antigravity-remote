@@ -3,7 +3,7 @@ agbridge_tui.connection — HTTP + WebSocket connection manager (multi-workspace
 
 Handles:
 - Token loading (env → file → CLI arg)
-- HTTP requests with workspace-aware routing
+- Persistent HTTP client with connection pooling (singleton AsyncClient)
 - WebSocket connection with auto-reconnect (exponential backoff)
 - Single WS endpoint receiving all workspace events
 """
@@ -22,6 +22,22 @@ logger = logging.getLogger("agbridge_tui.connection")
 DEFAULT_TOKEN_FILE = os.path.expanduser("~/.agbridge/token")
 
 
+class _TokenAuth(httpx.Auth):
+    """Auto-inject Bearer token into every HTTP request.
+
+    References the Connection's token attribute directly,
+    so reload_token() updates are picked up automatically.
+    """
+
+    def __init__(self, connection):
+        self._conn = connection
+
+    def auth_flow(self, request):
+        if self._conn.token:
+            request.headers["Authorization"] = f"Bearer {self._conn.token}"
+        yield request
+
+
 class Connection:
     """Manages HTTP and WebSocket connections to agbridge daemon."""
 
@@ -35,6 +51,7 @@ class Connection:
         self._on_event = None
         self._on_state_change = None
         self._backoff = 1
+        self._http = None
 
     @property
     def base_url(self):
@@ -50,6 +67,36 @@ class Connection:
     @property
     def is_ws_connected(self):
         return self._ws_connected
+
+    # ── Lifecycle ────────────────────────────────────────────
+
+    async def start(self):
+        """Initialize the persistent HTTP client.
+
+        Must be called from an async context (e.g. App.on_mount).
+        Uses connection pooling — all HTTP requests share one TCP connection.
+        """
+        if self._http:
+            return
+
+        self._http = httpx.AsyncClient(
+            base_url=self.base_url,
+            auth=_TokenAuth(self),
+            timeout=10,
+        )
+        logger.info("HTTP client started: %s", self.base_url)
+
+    async def close(self):
+        """Shut down both HTTP client and WebSocket connection.
+
+        Must be called from an async context (e.g. App.on_unmount).
+        """
+        if self._http:
+            await self._http.aclose()
+            self._http = None
+            logger.info("HTTP client closed")
+
+        await self.ws_close()
 
     # ── Token ────────────────────────────────────────────────
 
@@ -82,80 +129,56 @@ class Connection:
 
     # ── HTTP: Workspace CRUD ─────────────────────────────────
 
-    def _auth_headers(self):
-        if self.token:
-            return {"Authorization": f"Bearer {self.token}"}
-        return {}
-
     async def get_workspaces(self):
         """GET /api/workspaces → list of workspace info dicts."""
-        async with httpx.AsyncClient() as client:
-            resp = await client.get(
-                f"{self.base_url}/api/workspaces",
-                headers=self._auth_headers(),
-                timeout=5,
-            )
-            resp.raise_for_status()
-            return resp.json().get("workspaces", [])
+        resp = await self._http.get("/api/workspaces", timeout=5)
+        resp.raise_for_status()
+        return resp.json().get("workspaces", [])
 
     async def open_workspace(self, path):
         """POST /api/workspaces → launch new IDE."""
-        async with httpx.AsyncClient() as client:
-            resp = await client.post(
-                f"{self.base_url}/api/workspaces",
-                headers=self._auth_headers(),
-                json={"path": path},
-                timeout=10,
-            )
-            resp.raise_for_status()
-            return resp.json()
+        resp = await self._http.post(
+            "/api/workspaces",
+            json={"path": path},
+        )
+        resp.raise_for_status()
+        return resp.json()
 
     async def close_workspace(self, workspace_id):
         """DELETE /api/workspaces/{id} → close IDE."""
-        async with httpx.AsyncClient() as client:
-            resp = await client.delete(
-                f"{self.base_url}/api/workspaces/{workspace_id}",
-                headers=self._auth_headers(),
-                timeout=10,
-            )
-            resp.raise_for_status()
-            return resp.json()
+        resp = await self._http.delete(
+            f"/api/workspaces/{workspace_id}",
+        )
+        resp.raise_for_status()
+        return resp.json()
 
     # ── HTTP: Per-workspace ──────────────────────────────────
 
     async def get_snapshot(self, workspace_id):
         """GET /api/workspaces/{id}/snapshot → dict."""
-        async with httpx.AsyncClient() as client:
-            resp = await client.get(
-                f"{self.base_url}/api/workspaces/{workspace_id}/snapshot",
-                headers=self._auth_headers(),
-                timeout=10,
-            )
-            resp.raise_for_status()
-            return resp.json()
+        resp = await self._http.get(
+            f"/api/workspaces/{workspace_id}/snapshot",
+        )
+        resp.raise_for_status()
+        return resp.json()
 
     async def get_status(self, workspace_id):
         """GET /api/workspaces/{id}/status → dict."""
-        async with httpx.AsyncClient() as client:
-            resp = await client.get(
-                f"{self.base_url}/api/workspaces/{workspace_id}/status",
-                headers=self._auth_headers(),
-                timeout=5,
-            )
-            resp.raise_for_status()
-            return resp.json()
+        resp = await self._http.get(
+            f"/api/workspaces/{workspace_id}/status",
+            timeout=5,
+        )
+        resp.raise_for_status()
+        return resp.json()
 
     async def post_command(self, workspace_id, cmd_type, data=None):
         """POST /api/workspaces/{id}/command → dict."""
-        async with httpx.AsyncClient() as client:
-            resp = await client.post(
-                f"{self.base_url}/api/workspaces/{workspace_id}/command",
-                headers=self._auth_headers(),
-                json={"type": cmd_type, "data": data or {}},
-                timeout=10,
-            )
-            resp.raise_for_status()
-            return resp.json()
+        resp = await self._http.post(
+            f"/api/workspaces/{workspace_id}/command",
+            json={"type": cmd_type, "data": data or {}},
+        )
+        resp.raise_for_status()
+        return resp.json()
 
     # ── WebSocket ────────────────────────────────────────────
 
@@ -173,7 +196,15 @@ class Connection:
         await self._ws_connect_loop()
 
     async def _ws_connect_loop(self):
-        """Connection loop with exponential backoff reconnection."""
+        """Connection loop with exponential backoff reconnection.
+
+        This coroutine runs as a Textual Worker.  It must NEVER
+        propagate an exception, because Textual's default
+        ``exit_on_error=True`` would terminate the entire TUI.
+        Every ``await`` is a potential ``CancelledError`` injection
+        point, and ``CancelledError`` is a ``BaseException`` — not
+        caught by ``except Exception``.
+        """
         while True:
             try:
                 await self._notify_state("connecting")
@@ -202,7 +233,14 @@ class Connection:
                                 )
                         except json.JSONDecodeError:
                             pass
+                        except asyncio.CancelledError:
+                            raise
+                        except Exception as e:
+                            logger.warning("Event handler error: %s", e)
 
+            except asyncio.CancelledError:
+                logger.info("WS loop cancelled — stopping reconnect")
+                return
             except websockets.exceptions.ConnectionClosedError as e:
                 if e.code == 1008:
                     logger.warning("WS auth rejected (1008) — reloading token")
@@ -214,12 +252,23 @@ class Connection:
             except Exception as e:
                 logger.warning("WS unexpected error: %s", e)
 
+            # Cleanup — also protected from exceptions
             self.ws = None
             self._ws_connected = False
-            await self._notify_state("reconnecting")
+            try:
+                await self._notify_state("reconnecting")
+            except asyncio.CancelledError:
+                logger.info("WS loop cancelled during reconnect notify — stopping")
+                return
+            except Exception as e:
+                logger.warning("Failed to notify reconnecting state: %s", e)
 
             logger.info("Reconnecting in %ds...", self._backoff)
-            await asyncio.sleep(self._backoff)
+            try:
+                await asyncio.sleep(self._backoff)
+            except asyncio.CancelledError:
+                logger.info("WS loop cancelled during backoff sleep — stopping")
+                return
             self._backoff = min(self._backoff * 2, 30)
 
     async def ws_send_command(self, workspace_id, cmd_type, data=None):

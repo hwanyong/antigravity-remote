@@ -7,10 +7,13 @@ Architecture: Vertical container with compose()-based widget tree.
   AgentInputBar — prompt input + Send/Cancel button
   AgentBottomBar — mode + model selection buttons
 
-Data flow:
+Data flow (Cache Architecture):
   Server events → update_from_agent / update_from_edit_actions /
                   update_from_editor / update_from_models
   User actions  → Message classes bubbled to app.py
+
+  The server independently collects data in the background.
+  TUI scrolling is purely local — it never triggers IDE scrolling.
 """
 
 from rich.markup import escape as rich_escape
@@ -91,11 +94,29 @@ class PromptTextArea(TextArea):
 
 # ── Message Item ─────────────────────────────────────────────
 
+# ── Agent Messages (scroll container) ────────────────────────
+
+
+class AgentMessages(VerticalScroll):
+    """Scrollable message container.
+
+    In the cache architecture, scrolling is purely local.
+    The server independently collects data in the background
+    and pushes updates — TUI never triggers IDE scrolling.
+    """
+    pass
+
+
 class MessageItem(Static):
-    """A single user or assistant message block."""
+    """A single user or assistant message block.
+
+    Supports in-place content updates via update_content() to avoid
+    widget destruction/recreation during streaming updates.
+    """
 
     def __init__(self, role, content, thinking=None, actions=None,
-                 files_modified=None, msg_index=0, has_undo=False, **kwargs):
+                 files_modified=None, msg_index=0, has_undo=False,
+                 turn_idx=-1, **kwargs):
         super().__init__(**kwargs)
         self.role = role
         self.msg_content = content
@@ -104,34 +125,41 @@ class MessageItem(Static):
         self.msg_files = files_modified or []
         self.msg_index = msg_index
         self.has_undo = has_undo
+        self._turn_idx = turn_idx
+        self._body_widget = None  # Reference for in-place updates
 
     def compose(self) -> ComposeResult:
         cls = "agent-msg-user" if self.role == "user" else "agent-msg-assistant"
         self.add_class(cls)
-        
+
         from textual.widgets import Markdown
-        
+
         if self.role == "user":
-            yield Static(f"[bold cyan]You[/]\n{rich_escape(self.msg_content)}", classes="agent-msg-body")
-            if self.has_undo:
-                yield Button(
-                    "↩ Undo",
-                    id=f"agent-undo-btn-{self.msg_index}",
-                    classes="agent-undo-btn",
-                )
+            with Horizontal(classes="agent-user-header"):
+                yield Static("You", classes="agent-user-label")
+                if self.has_undo:
+                    yield Button(
+                        "↩",
+                        id=f"agent-undo-btn-{self.msg_index}",
+                        classes="agent-undo-btn",
+                    )
+            body = Static(rich_escape(self.msg_content), classes="agent-msg-body")
+            self._body_widget = body
+            yield body
             return
-            
+
         # Assistant thinking
         if self.msg_thinking:
             short = self.msg_thinking[:200]
             yield Static(f"[dim italic]💭 {rich_escape(short)}[/]", classes="agent-msg-body")
-            
+
         # Assistant core content using proper Markdown
         if self.msg_content:
-            # Escape @[...] pill syntax so Rich doesn't interpret [/x] as close tags
             safe_content = self.msg_content.replace("[/", "\\[/").replace("[@", "\\[@")
-            yield Markdown(safe_content, classes="agent-msg-body")
-            
+            body = Markdown(safe_content, classes="agent-msg-body")
+            self._body_widget = body
+            yield body
+
         # Assistant actions
         parts = []
         for act in self.msg_actions:
@@ -150,6 +178,39 @@ class MessageItem(Static):
 
         if parts:
             yield Static("\n".join(parts), classes="agent-msg-body")
+
+    def on_button_pressed(self, event: Button.Pressed):
+        """Handle button presses originated within this message block."""
+        if event.button.has_class("agent-undo-btn"):
+            event.stop()
+            from agbridge_tui.panels.agent_panel import AgentPanel
+            self.post_message(
+                AgentPanel.UndoToPromptRequest(
+                    message_index=self.msg_index,
+                    turn_idx=self._turn_idx,
+                    prompt_text=self.msg_content,
+                )
+            )
+
+    def update_content(self, new_content):
+        """Update message content in-place without widget destruction.
+
+        For user messages, updates the Static body text.
+        For assistant messages, updates the Markdown body.
+        Skips update if content is identical.
+        """
+        if new_content == self.msg_content:
+            return
+        self.msg_content = new_content
+
+        if not self._body_widget:
+            return
+
+        if self.role == "user":
+            self._body_widget.update(rich_escape(new_content))
+        else:
+            safe = new_content.replace("[/", "\\[/").replace("[@", "\\[@")
+            self._body_widget.update(safe)
 
 
 # ── Agent Panel ──────────────────────────────────────────────
@@ -214,8 +275,10 @@ class AgentPanel(Vertical):
         pass
 
     class UndoToPromptRequest(Message):
-        def __init__(self, message_index):
+        def __init__(self, message_index, turn_idx, prompt_text):
             self.message_index = message_index
+            self.turn_idx = turn_idx
+            self.prompt_text = prompt_text
             super().__init__()
 
     # ── Reactive state ───────────────────────────────────
@@ -234,7 +297,10 @@ class AgentPanel(Vertical):
         super().__init__(**kwargs)
         self.border_title = "Agent"
         self._messages_data = []
+        self._total_turns = 0
+        self._cached_turns = 0
         self.permission_info = None
+        self._initial_load = True  # First data → always scroll to bottom
 
     # ── Compose ──────────────────────────────────────────
 
@@ -251,7 +317,7 @@ class AgentPanel(Vertical):
                 yield Button("✗", id="agent-reject-btn", classes="agent-reject-btn")
 
         # Conversation messages
-        yield VerticalScroll(id="agent-messages")
+        yield AgentMessages(id="agent-messages")
 
         # Workspace label
         yield Label("", id="agent-ws-label", classes="agent-workspace-label")
@@ -260,6 +326,7 @@ class AgentPanel(Vertical):
         with Vertical(id="agent-input-container"):
             # Normal input bar
             with Horizontal(id="agent-input-bar", classes="agent-input-bar"):
+                yield Button("+", id="agent-attachment-btn", classes="agent-attachment-btn")
                 yield PromptTextArea(id="agent-input", show_line_numbers=False)
                 yield Button("➤", id="agent-send-btn", classes="agent-send-btn")
 
@@ -396,6 +463,21 @@ class AgentPanel(Vertical):
     def on_button_pressed(self, event: Button.Pressed):
         btn_id = event.button.id
 
+        if btn_id == "agent-attachment-btn":
+            from agbridge_tui.modals.select_modal import SelectModal
+            def on_selected(action_id):
+                if action_id == "Mentions":
+                    self.post_message(self.SelectMentionRequest())
+                elif action_id == "Workflows":
+                    self.post_message(self.SelectWorkflowRequest())
+                elif action_id == "Media":
+                    pass
+            self.app.push_screen(
+                SelectModal(title="Add Attachment", items=["Media", "Mentions", "Workflows"]),
+                on_selected
+            )
+            return
+
         if btn_id == "agent-send-btn":
             if self.agent_state == "generating":
                 self.post_message(self.CancelRequest())
@@ -454,15 +536,7 @@ class AgentPanel(Vertical):
             self.post_message(self.PastConversationsRequest())
             return
 
-        # Undo buttons (dynamic IDs: agent-undo-btn-N)
-        if btn_id and btn_id.startswith("agent-undo-btn-"):
-            idx_str = btn_id[len("agent-undo-btn-"):]
-            try:
-                idx = int(idx_str)
-                self.post_message(self.UndoToPromptRequest(idx))
-            except ValueError:
-                pass
-            return
+
 
     def _submit_prompt(self):
         """Extract text from TextArea, submit, and reset."""
@@ -509,6 +583,24 @@ class AgentPanel(Vertical):
 
         self._has_data = True
 
+    def set_scan_loading(self, scanning):
+        """Show/hide loading indicator during background conversation scan."""
+        try:
+            scroll = self.query_one("#agent-messages", AgentMessages)
+        except Exception:
+            return
+
+        if scanning:
+            self._initial_load = True  # Next data arrival scrolls to bottom
+            scroll.loading = True
+            scroll.remove_children()
+            scroll.mount(Static(
+                "\n  [dim]Loading conversation...[/]",
+                classes="agent-empty-state",
+            ))
+        else:
+            scroll.loading = False
+
     def update_from_agent(self, data):
         """Update from UI_AGENT_UPDATE event."""
         if not data:
@@ -534,6 +626,8 @@ class AgentPanel(Vertical):
 
         # Structured messages
         messages = data.get("messages")
+        self._total_turns = data.get("_total_turns", 0)
+        self._cached_turns = data.get("_cached_turns", 0)
         if messages is not None:
             self._messages_data = messages
             self._rebuild_messages()
@@ -564,16 +658,48 @@ class AgentPanel(Vertical):
 
     # ── Message list management ──────────────────────────
 
+    @staticmethod
+    def _msg_identity(msg):
+        """Return identity key for a message dict.
+
+        Used to determine if two messages represent the same turn.
+        """
+        return (msg.get("role", "assistant"), msg.get("_turn_idx", -1))
+
+    def _make_message_widget(self, msg, user_idx=0):
+        """Create a MessageItem widget from message data."""
+        role = msg.get("role", "assistant")
+        is_user = role == "user"
+        return MessageItem(
+            role=role,
+            content=msg.get("content", ""),
+            thinking=msg.get("thinking"),
+            actions=msg.get("actions", []),
+            files_modified=msg.get("files_modified", []),
+            msg_index=user_idx if is_user else 0,
+            has_undo=is_user,
+            turn_idx=msg.get("_turn_idx", -1),
+        )
+
     def _rebuild_messages(self):
-        """Rebuild the message list from _messages_data."""
+        """Incremental message list update.
+
+        Three strategies to avoid full widget teardown:
+          1. Update-in-place: same structure, only last content differs
+             → MessageItem.update_content() on the last widget
+          2. Append: new messages added at the end
+             → mount() only the new widgets
+          3. Full rebuild: structural change (conversation switch, undo)
+             → remove_children() + mount() all, wrapped in batch_update()
+        """
         try:
-            scroll = self.query_one("#agent-messages", VerticalScroll)
+            scroll = self.query_one("#agent-messages", AgentMessages)
         except Exception:
             return
 
-        scroll.remove_children()
-
+        # Empty state
         if not self._messages_data:
+            scroll.remove_children()
             scroll.mount(Static(
                 "\n  [dim]No conversation yet.[/]\n"
                 "  Type a message below to start.",
@@ -581,29 +707,65 @@ class AgentPanel(Vertical):
             ))
             return
 
-        user_idx = 0
-        for msg in self._messages_data:
-            role = msg.get("role", "assistant")
-            is_user = role == "user"
-            item = MessageItem(
-                role=role,
-                content=msg.get("content", ""),
-                thinking=msg.get("thinking"),
-                actions=msg.get("actions", []),
-                files_modified=msg.get("files_modified", []),
-                msg_index=user_idx if is_user else 0,
-                has_undo=msg.get("has_undo", False) if is_user else False,
-            )
-            scroll.mount(item)
-            if is_user:
-                user_idx += 1
+        was_at_bottom = scroll.max_scroll_y <= 0 or scroll.scroll_y >= scroll.max_scroll_y - 2
 
-        # Auto-scroll to bottom
-        self.call_after_refresh(self._scroll_to_bottom)
+        # Collect existing MessageItem widgets
+        existing = list(scroll.query(MessageItem))
+        new_data = self._messages_data
+
+        # Determine update strategy
+        can_incremental = len(existing) > 0 and len(new_data) >= len(existing)
+
+        if can_incremental:
+            # Check identity match for all existing messages
+            for i, widget in enumerate(existing):
+                expected = self._msg_identity(new_data[i])
+                actual = (widget.role, widget._turn_idx)
+                if expected != actual:
+                    can_incremental = False
+                    break
+
+        if can_incremental:
+            # Update-in-place: refresh the last existing message if content changed
+            last_idx = len(existing) - 1
+            last_widget = existing[last_idx]
+            last_data = new_data[last_idx]
+            new_content = last_data.get("content", "")
+            if new_content != last_widget.msg_content:
+                last_widget.update_content(new_content)
+
+            # Append: mount any new messages beyond existing count
+            if len(new_data) > len(existing):
+                user_idx = sum(1 for w in existing if w.role == "user")
+                for msg in new_data[len(existing):]:
+                    widget = self._make_message_widget(msg, user_idx)
+                    scroll.mount(widget)
+                    if msg.get("role") == "user":
+                        user_idx += 1
+
+            if was_at_bottom:
+                self.call_after_refresh(self._scroll_to_bottom)
+            return
+
+        # Full rebuild: structural change (conversation switch, undo, etc.)
+        with self.app.batch_update():
+            scroll.remove_children()
+            user_idx = 0
+            for msg in new_data:
+                widget = self._make_message_widget(msg, user_idx)
+                scroll.mount(widget)
+                if msg.get("role") == "user":
+                    user_idx += 1
+
+        if self._initial_load:
+            self._initial_load = False
+            self.call_after_refresh(self._scroll_to_bottom)
+        elif was_at_bottom:
+            self.call_after_refresh(self._scroll_to_bottom)
 
     def _scroll_to_bottom(self):
         try:
-            scroll = self.query_one("#agent-messages", VerticalScroll)
+            scroll = self.query_one("#agent-messages", AgentMessages)
             scroll.scroll_end(animate=False)
         except Exception:
             pass

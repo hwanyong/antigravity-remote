@@ -1,12 +1,13 @@
 """
-agbridge.input_queue — Serialized AX write operations
+agbridge.input_queue — Serialized CDP write operations
 
-macOS allows only one foreground app at a time. All AX write operations
-(inject_prompt, accept_all, reject_all) must be serialized with explicit
-focus management to prevent input mis-delivery.
+All write operations execute via CDPBridge — no OS-level focus needed.
+Operations are still serialized to prevent concurrent DOM mutations
+that could interfere with each other (e.g., dropdown → click).
 
-Read operations (AX scraping) bypass this queue entirely — they work
-without focus and run in parallel per-Engine.
+Event-driven: DOM changes from write operations are automatically
+detected by MutationObserver → Runtime.bindingCalled → Engine.
+No forced re-scrape needed.
 """
 
 import asyncio
@@ -17,7 +18,7 @@ logger = logging.getLogger("agbridge.input_queue")
 
 
 class InputJob:
-    """A single AX write operation awaiting execution."""
+    """A single write operation awaiting execution."""
 
     __slots__ = ("workspace_id", "action", "params", "result", "created_at")
 
@@ -31,9 +32,10 @@ class InputJob:
 
 class InputQueue:
     """
-    Serializes all AX write operations across workspaces.
+    Serializes all write operations across workspaces.
 
-    Consumer loop: dequeue → focus target window → stabilize → execute → next.
+    Consumer loop: dequeue → execute via CDP → next.
+    No focus management needed — CDP operations run in the background.
     """
 
     def __init__(self, supervisor):
@@ -49,7 +51,7 @@ class InputQueue:
 
     async def enqueue(self, workspace_id, action, params):
         """
-        Submit an AX write job and await its result.
+        Submit a write job and await its result.
 
         Returns:
             dict: {ok: bool, ...} result from the action handler.
@@ -75,171 +77,132 @@ class InputQueue:
                 self._queue.task_done()
                 continue
 
-            if not engine.ide.is_connected:
+            if not engine.cdp or not engine.cdp.is_connected:
                 job.result.set_result({
                     "ok": False,
-                    "error": "IDE not connected",
+                    "error": "CDP not connected",
                 })
                 self._queue.task_done()
                 continue
 
-            try:
-                # Focus the target IDE window
-                engine.ide.focus_window()
-                from agbridge.config import FOCUS_STABILIZE_SECONDS
-                await asyncio.sleep(FOCUS_STABILIZE_SECONDS)
+            logger.info(
+                "JOB_START ws=%s action=%s params=%s",
+                job.workspace_id, job.action, _safe_params(job.params),
+            )
 
-                # Execute the action
-                result = self._execute(engine, job)
+            try:
+                result = await self._execute_cdp(engine, job)
                 job.result.set_result(result)
 
-            except Exception as e:
-                from agbridge.collectors.ax_polling import PollAborted, PollTimeout
-                if isinstance(e, (PollAborted, PollTimeout)):
+                elapsed = time.monotonic() - job.created_at
+                ok = result.get("ok", False) if isinstance(result, dict) else False
+                if ok:
                     logger.info(
-                        "InputQueue job aborted: ws=%s action=%s reason=%s",
-                        job.workspace_id, job.action, type(e).__name__,
+                        "JOB_OK ws=%s action=%s elapsed=%.2fs",
+                        job.workspace_id, job.action, elapsed,
                     )
                 else:
-                    logger.error(
-                        "InputQueue job failed: ws=%s action=%s error=%s",
-                        job.workspace_id, job.action, e,
+                    error = result.get("error", "") if isinstance(result, dict) else ""
+                    logger.warning(
+                        "JOB_REJECTED ws=%s action=%s elapsed=%.2fs reason=%s",
+                        job.workspace_id, job.action, elapsed, error or "returned false",
                     )
+
+                # Event-driven: DOM changes from write operations are
+                # automatically detected by MutationObserver and trigger
+                # selective re-scraping via Runtime.bindingCalled.
+
+            except Exception as e:
+                elapsed = time.monotonic() - job.created_at
+                logger.error(
+                    "JOB_FAILED ws=%s action=%s elapsed=%.2fs error=%s",
+                    job.workspace_id, job.action, elapsed, e,
+                )
+                _emit_job_diagnostic(job, engine, e, elapsed)
                 job.result.set_result({"ok": False, "error": str(e)})
 
             finally:
                 self._queue.task_done()
 
-    def _execute(self, engine, job):
-        """Dispatch job to the appropriate AX write handler."""
-        from agbridge.collectors.ax_scraper import (
-            inject_prompt,
-            clear_message_input,
-            press_edit_action,
-            press_cancel_button,
-            press_retry_button,
-            press_dismiss_button,
-            press_button_by_exact_title,
-            press_permission_dropdown_item,
-            press_undo_for_message,
-            press_confirm_undo,
-            press_cancel_undo,
-            detect_confirm_undo_dialog,
-            reconstruct_user_message_text,
-            collect_agent_panel,
-            get_conversation_state,
-            select_model,
-            select_mode,
-            click_new_conversation,
-            list_available_models,
-            list_available_modes,
-            list_conversations,
-            select_conversation_by_title,
-        )
-        from agbridge.collectors.ax_polling import poll_until
+    async def _execute_cdp(self, engine, job):
+        """CDP-based action dispatcher."""
+        from agbridge.collectors import cdp_actions
 
-        pc = engine.poll_controller
+        bridge = engine.cdp
 
         if job.action == "inject_prompt":
             text = job.params.get("content", "")
             if not text:
                 return {"ok": False, "error": "content is required"}
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
+            if engine.current_state == engine.ACTIVE:
+                return {"ok": False, "error": "agent is currently generating"}
             self._last_prompt_cache[job.workspace_id] = text
-            ok = inject_prompt(engine.ide.windows[0], text, pc)
+            ok = await cdp_actions.inject_prompt(bridge, text)
             return {"ok": ok}
 
         if job.action == "accept_all":
-            ok = press_edit_action("accept_all")
+            ok = await cdp_actions.press_accept_all(bridge)
             return {"ok": ok, "error": None if ok else "button not available"}
 
         if job.action == "reject_all":
-            ok = press_edit_action("reject_all")
+            ok = await cdp_actions.press_reject_all(bridge)
             return {"ok": ok, "error": None if ok else "button not available"}
 
         if job.action == "cancel":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = press_cancel_button(engine.ide.windows[0])
+            ok = await cdp_actions.press_cancel(bridge)
             return {"ok": ok, "error": None if ok else "cancel button not found"}
 
         if job.action == "select_model":
             model_name = job.params.get("model", "")
             if not model_name:
                 return {"ok": False, "error": "model name is required"}
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = select_model(engine.ide.windows[0], model_name, pc)
+            ok = await cdp_actions.select_model(bridge, model_name)
             return {"ok": ok}
 
         if job.action == "select_mode":
             mode_name = job.params.get("mode", "")
             if not mode_name:
                 return {"ok": False, "error": "mode name is required"}
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = select_mode(engine.ide.windows[0], mode_name, pc)
+            ok = await cdp_actions.select_mode(bridge, mode_name)
             return {"ok": ok}
 
         if job.action == "new_conversation":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = click_new_conversation(engine.ide.windows[0])
+            ok = await cdp_actions.click_new_conversation(bridge)
             return {"ok": ok}
 
         if job.action == "retry":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = press_retry_button(engine.ide.windows[0])
+            ok = await cdp_actions.press_retry(bridge)
             return {"ok": ok, "error": None if ok else "retry button not found"}
 
         if job.action == "dismiss_error":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = press_dismiss_button(engine.ide.windows[0])
+            ok = await cdp_actions.press_dismiss(bridge)
             return {"ok": ok, "error": None if ok else "dismiss button not found"}
 
         if job.action == "press_deny":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = press_button_by_exact_title(engine.ide.windows[0], "Deny")
+            ok = await cdp_actions.press_deny(bridge)
             return {"ok": ok, "error": None if ok else "Deny button not found"}
 
         if job.action == "press_allow":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = press_button_by_exact_title(engine.ide.windows[0], "Allow")
-            if not ok:
-                ok = press_button_by_exact_title(engine.ide.windows[0], "Allow Once")
+            ok = await cdp_actions.press_allow(bridge)
             return {"ok": ok, "error": None if ok else "Allow button not found"}
 
-        if job.action == "press_allow_workspace":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = press_permission_dropdown_item(engine.ide.windows[0], "Allow for Workspace", pc)
-            return {"ok": ok, "error": None if ok else "Allow for Workspace not found"}
-
-        if job.action == "press_allow_globally":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = press_permission_dropdown_item(engine.ide.windows[0], "Allow Globally", pc)
-            return {"ok": ok, "error": None if ok else "Allow Globally not found"}
-
-        if job.action == "press_run_sandbox":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = press_permission_dropdown_item(engine.ide.windows[0], "Run in sandbox", pc)
-            return {"ok": ok, "error": None if ok else "Run in sandbox not found"}
+        if job.action in ("press_allow_workspace", "press_allow_globally", "press_run_sandbox"):
+            item_map = {
+                "press_allow_workspace": "Allow for Workspace",
+                "press_allow_globally": "Allow Globally",
+                "press_run_sandbox": "Run in sandbox",
+            }
+            ok = await cdp_actions.press_permission_dropdown_item(
+                bridge, item_map[job.action]
+            )
+            error_msg = f"{item_map[job.action]} not found"
+            return {"ok": ok, "error": None if ok else error_msg}
 
         if job.action == "list_models":
             models_info = engine.store.get("models_info") or {}
             models = models_info.get("available_models", [])
             if not models:
-                # Cache empty — scrape once and cache
-                if not engine.ide.windows:
-                    return {"ok": False, "error": "no IDE windows"}
-                models = list_available_models(engine.ide.windows[0], pc)
+                models = await cdp_actions.list_available_models(bridge)
                 if models:
                     models_info["available_models"] = models
                     engine.store.update("models_info", models_info)
@@ -249,35 +212,47 @@ class InputQueue:
             models_info = engine.store.get("models_info") or {}
             modes = models_info.get("available_modes", [])
             if not modes:
-                # Cache empty — scrape once and cache
-                if not engine.ide.windows:
-                    return {"ok": False, "error": "no IDE windows"}
-                modes = list_available_modes(engine.ide.windows[0], pc)
+                modes = await cdp_actions.list_available_modes(bridge)
                 if modes:
                     models_info["available_modes"] = modes
                     engine.store.update("models_info", models_info)
             return {"ok": True, "modes": modes}
 
         if job.action == "list_conversations":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            convs = list_conversations(engine.ide.windows[0], pc)
+            convs = await cdp_actions.list_conversations(bridge)
             return {"ok": True, "conversations": convs}
 
         if job.action == "select_conversation":
             title = job.params.get("title", "")
             if not title:
                 return {"ok": False, "error": "title is required"}
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = select_conversation_by_title(engine.ide.windows[0], title, pc)
+            ok = await cdp_actions.select_conversation_by_title(bridge, title)
+            return {"ok": ok}
+
+        if job.action == "delete_conversation":
+            title = job.params.get("title", "")
+            if not title:
+                return {"ok": False, "error": "title is required"}
+            ok = await cdp_actions.delete_conversation(bridge, title)
+            if not ok:
+                return {"ok": False, "error": "delete icon not found"}
+            # Wait briefly for DOM update, then return refreshed list
+            await asyncio.sleep(0.3)
+            convs = await cdp_actions.list_conversations(bridge)
+            return {"ok": True, "conversations": convs}
+
+        if job.action == "expand_conversations":
+            await cdp_actions.expand_conversations(bridge)
+            convs = await cdp_actions.list_conversations(bridge)
+            return {"ok": True, "conversations": convs}
+
+        if job.action == "close_conversation_panel":
+            ok = await cdp_actions.close_conversation_panel(bridge)
             return {"ok": ok}
 
         if job.action == "refresh_models":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            models = list_available_models(engine.ide.windows[0], pc)
-            modes = list_available_modes(engine.ide.windows[0], pc)
+            models = await cdp_actions.list_available_models(bridge)
+            modes = await cdp_actions.list_available_modes(bridge)
             existing = engine.store.get("models_info") or {}
             existing["available_models"] = models
             existing["available_modes"] = modes
@@ -288,55 +263,50 @@ class InputQueue:
             index = job.params.get("message_index")
             if index is None:
                 return {"ok": False, "error": "message_index is required"}
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
 
-            # Pre-cache prompt via AX tree walk BEFORE pressing undo
-            cached_prompt = reconstruct_user_message_text(
-                engine.ide.windows[0], index,
-            )
-            self._undo_prompt_cache[job.workspace_id] = cached_prompt
+            # Pre-cache prompt provided straight from TUI widget state
+            prompt_text = job.params.get("prompt_text", "")
+            turn_idx = job.params.get("turn_idx", -1)
+            
+            self._undo_prompt_cache[job.workspace_id] = {
+                "prompt_text": prompt_text,
+                "turn_idx": turn_idx,
+            }
 
-            ok = press_undo_for_message(engine.ide.windows[0], index)
+            ok = await cdp_actions.press_undo_for_message(bridge, index)
             if not ok:
                 self._undo_prompt_cache.pop(job.workspace_id, None)
                 return {"ok": False, "error": "undo button not found"}
 
-            # Poll until IDE renders the Confirm Undo dialog
-            dialog_data = poll_until(
-                lambda: detect_confirm_undo_dialog(engine.ide.windows[0]),
-                pc,
-                label="undo_dialog",
-            )
-            return {"ok": True, "dialog": dialog_data}
+            # Wait for dialog (CDP: short sleep + check, no poll_until)
+            for _ in range(20):
+                dialog_data = await cdp_actions.detect_confirm_undo_dialog(bridge)
+                if dialog_data:
+                    return {"ok": True, "dialog": dialog_data}
+                await asyncio.sleep(0.1)
+            return {"ok": False, "error": "undo dialog not appeared"}
 
         if job.action == "confirm_undo":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
-            ok = press_confirm_undo(engine.ide.windows[0])
+            ok = await cdp_actions.press_confirm_undo(bridge)
             if not ok:
                 return {"ok": False, "error": "confirm button not found"}
 
-            # Poll until IDE completes undo (state returns to idle)
-            poll_until(
-                lambda: get_conversation_state(engine.ide.windows[0]) == "idle",
-                pc,
-                label="confirm_undo_idle",
-            )
+            cached_undo = self._undo_prompt_cache.pop(job.workspace_id, {})
+            restored_prompt = cached_undo.get("prompt_text", "")
+            turn_idx = cached_undo.get("turn_idx", -1)
 
-            # IDE restores the prompt right after returning to idle. Wait a bit, then clear it.
-            time.sleep(0.15)
-            clear_message_input(engine.ide.windows[0])
+            # Use pre-cached prompt and inject it back to IDE
+            if restored_prompt:
+                await cdp_actions.inject_advanced_prompt(bridge, restored_prompt)
+            else:
+                await cdp_actions.clear_message_input(bridge)
 
-            # Re-scrape conversation — included in response for instant TUI update
-            # NOTE: do NOT call engine.store.update here — let Engine poll
-            # handle it naturally to avoid hash collision
-            agent_data = collect_agent_panel(engine.ide.windows[0])
-
-            # Use pre-cached prompt (reconstructed with mention syntax)
-            restored_prompt = self._undo_prompt_cache.pop(
-                job.workspace_id, "",
-            )
+            # Manually truncate cache to instantly reflect deletion
+            if turn_idx >= 0 and engine:
+                agent_data = engine.truncate_turn_cache(turn_idx)
+            else:
+                from agbridge.collectors import dom_scraper
+                agent_data = await dom_scraper.collect_agent_panel(bridge)
 
             return {
                 "ok": True,
@@ -345,11 +315,55 @@ class InputQueue:
             }
 
         if job.action == "cancel_undo":
-            if not engine.ide.windows:
-                return {"ok": False, "error": "no IDE windows"}
             self._undo_prompt_cache.pop(job.workspace_id, None)
-            ok = press_cancel_undo(engine.ide.windows[0])
+            ok = await cdp_actions.press_cancel_undo(bridge)
             return {"ok": ok, "error": None if ok else "cancel button not found"}
+
+        if job.action == "scroll_conversation":
+            from agbridge.collectors import dom_scraper
+
+            direction = job.params.get("direction", "up")
+
+            # Get height map to calculate scroll target
+            height_map = await dom_scraper.get_conversation_height_map(bridge)
+            if not height_map:
+                return {"ok": False, "error": "no conversation container"}
+
+            # Get current active turn indices from fresh scrape
+            fresh = await dom_scraper.collect_agent_panel(bridge)
+            current_indices = sorted(set(
+                m["_ti"] for m in fresh.get("messages", [])
+                if "_ti" in m
+            ))
+
+            if not current_indices:
+                return {"ok": False, "error": "no active turns"}
+
+            # Calculate target index
+            if direction == "up":
+                target_idx = max(0, min(current_indices) - 3)
+            else:
+                target_idx = min(
+                    len(height_map) - 1, max(current_indices) + 3,
+                )
+
+            # Already at the boundary
+            if direction == "up" and min(current_indices) == 0:
+                return {"ok": True, "at_boundary": True}
+            if direction == "down" and max(current_indices) >= len(height_map) - 1:
+                return {"ok": True, "at_boundary": True}
+
+            target_scroll = height_map[target_idx]["scrollStart"]
+            ok = await dom_scraper.scroll_conversation_to(
+                bridge, target_scroll,
+            )
+            # MutationObserver will auto-fire → _on_dom_change("agent")
+            # → collect_agent_panel → _merge_turn_cache → push_event
+            return {"ok": ok}
+
+        if job.action == "clear_cache":
+            engine.clear_cache()
+            return {"ok": True}
 
         return {"ok": False, "error": f"unknown action: {job.action}"}
 
@@ -360,3 +374,45 @@ class InputQueue:
     def stop(self):
         """Signal the consumer loop to stop."""
         self._running = False
+
+
+# ── Module-level helpers ─────────────────────────────────
+
+_SENSITIVE_KEYS = frozenset({"token", "password", "secret", "api_key"})
+
+
+def _safe_params(params):
+    """Return params dict with sensitive values masked for logging."""
+    if not isinstance(params, dict):
+        return params
+    result = {}
+    for key, value in params.items():
+        if key in _SENSITIVE_KEYS:
+            result[key] = "***"
+        else:
+            result[key] = value
+    return result
+
+
+def _emit_job_diagnostic(job, engine, error, elapsed):
+    """Emit a diagnostic record for a failed job."""
+    from agbridge.diagnostics import get_recorder
+    import traceback
+
+    get_recorder().record(
+        "job_failed",
+        label=job.action,
+        job_context={
+            "action": job.action,
+            "params": job.params,
+            "workspace_id": job.workspace_id,
+        },
+        extra={
+            "error": str(error),
+            "error_type": type(error).__name__,
+            "traceback": traceback.format_exc(),
+            "elapsed_seconds": round(elapsed, 3),
+            "engine_state": engine.current_state,
+            "cdp_connected": engine.cdp.is_connected if engine.cdp else False,
+        },
+    )

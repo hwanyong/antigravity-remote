@@ -12,6 +12,7 @@ import logging
 import os
 import sys
 import time
+import traceback
 
 from textual.app import App, ComposeResult
 from textual.binding import Binding
@@ -42,6 +43,7 @@ from agbridge_tui.modals.text_viewer import TextViewerModal
 from agbridge_tui.modals.confirm_modal import ConfirmModal
 from agbridge_tui.modals.file_explorer_modal import FileExplorerModal
 from agbridge_tui.modals.select_modal import SelectModal
+from agbridge_tui.modals.conversation_modal import ConversationModal
 
 logger = logging.getLogger("agbridge_tui")
 
@@ -77,6 +79,7 @@ class AgbridgeTUI(App):
         self._cmd_results = []
         self._event_log = EventLogBuffer()
         self._pending_select = None
+        self._ws_initial_connect = True
 
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
@@ -142,6 +145,9 @@ class AgbridgeTUI(App):
 
     async def on_mount(self):
         """Initialize connection and start WS listener."""
+        # Initialize persistent HTTP client (connection pooling)
+        await self.conn.start()
+
         ws_list = self.query_one("#workspace-list", WorkspaceList)
 
         # Wire workspace list switch callback
@@ -170,7 +176,32 @@ class AgbridgeTUI(App):
         self._update_title()
 
         # Start WS connection in background
-        self.run_worker(self.conn.ws_connect())
+        self.run_worker(self.conn.ws_connect(), exit_on_error=False)
+
+    def on_worker_state_changed(self, event):
+        """Diagnostic: capture worker state transitions to log."""
+        from textual.worker import WorkerState
+        worker = event.worker
+        if event.state == WorkerState.ERROR:
+            tb = ""
+            if worker.error and worker.error.__traceback__:
+                tb = "".join(traceback.format_exception(
+                    type(worker.error), worker.error, worker.error.__traceback__,
+                ))
+            logger.error(
+                "DIAG: Worker '%s' crashed (state=%s)\n%s",
+                worker.name, event.state, tb,
+            )
+        elif event.state in (WorkerState.CANCELLED, WorkerState.SUCCESS):
+            logger.warning(
+                "DIAG: Worker '%s' ended (state=%s)",
+                worker.name, event.state,
+            )
+
+    async def on_unmount(self):
+        """Clean up persistent connections on app shutdown."""
+        logger.warning("DIAG: on_unmount called — TUI is shutting down")
+        await self.conn.close()
 
     # ── Result tracking ──────────────────────────────────────
 
@@ -253,105 +284,42 @@ class AgbridgeTUI(App):
         elif event_type == "UI_MODELS_UPDATE":
             agent.update_from_models(data)
 
-        elif event_type.endswith("_RESULT"):
-            self._event_log.log_result(event_type.replace("_RESULT", ""), data)
-            self._add_result(event_type.replace("_RESULT", ""), data)
+        elif event_type == "UI_CONV_STATE_CHANGE":
+            state = data.get("state", "") if data else ""
+            self._update_conversation_state(state)
 
-            if event_type == "CMD_FILE_READ_RESULT" and data and data.get("ok"):
-                self.push_screen(TextViewerModal(
-                    title="File Content",
-                    content=data.get("content", ""),
-                ))
+        elif event_type == "UI_CONV_SCAN_STATE":
+            scanning = data.get("scanning", False) if data else False
+            agent.set_scan_loading(scanning)
 
-            if event_type == "CMD_UNDO_TO_PROMPT_RESULT":
-                if data and data.get("ok"):
-                    dialog = data.get("dialog")
-                    if dialog:
-                        self._handle_confirm_undo_dialog(dialog, workspace_id)
+        elif event_type.endswith("_ACK"):
+            cmd = event_type.removesuffix("_ACK")
+            self._start_loading(cmd)
 
-            if event_type == "CMD_CONFIRM_UNDO_RESULT":
-                self._event_log.log_event("DEBUG_UNDO", {
-                    "ok": data.get("ok") if data else None,
-                    "has_agent_update": "agent_update" in data if data else False,
-                    "restored_prompt": repr((data.get("restored_prompt", "") or "")[:80]) if data else "N/A",
-                })
+        elif event_type.endswith("_DONE"):
+            cmd = event_type.removesuffix("_DONE")
+            self._stop_loading()
+            self._event_log.log_result(cmd, data)
+            self._add_result(cmd, data)
+            self._handle_command_done(event_type, data, workspace_id)
 
-                # Dismiss the processing modal if it's open
-                if getattr(self, "_active_confirm_modal", None):
-                    self._active_confirm_modal.dismiss(True)
-                    self._active_confirm_modal = None
-
-                if data and data.get("ok"):
-                    agent_update = data.get("agent_update")
-                    if agent_update:
-                        agent = self.query_one("#agent-panel", AgentPanel)
-                        agent.update_from_agent(agent_update)
-                        self._event_log.log_event("DEBUG_UNDO", {
-                            "step": "update_from_agent done",
-                            "msg_count": len(agent_update.get("messages", [])),
-                        })
-                    # Restore prompt to TUI input
-                    restored = data.get("restored_prompt", "")
-                    if restored:
-                        self._set_agent_input_text(restored)
-
-            if event_type == "CMD_GIT_OP_RESULT" and data:
-                stdout = data.get("stdout", "")
-                if stdout and len(stdout) > 100:
-                    self.push_screen(TextViewerModal(
-                        title="Git Output",
-                        content=stdout,
-                    ))
-
-            if event_type == "CMD_LIST_MODELS_RESULT":
-                self._handle_list_result(data, "model", "models")
-
-            if event_type == "CMD_LIST_MODES_RESULT":
-                self._handle_list_result(data, "mode", "modes")
-                
-            if event_type == "CMD_LIST_WORKFLOWS_RESULT":
-                pending = self._pending_select
-                if pending and pending["type"] == "workflow":
-                    self._pending_select = None
-                    if data and data.get("ok"):
-                        wfs = data.get("workflows", [])
-                        def on_selected(selected_name):
-                            if selected_name:
-                                self._inject_into_agent_input(f"@[/{selected_name}]", replace_char="/")
-                        self.push_screen(
-                            SelectModal(
-                                title="Select Workflow",
-                                items=wfs,
-                            ),
-                            on_selected,
-                        )
-
-            if event_type == "CMD_LIST_CONVERSATIONS_RESULT":
-                pending = self._pending_select
-                if pending and pending["type"] == "conversation":
-                    ws_id = pending["ws_id"]
-                    self._pending_select = None
-                    if data and data.get("ok"):
-                        convs = data.get("conversations", [])
-                        def on_conv_selected(selected_title):
-                            if selected_title:
-                                self.run_worker(self.conn.ws_send_command(
-                                    ws_id, "CMD_SELECT_CONVERSATION",
-                                    {"title": selected_title},
-                                ))
-                        self.push_screen(
-                            SelectModal(
-                                title="Past Conversations",
-                                items=convs,
-                            ),
-                            on_conv_selected,
-                        )
+        elif event_type.endswith("_FAIL"):
+            cmd = event_type.removesuffix("_FAIL")
+            self._stop_loading()
+            self._event_log.log_result(cmd, data)
+            self._add_result(cmd, data)
 
     async def _on_conn_state_change(self, state):
         """Handle connection state changes."""
         self.sub_title = state.upper()
 
         if state == "connected":
+            # Skip refresh on initial connect — on_mount already did it
+            if self._ws_initial_connect:
+                self._ws_initial_connect = False
+                return
+
+            # Reconnection — resync workspace list
             try:
                 await self.ws_mgr.refresh_list()
                 self._update_workspace_list()
@@ -596,6 +564,13 @@ class AgbridgeTUI(App):
             return
         await self.conn.ws_send_command(ws_id, "CMD_REFRESH_MODELS")
 
+    async def action_cmd_clear_cache(self):
+        """CMD_CLEAR_CACHE via WS — clear conversation turn cache."""
+        ws_id = self.ws_mgr.active_id
+        if not ws_id:
+            return
+        await self.conn.ws_send_command(ws_id, "CMD_CLEAR_CACHE")
+
     async def action_cmd_git_status(self):
         """CMD_GIT_OP status via WS."""
         ws_id = self.ws_mgr.active_id
@@ -754,7 +729,7 @@ class AgbridgeTUI(App):
         ws_id = self.ws_mgr.active_id
         if not ws_id:
             return
-        # Store pending context — modal opens when CMD_LIST_MODELS_RESULT arrives
+        # Store pending context — modal opens when CMD_LIST_MODELS_DONE arrives
         self._pending_select = {
             "type": "model",
             "ws_id": ws_id,
@@ -803,7 +778,11 @@ class AgbridgeTUI(App):
             return
         self.run_worker(self.conn.ws_send_command(
             ws_id, "CMD_UNDO_TO_PROMPT",
-            {"message_index": event.message_index},
+            {
+                "message_index": event.message_index,
+                "turn_idx": event.turn_idx,
+                "prompt_text": event.prompt_text,
+            },
         ))
 
     def on_agent_panel_select_mention_request(self, event: AgentPanel.SelectMentionRequest):
@@ -863,7 +842,7 @@ class AgbridgeTUI(App):
     def _handle_confirm_undo_dialog(self, data, workspace_id):
         """Handle Confirm Undo dialog — show ConfirmModal in TUI.
 
-        Called from both CMD_UNDO_TO_PROMPT_RESULT (instant) and
+        Called from both CMD_UNDO_TO_PROMPT_DONE (instant) and
         UI_CONFIRM_UNDO_DIALOG (polling fallback). Guard prevents
         duplicate modals.
         """
@@ -884,7 +863,7 @@ class AgbridgeTUI(App):
         description = data.get("description", "")
         file_changes = data.get("file_changes", [])
 
-        msg_parts = ["Confirm Undo\n"]
+        msg_parts = []
         if description:
             msg_parts.append(description)
         if file_changes:
@@ -944,8 +923,177 @@ class AgbridgeTUI(App):
             "ta_text": repr(ta.text[:80]),
         })
 
+    # ── Event lifecycle handlers ───────────────────────────────
+
+    def _handle_command_done(self, event_type, data, workspace_id):
+        """Dispatch command-specific logic on DONE events.
+
+        Migrated from the former _RESULT handler block.
+        """
+        if event_type == "CMD_FILE_READ_DONE" and data and data.get("ok"):
+            self.push_screen(TextViewerModal(
+                title="File Content",
+                content=data.get("content", ""),
+            ))
+
+        if event_type == "CMD_UNDO_TO_PROMPT_DONE":
+            if data and data.get("ok"):
+                dialog = data.get("dialog")
+                if dialog:
+                    self._handle_confirm_undo_dialog(dialog, workspace_id)
+
+        if event_type == "CMD_CONFIRM_UNDO_DONE":
+            self._event_log.log_event("DEBUG_UNDO", {
+                "ok": data.get("ok") if data else None,
+                "has_agent_update": "agent_update" in data if data else False,
+                "restored_prompt": repr((data.get("restored_prompt", "") or "")[:80]) if data else "N/A",
+            })
+
+            # Dismiss the processing modal if it's open
+            if getattr(self, "_active_confirm_modal", None):
+                self._active_confirm_modal.dismiss(True)
+                self._active_confirm_modal = None
+
+            if data and data.get("ok"):
+                agent_update = data.get("agent_update")
+                if agent_update:
+                    agent = self.query_one("#agent-panel", AgentPanel)
+                    agent.update_from_agent(agent_update)
+                    self._event_log.log_event("DEBUG_UNDO", {
+                        "step": "update_from_agent done",
+                        "msg_count": len(agent_update.get("messages", [])),
+                    })
+                # Restore prompt to TUI input
+                restored = data.get("restored_prompt", "")
+                if restored:
+                    self._set_agent_input_text(restored)
+
+        if event_type == "CMD_GIT_OP_DONE" and data:
+            stdout = data.get("stdout", "")
+            if stdout and len(stdout) > 100:
+                self.push_screen(TextViewerModal(
+                    title="Git Output",
+                    content=stdout,
+                ))
+
+        if event_type == "CMD_LIST_MODELS_DONE":
+            self._handle_list_result(data, "model", "models")
+
+        if event_type == "CMD_LIST_MODES_DONE":
+            self._handle_list_result(data, "mode", "modes")
+
+        if event_type == "CMD_LIST_WORKFLOWS_DONE":
+            pending = self._pending_select
+            if pending and pending["type"] == "workflow":
+                self._pending_select = None
+                if data and data.get("ok"):
+                    wfs = data.get("workflows", [])
+                    def on_selected(selected_name):
+                        if selected_name:
+                            self._inject_into_agent_input(f"@[/{selected_name}]", replace_char="/")
+                    self.push_screen(
+                        SelectModal(
+                            title="Select Workflow",
+                            items=wfs,
+                        ),
+                        on_selected,
+                    )
+
+        if event_type == "CMD_LIST_CONVERSATIONS_DONE":
+            pending = self._pending_select
+            if pending and pending["type"] == "conversation":
+                ws_id = pending["ws_id"]
+                self._pending_select = None
+                if data and data.get("ok"):
+                    convs = data.get("conversations", [])
+                    self._show_conversation_modal(ws_id, convs)
+
+        if event_type == "CMD_DELETE_CONVERSATION_DONE":
+            if data and data.get("ok"):
+                # Refresh the conversation modal if still open
+                convs = data.get("conversations", [])
+                try:
+                    modal = self.screen
+                    if isinstance(modal, ConversationModal):
+                        modal.update_conversations(convs)
+                except Exception:
+                    pass
+
+        if event_type == "CMD_EXPAND_CONVERSATIONS_DONE":
+            if data and data.get("ok"):
+                convs = data.get("conversations", [])
+                ws_id = getattr(self, "_pending_expand_ws_id", None)
+                if ws_id and convs:
+                    self._show_conversation_modal(ws_id, convs)
+                self._pending_expand_ws_id = None
+
+    def _show_conversation_modal(self, ws_id, convs):
+        """Display ConversationModal with select + delete + expand support."""
+        def on_result(result):
+            if not result:
+                # Dismissed (ESC / click outside) — close IDE panel too
+                self.run_worker(self.conn.ws_send_command(
+                    ws_id, "CMD_CLOSE_CONVERSATION_PANEL",
+                ))
+                return
+            action, value = result
+            if action == "select":
+                self.run_worker(self.conn.ws_send_command(
+                    ws_id, "CMD_SELECT_CONVERSATION",
+                    {"title": value},
+                ))
+                # Selection navigates away — close panel
+                self.run_worker(self.conn.ws_send_command(
+                    ws_id, "CMD_CLOSE_CONVERSATION_PANEL",
+                ))
+            elif action == "delete":
+                # Confirm before deleting
+                def on_confirm(confirmed):
+                    if confirmed:
+                        self.run_worker(self.conn.ws_send_command(
+                            ws_id, "CMD_DELETE_CONVERSATION",
+                            {"title": value},
+                        ))
+                    else:
+                        # Re-open the conversation modal
+                        self._show_conversation_modal(ws_id, convs)
+
+                self.push_screen(
+                    ConfirmModal(
+                        title="Delete Conversation",
+                        message=f"Delete '{value}'?",
+                    ),
+                    on_confirm,
+                )
+            elif action == "show_more":
+                # Store ws_id for the DONE handler to re-open modal
+                self._pending_expand_ws_id = ws_id
+                self.run_worker(self.conn.ws_send_command(
+                    ws_id, "CMD_EXPAND_CONVERSATIONS", {},
+                ))
+
+        self.push_screen(
+            ConversationModal(
+                conversations=convs,
+                on_delete=True,
+            ),
+            on_result,
+        )
+
+    def _start_loading(self, cmd):
+        """Start loading state for a command. Called on ACK receipt."""
+        self._event_log.log_event("LOADING_START", {"cmd": cmd})
+
+    def _stop_loading(self):
+        """Stop loading state. Called on DONE/FAIL receipt."""
+        self._event_log.log_event("LOADING_STOP", {})
+
+    def _update_conversation_state(self, state):
+        """Handle AI conversation state change (generating/idle)."""
+        self._event_log.log_event("CONV_STATE", {"state": state})
+
     def _handle_list_result(self, data, select_type, items_key):
-        """Handle CMD_LIST_MODELS_RESULT or CMD_LIST_MODES_RESULT."""
+        """Handle CMD_LIST_MODELS_DONE or CMD_LIST_MODES_DONE."""
         pending = self._pending_select
         if not pending or pending["type"] != select_type:
             return
@@ -1084,12 +1232,45 @@ def main():
         filemode="a",
     )
 
+    diag_logger = logging.getLogger("agbridge_tui.diag")
+
+    # Diagnostic: capture unhandled exceptions at process level
+    _original_excepthook = sys.excepthook
+    def _diag_excepthook(exc_type, exc_value, exc_tb):
+        tb = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
+        diag_logger.critical("DIAG: Unhandled exception at process level:\n%s", tb)
+        _original_excepthook(exc_type, exc_value, exc_tb)
+    sys.excepthook = _diag_excepthook
+
+    # Diagnostic: capture unhandled asyncio task exceptions
+    def _diag_asyncio_handler(loop, context):
+        exc = context.get("exception")
+        msg = context.get("message", "")
+        if exc:
+            tb = "".join(traceback.format_exception(type(exc), exc, exc.__traceback__))
+            diag_logger.critical(
+                "DIAG: Unhandled asyncio exception: %s\n%s", msg, tb,
+            )
+        else:
+            diag_logger.critical("DIAG: Asyncio error: %s", msg)
+
     conn = Connection(host=args.host, port=args.port, token=args.token)
     if not args.token:
         conn.load_token()
 
     app = AgbridgeTUI(conn)
+
+    # Install asyncio handler after Textual starts its loop
+    _original_on_mount = app.on_mount
+    async def _patched_on_mount():
+        loop = asyncio.get_running_loop()
+        loop.set_exception_handler(_diag_asyncio_handler)
+        await _original_on_mount()
+    app.on_mount = _patched_on_mount
+
+    diag_logger.warning("DIAG: TUI starting")
     app.run()
+    diag_logger.warning("DIAG: TUI exited normally (app.run() returned)")
 
 
 if __name__ == "__main__":

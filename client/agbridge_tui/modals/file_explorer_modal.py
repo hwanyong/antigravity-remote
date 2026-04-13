@@ -74,11 +74,15 @@ class FileExplorerModal(ModalScreen[str]):
         margin-bottom: 1;
     }
     FileExplorerModal Horizontal {
-        align: right middle;
-        height: 3;
+        layout: horizontal;
+        align: center middle;
+        height: auto;
+        min-height: 3;
     }
     FileExplorerModal Button {
-        margin-left: 1;
+        width: 1fr;
+        min-width: 8;
+        margin: 0 1;
     }
     """
 

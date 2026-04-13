@@ -55,6 +55,7 @@ AGENT_MENU_ITEMS = [
     _item("Dismiss Error", id="cmd_dismiss_error"),
     None,
     _item("Refresh Models", id="cmd_refresh_models"),
+    _item("Clear Conv. Cache", id="cmd_clear_cache"),
 ]
 
 GIT_MENU_ITEMS = [
