@@ -604,6 +604,17 @@ class AgbridgeTUI(App):
             on_result,
         )
 
+    # ── Explorer Event Handlers ───────────────────────────────
+
+    def on_explorer_file_selected(self, event: Explorer.FileSelected):
+        event.stop()
+        ws_id = self.ws_mgr.active_id
+        if not ws_id:
+            return
+        self.run_worker(self.conn.ws_send_command(
+            ws_id, "CMD_FILE_READ_DIFF", {"path": event.path}
+        ))
+
     # ── AgentPanel Event Handlers ─────────────────────────────
 
     def on_agent_panel_prompt_submit_request(self, event: AgentPanel.PromptSubmitRequest):
@@ -1012,6 +1023,28 @@ class AgbridgeTUI(App):
             self.push_screen(TextViewerModal(
                 title="File Content",
                 content=data.get("content", ""),
+            ))
+
+        if event_type == "CMD_FILE_READ_DIFF_DONE" and data and data.get("ok"):
+            from pathlib import Path
+            path_str = data.get("path", "")
+            lang = None
+            if data.get("is_diff"):
+                lang = "diff"
+            else:
+                ext = Path(path_str).suffix.lower()
+                lang_map = {
+                    ".py": "python", ".js": "javascript", ".ts": "typescript",
+                    ".html": "html", ".css": "css", ".json": "json", 
+                    ".md": "markdown", ".yaml": "yaml", ".yml": "yaml", 
+                    ".sh": "bash", ".cpp": "cpp", ".c": "c", ".h": "c",
+                }
+                lang = lang_map.get(ext)
+
+            self.push_screen(TextViewerModal(
+                title=f"File: {path_str}",
+                content=data.get("content", ""),
+                language=lang,
             ))
 
         if event_type == "CMD_UNDO_TO_PROMPT_DONE":

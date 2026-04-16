@@ -11,10 +11,17 @@ This module converts it to a NESTED tree before rendering.
 """
 
 from textual.widgets import Static, Tree
+from textual.message import Message
 
 
 class Explorer(Static):
     """File system explorer with Git status markers."""
+
+    class FileSelected(Message):
+        """Emitted when a file node is selected."""
+        def __init__(self, path: str):
+            super().__init__()
+            self.path = path
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -137,7 +144,7 @@ class Explorer(Static):
 
         # Convert flat → nested, then render
         nested = self._flat_to_nested(flat_tree)
-        self._add_nodes(tree.root, nested)
+        self._add_nodes(tree.root, nested, "")
         tree.root.expand()
 
     @staticmethod
@@ -179,7 +186,7 @@ class Explorer(Static):
 
         return root
 
-    def _add_nodes(self, parent, tree_dict):
+    def _add_nodes(self, parent, tree_dict, current_path):
         """Recursively add nodes from the nested tree dict."""
         if not isinstance(tree_dict, dict):
             return
@@ -190,19 +197,27 @@ class Explorer(Static):
             return (0 if is_dir else 1, name)
 
         for name, value in sorted(tree_dict.items(), key=sort_key):
-
+            
+            node_path = f"{current_path}/{name}" if current_path else name
             marker = self._git_marker(name)
             label = f"{name} {marker}" if marker else name
 
             if isinstance(value, dict) and "type" in value:
                 # File metadata leaf: {"type": "file", "size": ...}
-                parent.add_leaf(f"📄 {label}")
+                parent.add_leaf(f"📄 {label}", data={"path": node_path})
             elif isinstance(value, dict):
                 # Directory container: children dict
                 node = parent.add(f"📂 {label}", expand=False)
-                self._add_nodes(node, value)
+                self._add_nodes(node, value, node_path)
             else:
-                parent.add_leaf(f"📄 {label}")
+                parent.add_leaf(f"📄 {label}", data={"path": node_path})
+
+    def on_tree_node_selected(self, event: Tree.NodeSelected):
+        """Handle tree node selection."""
+        if getattr(event.node, "data", None) and isinstance(event.node.data, dict):
+            path = event.node.data.get("path")
+            if path:
+                self.post_message(self.FileSelected(path))
 
     def _git_marker(self, filename):
         """Return git status marker for a file."""

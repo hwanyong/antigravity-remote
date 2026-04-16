@@ -44,16 +44,18 @@ class TextViewerModal(ModalScreen):
         ("q", "dismiss_modal", "Close"),
     ]
 
-    def __init__(self, title="", content="", **kwargs):
+    def __init__(self, title="", content="", language=None, **kwargs):
         super().__init__(**kwargs)
         self._title = title
         self._content = content
+        self._language = language
 
     def compose(self) -> ComposeResult:
         with Vertical(id="dialog"):
             yield Label(f"  📄 {self._title}    [dim][q/Esc] Close[/]")
             yield TextArea(
                 self._content,
+                language=self._language,
                 read_only=True,
                 show_line_numbers=True,
                 id="viewer-text",

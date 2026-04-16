@@ -1,0 +1,3130 @@
+Help on class TextArea in module textual.widgets._text_area:
+
+class TextArea(textual.scroll_view.ScrollView)
+ |  TextArea(
+ |      text: str = '',
+ |      *,
+ |      language: str | None = None,
+ |      theme: str = 'css',
+ |      soft_wrap: bool = True,
+ |      tab_behavior: Literal['focus', 'indent'] = 'focus',
+ |      read_only: bool = False,
+ |      show_cursor: bool = True,
+ |      show_line_numbers: bool = False,
+ |      line_number_start: int = 1,
+ |      max_checkpoints: int = 50,
+ |      name: str | None = None,
+ |      id: str | None = None,
+ |      classes: str | None = None,
+ |      disabled: bool = False,
+ |      tooltip: RenderableType | None = None,
+ |      compact: bool = False,
+ |      highlight_cursor_line: bool = True,
+ |      placeholder: str | Content = ''
+ |  ) -> None
+ |
+ |  Method resolution order:
+ |      TextArea
+ |      textual.scroll_view.ScrollView
+ |      textual.containers.ScrollableContainer
+ |      textual.widget.Widget
+ |      textual.dom.DOMNode
+ |      textual.message_pump.MessagePump
+ |      builtins.object
+ |
+ |  Methods defined here:
+ |
+ |  __init__(
+ |      self,
+ |      text: str = '',
+ |      *,
+ |      language: str | None = None,
+ |      theme: str = 'css',
+ |      soft_wrap: bool = True,
+ |      tab_behavior: Literal['focus', 'indent'] = 'focus',
+ |      read_only: bool = False,
+ |      show_cursor: bool = True,
+ |      show_line_numbers: bool = False,
+ |      line_number_start: int = 1,
+ |      max_checkpoints: int = 50,
+ |      name: str | None = None,
+ |      id: str | None = None,
+ |      classes: str | None = None,
+ |      disabled: bool = False,
+ |      tooltip: RenderableType | None = None,
+ |      compact: bool = False,
+ |      highlight_cursor_line: bool = True,
+ |      placeholder: str | Content = ''
+ |  ) -> None
+ |      Construct a new `TextArea`.
+ |
+ |      Args:
+ |          text: The initial text to load into the TextArea.
+ |          language: The language to use.
+ |          theme: The theme to use.
+ |          soft_wrap: Enable soft wrapping.
+ |          tab_behavior: If 'focus', pressing tab will switch focus. If 'indent', pressing tab will insert a tab.
+ |          read_only: Enable read-only mode. This prevents edits using the keyboard.
+ |          show_cursor: Show the cursor in read only mode (no effect otherwise).
+ |          show_line_numbers: Show line numbers on the left edge.
+ |          line_number_start: What line number to start on.
+ |          max_checkpoints: The maximum number of undo history checkpoints to retain.
+ |          name: The name of the `TextArea` widget.
+ |          id: The ID of the widget, used to refer to it from Textual CSS.
+ |          classes: One or more Textual CSS compatible class names separated by spaces.
+ |          disabled: True if the widget is disabled.
+ |          tooltip: Optional tooltip.
+ |          compact: Enable compact style (without borders).
+ |          highlight_cursor_line: Highlight the line under the cursor.
+ |          placeholder: Text to display when there is not content.
+ |
+ |  action_copy(self) -> None
+ |      Copy selection to clipboard.
+ |
+ |  action_cursor_down(self, select: bool = False) -> None
+ |      Move the cursor down one cell.
+ |
+ |      Args:
+ |          select: If True, select the text while moving.
+ |
+ |  action_cursor_left(self, select: bool = False) -> None
+ |      Move the cursor one location to the left.
+ |
+ |      If the cursor is at the left edge of the document, try to move it to
+ |      the end of the previous line.
+ |
+ |      If text is selected, move the cursor to the start of the selection.
+ |
+ |      Args:
+ |          select: If True, select the text while moving.
+ |
+ |  action_cursor_line_end(self, select: bool = False) -> None
+ |      Move the cursor to the end of the line.
+ |
+ |  action_cursor_line_start(self, select: bool = False) -> None
+ |      Move the cursor to the start of the line.
+ |
+ |  action_cursor_page_down(self) -> None
+ |      Move the cursor and scroll down one page.
+ |
+ |  action_cursor_page_up(self) -> None
+ |      Move the cursor and scroll up one page.
+ |
+ |  action_cursor_right(self, select: bool = False) -> None
+ |      Move the cursor one location to the right.
+ |
+ |      If the cursor is at the end of a line, attempt to go to the start of the next line.
+ |
+ |      If text is selected, move the cursor to the end of the selection.
+ |
+ |      Args:
+ |          select: If True, select the text while moving.
+ |
+ |  action_cursor_up(self, select: bool = False) -> None
+ |      Move the cursor up one cell.
+ |
+ |      Args:
+ |          select: If True, select the text while moving.
+ |
+ |  action_cursor_word_left(self, select: bool = False) -> None
+ |      Move the cursor left by a single word, skipping trailing whitespace.
+ |
+ |      Args:
+ |          select: Whether to select while moving the cursor.
+ |
+ |  action_cursor_word_right(self, select: bool = False) -> None
+ |      Move the cursor right by a single word, skipping leading whitespace.
+ |
+ |  action_cut(self) -> None
+ |      Cut text (remove and copy to clipboard).
+ |
+ |  action_delete_left(self) -> None
+ |      Deletes the character to the left of the cursor and updates the cursor location.
+ |
+ |      If there's a selection, then the selected range is deleted.
+ |
+ |  action_delete_line(self) -> None
+ |      Deletes the lines which intersect with the selection.
+ |
+ |  action_delete_right(self) -> None
+ |      Deletes the character to the right of the cursor and keeps the cursor at the same location.
+ |
+ |      If there's a selection, then the selected range is deleted.
+ |
+ |  action_delete_to_end_of_line(self) -> None
+ |      Deletes from the cursor location to the end of the line.
+ |
+ |  async action_delete_to_end_of_line_or_delete_line(self) -> None
+ |      Deletes from the cursor location to the end of the line, or deletes the line.
+ |
+ |      The line will be deleted if the line is empty.
+ |
+ |  action_delete_to_start_of_line(self) -> None
+ |      Deletes from the cursor location to the start of the line.
+ |
+ |  action_delete_word_left(self) -> None
+ |      Deletes the word to the left of the cursor and updates the cursor location.
+ |
+ |  action_delete_word_right(self) -> None
+ |      Deletes the word to the right of the cursor and keeps the cursor at the same location.
+ |
+ |      Note that the location that we delete to using this action is not the same
+ |      as the location we move to when we move the cursor one word to the right.
+ |      This action does not skip leading whitespace, whereas cursor movement does.
+ |
+ |  action_paste(self) -> None
+ |      Paste from local clipboard.
+ |
+ |  action_redo(self) -> None
+ |      Redo the most recently undone batch of edits.
+ |
+ |  action_select_all(self) -> None
+ |      Select all the text in the document.
+ |
+ |  action_select_line(self) -> None
+ |      Select all the text on the current line.
+ |
+ |  action_undo(self) -> None
+ |      Undo the edits since the last checkpoint (the most recent batch of edits).
+ |
+ |  cell_width_to_column_index(self, cell_width: int, row_index: int) -> int
+ |      Return the column that the cell width corresponds to on the given row.
+ |
+ |      Args:
+ |          cell_width: The cell width to convert.
+ |          row_index: The index of the row to examine.
+ |
+ |      Returns:
+ |          The column corresponding to the cell width on that row.
+ |
+ |  check_consume_key(self, key: str, character: str | None = None) -> bool
+ |      Check if the widget may consume the given key.
+ |
+ |      As a textarea we are expecting to capture printable keys.
+ |
+ |      Args:
+ |          key: A key identifier.
+ |          character: A character associated with the key, or `None` if there isn't one.
+ |
+ |      Returns:
+ |          `True` if the widget may capture the key in its `Key` message, or `False` if it won't.
+ |
+ |  clamp_visitable(self, location: Location) -> Location
+ |      Clamp the given location to the nearest visitable location.
+ |
+ |      Args:
+ |          location: The location to clamp.
+ |
+ |      Returns:
+ |          The nearest location that we could conceivably navigate to using the cursor.
+ |
+ |  clear(self) -> EditResult
+ |      Delete all text from the document.
+ |
+ |      Returns:
+ |          An EditResult relating to the deletion of all content.
+ |
+ |  delete(
+ |      self,
+ |      start: Location,
+ |      end: Location,
+ |      *,
+ |      maintain_selection_offset: bool = True
+ |  ) -> EditResult
+ |      Delete the text between two locations in the document.
+ |
+ |      Args:
+ |          start: The start location.
+ |          end: The end location.
+ |          maintain_selection_offset: If True, the active Selection will be updated
+ |              such that the same text is selected before and after the selection,
+ |              if possible. Otherwise, the cursor will jump to the end point of the
+ |              edit.
+ |
+ |      Returns:
+ |          An `EditResult` containing information about the edit.
+ |
+ |  edit(self, edit: Edit) -> EditResult
+ |      Perform an Edit.
+ |
+ |      Args:
+ |          edit: The Edit to perform.
+ |
+ |      Returns:
+ |          Data relating to the edit that may be useful. The data returned
+ |          may be different depending on the edit performed.
+ |
+ |  find_matching_bracket(self, bracket: str, search_from: Location) -> Location | None
+ |      If the character is a bracket, find the matching bracket.
+ |
+ |      Args:
+ |          bracket: The character we're searching for the matching bracket of.
+ |          search_from: The location to start the search.
+ |
+ |      Returns:
+ |          The `Location` of the matching bracket, or `None` if it's not found.
+ |          If the character is not available for bracket matching, `None` is returned.
+ |
+ |  get_column_width(self, row: int, column: int) -> int
+ |      Get the cell offset of the column from the start of the row.
+ |
+ |      Args:
+ |          row: The row index.
+ |          column: The column index (codepoint offset from start of row).
+ |
+ |      Returns:
+ |          The cell width of the column relative to the start of the row.
+ |
+ |  get_cursor_down_location(self) -> Location
+ |      Get the location the cursor will move to if it moves down.
+ |
+ |      Returns:
+ |          The location the cursor will move to if it moves down.
+ |
+ |  get_cursor_left_location(self) -> Location
+ |      Get the location the cursor will move to if it moves left.
+ |
+ |      Returns:
+ |          The location of the cursor if it moves left.
+ |
+ |  get_cursor_line_end_location(self) -> Location
+ |      Get the location of the end of the current line.
+ |
+ |      Returns:
+ |          The (row, column) location of the end of the cursors current line.
+ |
+ |  get_cursor_line_start_location(self, smart_home: bool = False) -> Location
+ |      Get the location of the start of the current line.
+ |
+ |      Args:
+ |          smart_home: If True, use "smart home key" behavior - go to the first
+ |              non-whitespace character on the line, and if already there, go to
+ |              offset 0. Smart home only works when wrapping is disabled.
+ |
+ |      Returns:
+ |          The (row, column) location of the start of the cursors current line.
+ |
+ |  get_cursor_right_location(self) -> Location
+ |      Get the location the cursor will move to if it moves right.
+ |
+ |      Returns:
+ |          the location the cursor will move to if it moves right.
+ |
+ |  get_cursor_up_location(self) -> Location
+ |      Get the location the cursor will move to if it moves up.
+ |
+ |      Returns:
+ |          The location the cursor will move to if it moves up.
+ |
+ |  get_cursor_word_left_location(self) -> Location
+ |      Get the location the cursor will jump to if it goes 1 word left.
+ |
+ |      Returns:
+ |          The location the cursor will jump on "jump word left".
+ |
+ |  get_cursor_word_right_location(self) -> Location
+ |      Get the location the cursor will jump to if it goes 1 word right.
+ |
+ |      Returns:
+ |          The location the cursor will jump on "jump word right".
+ |
+ |  get_line(self, line_index: int) -> Text
+ |      Retrieve the line at the given line index.
+ |
+ |      You can stylize the Text object returned here to apply additional
+ |      styling to TextArea content.
+ |
+ |      Args:
+ |          line_index: The index of the line.
+ |
+ |      Returns:
+ |          A `rich.Text` object containing the requested line.
+ |
+ |  get_target_document_location(self, event: MouseEvent) -> Location
+ |      Given a MouseEvent, return the row and column offset of the event in document-space.
+ |
+ |      Args:
+ |          event: The MouseEvent.
+ |
+ |      Returns:
+ |          The location of the mouse event within the document.
+ |
+ |  get_text_range(self, start: Location, end: Location) -> str
+ |      Get the text between a start and end location.
+ |
+ |      Args:
+ |          start: The start location.
+ |          end: The end location.
+ |
+ |      Returns:
+ |          The text between start and end.
+ |
+ |  insert(
+ |      self,
+ |      text: str,
+ |      location: Location | None = None,
+ |      *,
+ |      maintain_selection_offset: bool = True
+ |  ) -> EditResult
+ |      Insert text into the document.
+ |
+ |      Args:
+ |          text: The text to insert.
+ |          location: The location to insert text, or None to use the cursor location.
+ |          maintain_selection_offset: If True, the active Selection will be updated
+ |              such that the same text is selected before and after the selection,
+ |              if possible. Otherwise, the cursor will jump to the end point of the
+ |              edit.
+ |
+ |      Returns:
+ |          An `EditResult` containing information about the edit.
+ |
+ |  load_text(self, text: str) -> None
+ |      Load text into the TextArea.
+ |
+ |      This will replace the text currently in the TextArea and clear the edit history.
+ |
+ |      Args:
+ |          text: The text to load into the TextArea.
+ |
+ |  move_cursor(
+ |      self,
+ |      location: Location,
+ |      select: bool = False,
+ |      center: bool = False,
+ |      record_width: bool = True
+ |  ) -> None
+ |      Move the cursor to a location.
+ |
+ |      Args:
+ |          location: The location to move the cursor to.
+ |          select: If True, select text between the old and new location.
+ |          center: If True, scroll such that the cursor is centered.
+ |          record_width: If True, record the cursor column cell width after navigating
+ |              so that we jump back to the same width the next time we move to a row
+ |              that is wide enough.
+ |
+ |  move_cursor_relative(
+ |      self,
+ |      rows: int = 0,
+ |      columns: int = 0,
+ |      select: bool = False,
+ |      center: bool = False,
+ |      record_width: bool = True
+ |  ) -> None
+ |      Move the cursor relative to its current location in document-space.
+ |
+ |      Args:
+ |          rows: The number of rows to move down by (negative to move up)
+ |          columns:  The number of columns to move right by (negative to move left)
+ |          select: If True, select text between the old and new location.
+ |          center: If True, scroll such that the cursor is centered.
+ |          record_width: If True, record the cursor column cell width after navigating
+ |              so that we jump back to the same width the next time we move to a row
+ |              that is wide enough.
+ |
+ |  notify_style_update(self) -> None
+ |      Called after styles are updated.
+ |
+ |      Implement this in a subclass if you want to clear any cached data when the CSS is reloaded.
+ |
+ |  record_cursor_width(self) -> None
+ |      Record the current cell width of the cursor.
+ |
+ |      This is used where we navigate up and down through rows.
+ |      If we're in the middle of a row, and go down to a row with no
+ |      content, then we go down to another row, we want our cursor to
+ |      jump back to the same offset that we were originally at.
+ |
+ |  redo(self) -> None
+ |      Redo the most recently undone batch of edits.
+ |
+ |  register_language(self, name: str, language: 'Language', highlight_query: str) -> None
+ |      Register a language and corresponding highlight query.
+ |
+ |      Calling this method does not change the language of the `TextArea`.
+ |      On switching to this language (via the `language` reactive attribute),
+ |      syntax highlighting will be performed using the given highlight query.
+ |
+ |      If a string `name` is supplied for a builtin supported language, then
+ |      this method will update the default highlight query for that language.
+ |
+ |      Registering a language only registers it to this instance of `TextArea`.
+ |
+ |      Args:
+ |          name: The name of the language.
+ |          language: A tree-sitter `Language` object.
+ |          highlight_query: The highlight query to use for syntax highlighting this language.
+ |
+ |  register_theme(self, theme: TextAreaTheme) -> None
+ |      Register a theme for use by the `TextArea`.
+ |
+ |      After registering a theme, you can set themes by assigning the theme
+ |      name to the `TextArea.theme` reactive attribute. For example
+ |      `text_area.theme = "my_custom_theme"` where `"my_custom_theme"` is the
+ |      name of the theme you registered.
+ |
+ |      If you supply a theme with a name that already exists that theme
+ |      will be overwritten.
+ |
+ |  render_line(self, y: int) -> Strip
+ |      Render a single line of the TextArea. Called by Textual.
+ |
+ |      Args:
+ |          y: Y Coordinate of line relative to the widget region.
+ |
+ |      Returns:
+ |          A rendered line.
+ |
+ |  render_lines(self, crop: Region) -> list[Strip]
+ |      Render the widget into lines.
+ |
+ |      Args:
+ |          crop: Region within visible area to render.
+ |
+ |      Returns:
+ |          A list of list of segments.
+ |
+ |  replace(
+ |      self,
+ |      insert: str,
+ |      start: Location,
+ |      end: Location,
+ |      *,
+ |      maintain_selection_offset: bool = True
+ |  ) -> EditResult
+ |      Replace text in the document with new text.
+ |
+ |      Args:
+ |          insert: The text to insert.
+ |          start: The start location
+ |          end: The end location.
+ |          maintain_selection_offset: If True, the active Selection will be updated
+ |              such that the same text is selected before and after the selection,
+ |              if possible. Otherwise, the cursor will jump to the end point of the
+ |              edit.
+ |
+ |      Returns:
+ |          An `EditResult` containing information about the edit.
+ |
+ |  scroll_cursor_visible(self, center: bool = False, animate: bool = False) -> Offset
+ |      Scroll the `TextArea` such that the cursor is visible on screen.
+ |
+ |      Args:
+ |          center: True if the cursor should be scrolled to the center.
+ |          animate: True if we should animate while scrolling.
+ |
+ |      Returns:
+ |          The offset that was scrolled to bring the cursor into view.
+ |
+ |  select_all(self) -> None
+ |      Select all of the text in the `TextArea`.
+ |
+ |  select_line(self, index: int) -> None
+ |      Select all the text in the specified line.
+ |
+ |      Args:
+ |          index: The index of the line to select (starting from 0).
+ |
+ |  undo(self) -> None
+ |      Undo the edits since the last checkpoint (the most recent batch of edits).
+ |
+ |  update_highlight_query(self, name: str, highlight_query: str) -> None
+ |      Update the highlight query for an already registered language.
+ |
+ |      Args:
+ |          name: The name of the language.
+ |          highlight_query: The highlight query to use for syntax highlighting this language.
+ |
+ |  update_suggestion(self) -> None
+ |      A hook to update the [`suggestion`][textual.widgets.TextArea.suggestion] attribute.
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |
+ |  code_editor(
+ |      text: str = '',
+ |      *,
+ |      language: str | None = None,
+ |      theme: str = 'monokai',
+ |      soft_wrap: bool = False,
+ |      tab_behavior: Literal['focus', 'indent'] = 'indent',
+ |      read_only: bool = False,
+ |      show_cursor: bool = True,
+ |      show_line_numbers: bool = True,
+ |      line_number_start: int = 1,
+ |      max_checkpoints: int = 50,
+ |      name: str | None = None,
+ |      id: str | None = None,
+ |      classes: str | None = None,
+ |      disabled: bool = False,
+ |      tooltip: RenderableType | None = None,
+ |      compact: bool = False,
+ |      highlight_cursor_line: bool = True,
+ |      placeholder: str | Content = ''
+ |  ) -> TextArea
+ |      Construct a new `TextArea` with sensible defaults for editing code.
+ |
+ |      This instantiates a `TextArea` with line numbers enabled, soft wrapping
+ |      disabled, "indent" tab behavior, and the "monokai" theme.
+ |
+ |      Args:
+ |          text: The initial text to load into the TextArea.
+ |          language: The language to use.
+ |          theme: The theme to use.
+ |          soft_wrap: Enable soft wrapping.
+ |          tab_behavior: If 'focus', pressing tab will switch focus. If 'indent', pressing tab will insert a tab.
+ |          read_only: Enable read-only mode. This prevents edits using the keyboard.
+ |          show_cursor: Show the cursor in read only mode (no effect otherwise).
+ |          show_line_numbers: Show line numbers on the left edge.
+ |          line_number_start: What line number to start on.
+ |          name: The name of the `TextArea` widget.
+ |          id: The ID of the widget, used to refer to it from Textual CSS.
+ |          classes: One or more Textual CSS compatible class names separated by spaces.
+ |          disabled: True if the widget is disabled.
+ |          tooltip: Optional tooltip
+ |          compact: Enable compact style (without borders).
+ |          highlight_cursor_line: Highlight the line under the cursor.
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties defined here:
+ |
+ |  available_languages
+ |      A set of the names of languages available to the `TextArea`.
+ |
+ |      The values in this set can be assigned to the `language` reactive attribute
+ |      of `TextArea`.
+ |
+ |      The returned set contains the builtin languages installed with the syntax extras,
+ |      plus those registered via the `register_language` method.
+ |
+ |  available_themes
+ |      A list of the names of the themes available to the `TextArea`.
+ |
+ |      The values in this list can be assigned `theme` reactive attribute of
+ |      `TextArea`.
+ |
+ |      You can retrieve the full specification for a theme by passing one of
+ |      the strings from this list into `TextAreaTheme.get_by_name(theme_name: str)`.
+ |
+ |      Alternatively, you can directly retrieve a list of `TextAreaTheme` objects
+ |      (which contain the full theme specification) by calling
+ |      `TextAreaTheme.builtin_themes()`.
+ |
+ |  cursor_at_end_of_line
+ |      True if and only if the cursor is at the end of a row.
+ |
+ |  cursor_at_end_of_text
+ |      True if and only if the cursor is at the very end of the document.
+ |
+ |  cursor_at_first_line
+ |      True if and only if the cursor is on the first line.
+ |
+ |  cursor_at_last_line
+ |      True if and only if the cursor is on the last line.
+ |
+ |  cursor_at_start_of_line
+ |      True if and only if the cursor is at column 0.
+ |
+ |  cursor_at_start_of_text
+ |      True if and only if the cursor is at location (0, 0)
+ |
+ |  cursor_screen_offset
+ |      The offset of the cursor relative to the screen.
+ |
+ |  gutter_width
+ |      The width of the gutter (the left column containing line numbers).
+ |
+ |      Returns:
+ |          The cell-width of the line number column. If `show_line_numbers` is `False` returns 0.
+ |
+ |  is_syntax_aware
+ |      True if the TextArea is currently syntax aware - i.e. it's parsing document content.
+ |
+ |  matching_bracket_location
+ |      The location of the matching bracket, if there is one.
+ |
+ |  selected_text
+ |      The text between the start and end points of the current selection.
+ |
+ |  wrap_width
+ |      The width which gets used when the document wraps.
+ |
+ |      Accounts for gutter, scrollbars, etc.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |
+ |  compact
+ |
+ |  cursor_blink
+ |
+ |  cursor_location
+ |      The current location of the cursor in the document.
+ |
+ |      This is a utility for accessing the `end` of `TextArea.selection`.
+ |
+ |  hide_suggestion_on_blur
+ |
+ |  highlight_cursor_line
+ |
+ |  indent_width
+ |
+ |  language
+ |
+ |  line_number_start
+ |
+ |  match_cursor_bracket
+ |
+ |  placeholder
+ |
+ |  read_only
+ |
+ |  selection
+ |
+ |  show_cursor
+ |
+ |  show_line_numbers
+ |
+ |  soft_wrap
+ |
+ |  suggestion
+ |
+ |  text
+ |      The entire text content of the document.
+ |
+ |  theme
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |
+ |  BINDINGS = [Binding(key='up', action='cursor_up', descriptio...e, tool...
+ |
+ |  COMPONENT_CLASSES = {'text-area--cursor', 'text-area--cursor-gutter', ...
+ |
+ |  Changed = <class 'textual.widgets._text_area.TextArea.Changed'>
+ |      Posted when the content inside the TextArea changes.
+ |
+ |      Handle this message using the `on` decorator - `@on(TextArea.Changed)`
+ |      or a method named `on_text_area_changed`.
+ |
+ |
+ |  DEFAULT_CSS = 'TextArea {\n    width: 1fr;\n    height: 1fr;\n    ...g...
+ |
+ |  SelectionChanged = <class 'textual.widgets._text_area.TextArea.Selecti...
+ |      Posted when the selection changes.
+ |
+ |      This includes when the cursor moves or when text is selected.
+ |
+ |
+ |  __annotations__ = {'COMPONENT_CLASSES': 'ClassVar[set[str]]', '_cursor...
+ |
+ |  can_focus = True
+ |
+ |  can_focus_children = True
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from textual.scroll_view.ScrollView:
+ |
+ |  get_content_height(self, container: Size, viewport: Size, width: int) -> int
+ |      Gets the height (number of lines) in the content area.
+ |
+ |      Args:
+ |          container: Size of the container (immediate parent) widget.
+ |          viewport: Size of the viewport.
+ |          width: Width of renderable.
+ |
+ |      Returns:
+ |          The height of the content.
+ |
+ |  get_content_width(self, container: Size, viewport: Size) -> int
+ |      Gets the width of the content area.
+ |
+ |      Args:
+ |          container: Size of the container (immediate parent) widget.
+ |          viewport: Size of the viewport.
+ |
+ |      Returns:
+ |          The optimal width of the content.
+ |
+ |  on_mount(self)
+ |
+ |  refresh_line(self, y: int) -> None
+ |      Refresh a single line.
+ |
+ |      Args:
+ |          y: Coordinate of line.
+ |
+ |  refresh_lines(self, y_start: int, line_count: int = 1) -> None
+ |      Refresh one or more lines.
+ |
+ |      Args:
+ |          y_start: First line to refresh.
+ |          line_count: Total number of lines to refresh.
+ |
+ |  render(self) -> RenderableType
+ |      Render the scrollable region (if `render_lines` is not implemented).
+ |
+ |      Returns:
+ |          Renderable object.
+ |
+ |  scroll_to(
+ |      self,
+ |      x: float | None = None,
+ |      y: float | None = None,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False
+ |  ) -> None
+ |      Scroll to a given (absolute) coordinate, optionally animating.
+ |
+ |      Args:
+ |          x: X coordinate (column) to scroll to, or `None` for no change.
+ |          y: Y coordinate (row) to scroll to, or `None` for no change.
+ |          animate: Animate to new scroll position.
+ |          speed: Speed of scroll if `animate` is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |  watch_scroll_x(self, old_value: float, new_value: float) -> None
+ |
+ |  watch_scroll_y(self, old_value: float, new_value: float) -> None
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties inherited from textual.scroll_view.ScrollView:
+ |
+ |  is_container
+ |      Since a ScrollView should be a line-api widget, it won't have children,
+ |      and therefore isn't a container.
+ |
+ |  is_scrollable
+ |      Always scrollable.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes inherited from textual.scroll_view.ScrollView:
+ |
+ |  ALLOW_MAXIMIZE = True
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties inherited from textual.containers.ScrollableContainer:
+ |
+ |  allow_maximize
+ |      Check if the widget may be maximized.
+ |
+ |      Returns:
+ |          `True` if the widget may be maximized, or `False` if it should not be maximized.
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from textual.widget.Widget:
+ |
+ |  __enter__(self) -> Self
+ |      Use as context manager when composing.
+ |
+ |  __exit__(
+ |      self,
+ |      exc_type: type[BaseException] | None,
+ |      exc_val: BaseException | None,
+ |      exc_tb: TracebackType | None
+ |  ) -> None
+ |      Exit compose context manager.
+ |
+ |  __repr__ = auto_repr(self: T) -> str from rich.repr.auto.<locals>.do_replace.<locals>
+ |      Return repr(self)
+ |
+ |  __rich_repr__(self) -> rich.repr.Result
+ |
+ |  action_notify(
+ |      self,
+ |      message: str,
+ |      title: str = '',
+ |      severity: str = 'information',
+ |      markup: bool = True
+ |  ) -> None
+ |
+ |  action_page_down(self) -> None
+ |
+ |  action_page_left(self) -> None
+ |
+ |  action_page_right(self) -> None
+ |
+ |  action_page_up(self) -> None
+ |
+ |  action_scroll_down(self) -> None
+ |
+ |  action_scroll_end(self) -> None
+ |
+ |  action_scroll_home(self) -> None
+ |
+ |  action_scroll_left(self) -> None
+ |
+ |  action_scroll_right(self) -> None
+ |
+ |  action_scroll_up(self) -> None
+ |
+ |  allow_focus(self) -> bool
+ |      Check if the widget is permitted to focus.
+ |
+ |      The base class returns [`can_focus`][textual.widget.Widget.can_focus].
+ |      This method may be overridden if additional logic is required.
+ |
+ |      Returns:
+ |          `True` if the widget may be focused, or `False` if it may not be focused.
+ |
+ |  allow_focus_children(self) -> bool
+ |      Check if a widget's children may be focused.
+ |
+ |      The base class returns [`can_focus_children`][textual.widget.Widget.can_focus_children].
+ |      This method may be overridden if additional logic is required.
+ |
+ |      Returns:
+ |          `True` if the widget's children may be focused, or `False` if the widget's children may not be focused.
+ |
+ |  anchor(self, anchor: bool = True) -> None
+ |      Anchor a scrollable widget.
+ |
+ |      An anchored widget will stay scrolled the bottom when new content is added, until
+ |      the user moves the scroll position.
+ |
+ |      Args:
+ |          anchor: Anchor the widget if `True`, clear the anchor if `False`.
+ |
+ |  animate(
+ |      self,
+ |      attribute: str,
+ |      value: float | Animatable,
+ |      *,
+ |      final_value: object = Ellipsis,
+ |      duration: float | None = None,
+ |      speed: float | None = None,
+ |      delay: float = 0.0,
+ |      easing: EasingFunction | str = 'in_out_cubic',
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'full'
+ |  ) -> None
+ |      Animate an attribute.
+ |
+ |      Args:
+ |          attribute: Name of the attribute to animate.
+ |          value: The value to animate to.
+ |          final_value: The final value of the animation. Defaults to `value` if not set.
+ |          duration: The duration (in seconds) of the animation.
+ |          speed: The speed of the animation.
+ |          delay: A delay (in seconds) before the animation starts.
+ |          easing: An easing method.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |
+ |  arrange(self, size: Size, optimal: bool = False) -> DockArrangeResult
+ |      Arrange child widgets.
+ |
+ |      This method is best left alone, unless you have a deep understanding of what it does.
+ |
+ |      Args:
+ |          size: Size of container.
+ |          optimal: Whether fr units should expand the widget (`False`) or avoid expanding the widget (`True`).
+ |
+ |      Returns:
+ |          Widget locations.
+ |
+ |  batch(self) -> AsyncGenerator[None, None]
+ |      Async context manager that combines widget locking and update batching.
+ |
+ |      Use this async context manager whenever you want to acquire the widget lock and
+ |      batch app updates at the same time.
+ |
+ |      Example:
+ |          ```py
+ |          async with container.batch():
+ |              await container.remove_children(Button)
+ |              await container.mount(Label("All buttons are gone."))
+ |          ```
+ |
+ |  begin_capture_print(self, stdout: bool = True, stderr: bool = True) -> None
+ |      Capture text from print statements (or writes to stdout / stderr).
+ |
+ |      If printing is captured, the widget will be sent an [`events.Print`][textual.events.Print] message.
+ |
+ |      Call [`end_capture_print`][textual.widget.Widget.end_capture_print] to disable print capture.
+ |
+ |      Args:
+ |          stdout: Whether to capture stdout.
+ |          stderr: Whether to capture stderr.
+ |
+ |  blur(self) -> Self
+ |      Blur (un-focus) the widget.
+ |
+ |      Focus will be moved to the next available widget in the focus chain.
+ |
+ |      Returns:
+ |          The `Widget` instance.
+ |
+ |  async broker_event(self, event_name: str, event: events.Event) -> bool
+ |
+ |  can_view_entire(self, widget: Widget) -> bool
+ |      Check if a given widget is *fully* within the current view (scrollable area).
+ |
+ |      Note: This doesn't necessarily equate to a widget being visible.
+ |      There are other reasons why a widget may not be visible.
+ |
+ |      Args:
+ |          widget: A widget that is a descendant of self.
+ |
+ |      Returns:
+ |          `True` if the entire widget is in view, `False` if it is partially visible or not in view.
+ |
+ |  can_view_partial(self, widget: Widget) -> bool
+ |      Check if a given widget at least partially visible within the current view (scrollable area).
+ |
+ |      Args:
+ |          widget: A widget that is a descendant of self.
+ |
+ |      Returns:
+ |          `True` if any part of the widget is visible, `False` if it is outside of the viewable area.
+ |
+ |  capture_mouse(self, capture: bool = True) -> None
+ |      Capture (or release) the mouse.
+ |
+ |      When captured, mouse events will go to this widget even when the pointer is not directly over the widget.
+ |
+ |      Args:
+ |          capture: True to capture or False to release.
+ |
+ |  check_message_enabled(self, message: Message) -> bool
+ |      Check if a given message is enabled (allowed to be sent).
+ |
+ |      Args:
+ |          message: A message object
+ |
+ |      Returns:
+ |          `True` if the message will be sent, or `False` if it is disabled.
+ |
+ |  clear_cached_dimensions(self) -> None
+ |      Clear cached results of `get_content_width` and `get_content_height`.
+ |
+ |      Call if the widget's renderable changes size after the widget has been created.
+ |
+ |      !!! note
+ |
+ |          This is not required if you are extending [`Static`][textual.widgets.Static].
+ |
+ |  compose(self) -> ComposeResult
+ |      Called by Textual to create child widgets.
+ |
+ |      This method is called when a widget is mounted or by setting `recompose=True` when
+ |      calling [`refresh()`][textual.widget.Widget.refresh].
+ |
+ |      Note that you don't typically need to explicitly call this method.
+ |
+ |      Example:
+ |          ```python
+ |          def compose(self) -> ComposeResult:
+ |              yield Header()
+ |              yield Label("Press the button below:")
+ |              yield Button()
+ |              yield Footer()
+ |          ```
+ |
+ |  compose_add_child(self, widget: Widget) -> None
+ |      Add a node to children.
+ |
+ |      This is used by the compose process when it adds children.
+ |      There is no need to use it directly, but you may want to override it in a subclass
+ |      if you want children to be attached to a different node.
+ |
+ |      Args:
+ |          widget: A Widget to add.
+ |
+ |  end_capture_print(self) -> None
+ |      End print capture (set with [`begin_capture_print`][textual.widget.Widget.begin_capture_print]).
+ |
+ |  focus(self, scroll_visible: bool = True) -> Self
+ |      Give focus to this widget.
+ |
+ |      Args:
+ |          scroll_visible: Scroll parent to make this widget visible.
+ |
+ |      Returns:
+ |          The `Widget` instance.
+ |
+ |  focus_on_click(self) -> bool
+ |      Automatically focus the widget on click?
+ |
+ |      Implement this if you want to change the default click to focus behavior.
+ |      The default will return the classvar `FOCUS_ON_CLICK`.
+ |
+ |      Returns:
+ |          `True` if Textual should set focus automatically on a click, or `False` if it shouldn't.
+ |
+ |  get_child_by_id(self, id: str, expect_type: type[ExpectType] | None = None) -> ExpectType | Widget
+ |      Return the first child (immediate descendent) of this node with the given ID.
+ |
+ |      Args:
+ |          id: The ID of the child.
+ |          expect_type: Require the object be of the supplied type, or None for any type.
+ |
+ |      Returns:
+ |          The first child of this node with the ID.
+ |
+ |      Raises:
+ |          NoMatches: if no children could be found for this ID
+ |          WrongType: if the wrong type was found.
+ |
+ |  get_child_by_type(self, expect_type: type[ExpectType]) -> ExpectType
+ |      Get the first immediate child of a given type.
+ |
+ |      Only returns exact matches, and so will not match subclasses of the given type.
+ |
+ |      Args:
+ |          expect_type: The type of the child to search for.
+ |
+ |      Raises:
+ |          NoMatches: If no matching child is found.
+ |
+ |      Returns:
+ |          The first immediate child widget with the expected type.
+ |
+ |  get_component_rich_style(
+ |      self,
+ |      *names: str,
+ |      partial: bool = False,
+ |      default: Style | None = None
+ |  ) -> Style
+ |      Get a *Rich* style for a component.
+ |
+ |      Args:
+ |          names: Names of components.
+ |          partial: Return a partial style (not combined with parent).
+ |          default: A Style to return if any component style doesn't exist.
+ |
+ |      Raises:
+ |          KeyError: If a component style doesn't exist, and no `default` is provided.
+ |
+ |      Returns:
+ |          A Rich style object.
+ |
+ |  get_line_filters(self) -> Sequence[LineFilter]
+ |      Get the line filters enabled for this widget.
+ |
+ |      Returns:
+ |          A sequence of [LineFilter][textual.filters.LineFilter] instances.
+ |
+ |  get_loading_widget(self) -> Widget
+ |      Get a widget to display a loading indicator.
+ |
+ |      The default implementation will defer to App.get_loading_widget.
+ |
+ |      Returns:
+ |          A widget in place of this widget to indicate a loading.
+ |
+ |  get_pseudo_class_state(self) -> PseudoClasses
+ |      Get an object describing whether each pseudo class is present on this object or not.
+ |
+ |      Returns:
+ |          A PseudoClasses object describing the pseudo classes that are present.
+ |
+ |  get_selection(self, selection: Selection) -> tuple[str, str] | None
+ |      Get the text under the selection.
+ |
+ |              !!! note
+ |                  Implement this method if are building custom widget. If you just want to get the currently
+ |                  selected text, then see [`Screen.get_selected_text`](textual.screen.Screen.get_selected_text)
+ |
+ |
+ |              Args:
+ |                  selection: Selection information.
+ |
+ |              Returns:
+ |                  Tuple of extracted text and ending (typically "
+ |      " or " "), or `None` if no text could be extracted.
+ |
+ |  get_style_at(self, x: int, y: int) -> Style
+ |      Get the Rich style in a widget at a given relative offset.
+ |
+ |      Args:
+ |          x: X coordinate relative to the widget.
+ |          y: Y coordinate relative to the widget.
+ |
+ |      Returns:
+ |          A rich Style object.
+ |
+ |  get_visual_style(self, *component_classes: str, partial: bool = False) -> VisualStyle
+ |      Get the visual style for the widget, including any component styles.
+ |
+ |      Args:
+ |          component_classes: Optional component styles.
+ |          partial: Return a partial style (not combined with parent).
+ |
+ |      Returns:
+ |          A Visual style instance.
+ |
+ |  get_widget_by_id(self, id: str, expect_type: type[ExpectType] | None = None) -> ExpectType | Widget
+ |      Return the first descendant widget with the given ID.
+ |
+ |      Performs a depth-first search rooted at this widget.
+ |
+ |      Args:
+ |          id: The ID to search for in the subtree.
+ |          expect_type: Require the object be of the supplied type, or None for any type.
+ |
+ |      Returns:
+ |          The first descendant encountered with this ID.
+ |
+ |      Raises:
+ |          NoMatches: if no children could be found for this ID.
+ |          WrongType: if the wrong type was found.
+ |
+ |  async handle_key(self, event: events.Key) -> bool
+ |
+ |  mount(
+ |      self,
+ |      *widgets: Widget,
+ |      before: int | str | Widget | None = None,
+ |      after: int | str | Widget | None = None
+ |  ) -> AwaitMount
+ |      Mount widgets below this widget (making this widget a container).
+ |
+ |      Args:
+ |          *widgets: The widget(s) to mount.
+ |          before: Optional location to mount before. An `int` is the index
+ |              of the child to mount before, a `str` is a `query_one` query to
+ |              find the widget to mount before.
+ |          after: Optional location to mount after. An `int` is the index
+ |              of the child to mount after, a `str` is a `query_one` query to
+ |              find the widget to mount after.
+ |
+ |      Returns:
+ |          An awaitable object that waits for widgets to be mounted.
+ |
+ |      Raises:
+ |          MountError: If there is a problem with the mount request.
+ |
+ |      Note:
+ |          Only one of ``before`` or ``after`` can be provided. If both are
+ |          provided a ``MountError`` will be raised.
+ |
+ |  mount_all(
+ |      self,
+ |      widgets: Iterable[Widget],
+ |      *,
+ |      before: int | str | Widget | None = None,
+ |      after: int | str | Widget | None = None
+ |  ) -> AwaitMount
+ |      Mount widgets from an iterable.
+ |
+ |      Args:
+ |          widgets: An iterable of widgets.
+ |          before: Optional location to mount before. An `int` is the index
+ |              of the child to mount before, a `str` is a `query_one` query to
+ |              find the widget to mount before.
+ |          after: Optional location to mount after. An `int` is the index
+ |              of the child to mount after, a `str` is a `query_one` query to
+ |              find the widget to mount after.
+ |
+ |      Returns:
+ |          An awaitable object that waits for widgets to be mounted.
+ |
+ |      Raises:
+ |          MountError: If there is a problem with the mount request.
+ |
+ |      Note:
+ |          Only one of `before` or `after` can be provided. If both are
+ |          provided a `MountError` will be raised.
+ |
+ |  mount_compose(
+ |      self,
+ |      compose_result: ComposeResult,
+ |      *,
+ |      before: int | str | Widget | None = None,
+ |      after: int | str | Widget | None = None
+ |  ) -> AwaitMount
+ |      Mount widgets from the result of a compose method.
+ |
+ |      Example:
+ |      ```python
+ |          def on_key(self, event:events.Key) -> None:
+ |
+ |              def add_key(key:str) -> ComposeResult:
+ |                  '''Compose key information widgets'''
+ |                  with containers.HorizontalGroup():
+ |                      yield Label("You pressed:")
+ |                      yield Label(key)
+ |
+ |              self.mount_compose(add_key(event.key))
+ |
+ |      ```
+ |
+ |      Args:
+ |          compose_result: The result of a compose method.
+ |          before: Optional location to mount before. An `int` is the index
+ |              of the child to mount before, a `str` is a `query_one` query to
+ |              find the widget to mount before.
+ |          after: Optional location to mount after. An `int` is the index
+ |              of the child to mount after, a `str` is a `query_one` query to
+ |              find the widget to mount after.
+ |
+ |      Returns:
+ |          An awaitable object that waits for widgets to be mounted.
+ |
+ |      Raises:
+ |          MountError: If there is a problem with the mount request.
+ |
+ |      Note:
+ |          Only one of `before` or `after` can be provided. If both are
+ |          provided a `MountError` will be raised.
+ |
+ |  async mount_composed_widgets(self, widgets: list[Widget]) -> None
+ |      Called by Textual to mount widgets after compose.
+ |
+ |      There is generally no need to implement this method in your application.
+ |      See [Lazy][textual.lazy.Lazy] for a class which uses this method to implement
+ |      *lazy* mounting.
+ |
+ |      Args:
+ |          widgets: A list of child widgets.
+ |
+ |  move_child(
+ |      self,
+ |      child: int | Widget,
+ |      *,
+ |      before: int | Widget | None = None,
+ |      after: int | Widget | None = None
+ |  ) -> None
+ |      Move a child widget within its parent's list of children.
+ |
+ |      Args:
+ |          child: The child widget to move.
+ |          before: Child widget or location index to move before.
+ |          after: Child widget or location index to move after.
+ |
+ |      Raises:
+ |          WidgetError: If there is a problem with the child or target.
+ |
+ |      Note:
+ |          Only one of `before` or `after` can be provided. If neither
+ |          or both are provided a `WidgetError` will be raised.
+ |
+ |  notify(
+ |      self,
+ |      message: str,
+ |      *,
+ |      title: str = '',
+ |      severity: SeverityLevel = 'information',
+ |      timeout: float | None = None,
+ |      markup: bool = True
+ |  ) -> None
+ |      Create a notification.
+ |
+ |      !!! tip
+ |
+ |          This method is thread-safe.
+ |
+ |      Args:
+ |          message: The message for the notification.
+ |          title: The title for the notification.
+ |          severity: The severity of the notification.
+ |          timeout: The timeout (in seconds) for the notification, or `None` for default.
+ |          markup: Render the message as content markup?
+ |
+ |      See [`App.notify`][textual.app.App.notify] for the full
+ |      documentation for this method.
+ |
+ |  async on_prune(self, event: messages.Prune) -> None
+ |      Close message loop when asked to prune.
+ |
+ |  post_message(self, message: Message) -> bool
+ |      Post a message to this widget.
+ |
+ |      Args:
+ |          message: Message to post.
+ |
+ |      Returns:
+ |          True if the message was posted, False if this widget was closed / closing.
+ |
+ |  post_render(self, renderable: RenderableType, base_style: Style) -> ConsoleRenderable
+ |      Applies style attributes to the default renderable.
+ |
+ |      This method is called by Textual itself.
+ |      It is unlikely you will need to call or implement this method.
+ |
+ |      Returns:
+ |          A new renderable.
+ |
+ |  pre_layout(self, layout: Layout) -> None
+ |      This method id called prior to a layout operation.
+ |
+ |      Implement this method if you want to make updates that should impact
+ |      the layout.
+ |
+ |      Args:
+ |          layout: The [Layout][textual.layout.Layout] instance that will be used to arrange this widget's children.
+ |
+ |  pre_render(self) -> None
+ |      Called prior to rendering.
+ |
+ |      If you implement this in a subclass, be sure to call the base class method via super.
+ |
+ |  preflight_checks(self) -> None
+ |      Called in debug mode to do preflight checks.
+ |
+ |      This is used by Textual to log some common errors, but you could implement this
+ |      in custom widgets to perform additional checks.
+ |
+ |  process_layout(self, placements: list[WidgetPlacement]) -> list[WidgetPlacement]
+ |      A hook to allow for the manipulation of widget placements before rendering.
+ |
+ |      You could use this as a way to modify the positions / margins of widgets if your requirement is
+ |      not supported in TCSS. In practice, this method is rarely needed!
+ |
+ |      Args:
+ |          placements: A list of [`WidgetPlacement`][textual.layout.WidgetPlacement] objects.
+ |
+ |      Returns:
+ |          A new list of placements.
+ |
+ |  async recompose(self) -> None
+ |      Recompose the widget.
+ |
+ |      Recomposing will remove children and call `self.compose` again to remount.
+ |
+ |  refresh(
+ |      self,
+ |      *regions: Region,
+ |      repaint: bool = True,
+ |      layout: bool = False,
+ |      recompose: bool = False
+ |  ) -> Self
+ |      Initiate a refresh of the widget.
+ |
+ |      This method sets an internal flag to perform a refresh, which will be done on the
+ |      next idle event. Only one refresh will be done even if this method is called multiple times.
+ |
+ |      By default this method will cause the content of the widget to refresh, but not change its size. You can also
+ |      set `layout=True` to perform a layout.
+ |
+ |      !!! warning
+ |
+ |          It is rarely necessary to call this method explicitly. Updating styles or reactive attributes will
+ |          do this automatically.
+ |
+ |      Args:
+ |          *regions: Additional screen regions to mark as dirty.
+ |          repaint: Repaint the widget (will call render() again).
+ |          layout: Also layout widgets in the view.
+ |          recompose: Re-compose the widget (will remove and re-mount children).
+ |
+ |      Returns:
+ |          The `Widget` instance.
+ |
+ |  release_anchor(self) -> None
+ |      Release the [anchor][textual.widget.Widget].
+ |
+ |      If a widget is anchored, releasing the anchor will allow the user to scroll as normal.
+ |
+ |  release_mouse(self) -> None
+ |      Release the mouse.
+ |
+ |      Mouse events will only be sent when the mouse is over the widget.
+ |
+ |  remove(self) -> AwaitRemove
+ |      Remove the Widget from the DOM (effectively deleting it).
+ |
+ |      Returns:
+ |          An awaitable object that waits for the widget to be removed.
+ |
+ |  remove_children(self, selector: str | type[QueryType] | Iterable[Widget] = '*') -> AwaitRemove
+ |      Remove the immediate children of this Widget from the DOM.
+ |
+ |      Args:
+ |          selector: A CSS selector or iterable of widgets to remove.
+ |
+ |      Returns:
+ |          An awaitable object that waits for the direct children to be removed.
+ |
+ |  render_str(self, text_content: str | Content) -> Content
+ |      Convert str into a [Content][textual.content.Content] instance.
+ |
+ |      If you pass in an existing Content instance it will be returned unaltered.
+ |
+ |      Args:
+ |          text_content: Content or str.
+ |
+ |      Returns:
+ |          Content object.
+ |
+ |  async run_action(self, action: str, namespaces: Mapping[str, DOMNode] | None = None) -> None
+ |      Perform a given action, with this widget as the default namespace.
+ |
+ |      Args:
+ |          action: Action encoded as a string.
+ |          namespaces: Mapping of namespaces.
+ |
+ |  scroll_down(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False
+ |  ) -> None
+ |      Scroll one line down.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if `animate` is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |  scroll_end(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False,
+ |      x_axis: bool = True,
+ |      y_axis: bool = True
+ |  ) -> None
+ |      Scroll to the end of the container.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if `animate` is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |          x_axis: Allow scrolling on X axis?
+ |          y_axis: Allow scrolling on Y axis?
+ |
+ |  scroll_home(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False,
+ |      x_axis: bool = True,
+ |      y_axis: bool = True
+ |  ) -> None
+ |      Scroll to home position.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if animate is `True`; or `None` to use duration.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |          x_axis: Allow scrolling on X axis?
+ |          y_axis: Allow scrolling on Y axis?
+ |
+ |  scroll_left(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False
+ |  ) -> None
+ |      Scroll one cell left.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if `animate` is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |  scroll_page_down(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic'
+ |  ) -> None
+ |      Scroll one page down.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if animate is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |
+ |  scroll_page_left(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic'
+ |  ) -> None
+ |      Scroll one page left.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if animate is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |
+ |  scroll_page_right(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic'
+ |  ) -> None
+ |      Scroll one page right.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if animate is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |
+ |  scroll_page_up(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic'
+ |  ) -> None
+ |      Scroll one page up.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if animate is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |
+ |  scroll_relative(
+ |      self,
+ |      x: float | None = None,
+ |      y: float | None = None,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False
+ |  ) -> None
+ |      Scroll relative to current position.
+ |
+ |      Args:
+ |          x: X distance (columns) to scroll, or ``None`` for no change.
+ |          y: Y distance (rows) to scroll, or ``None`` for no change.
+ |          animate: Animate to new scroll position.
+ |          speed: Speed of scroll if `animate` is `True`. Or `None` to use `duration`.
+ |          duration: Duration of animation, if animate is `True` and speed is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |  scroll_right(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False
+ |  ) -> None
+ |      Scroll one cell right.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if animate is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |  scroll_to_center(
+ |      self,
+ |      widget: Widget,
+ |      animate: bool = True,
+ |      *,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      origin_visible: bool = True,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False
+ |  ) -> None
+ |      Scroll this widget to the center of self.
+ |
+ |      The center of the widget will be scrolled to the center of the container.
+ |
+ |      Args:
+ |          widget: The widget to scroll to the center of self.
+ |          animate: Whether to animate the scroll.
+ |          speed: Speed of scroll if animate is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          origin_visible: Ensure that the top left corner of the widget remains visible after the scroll.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |  scroll_to_region(
+ |      self,
+ |      region: Region,
+ |      *,
+ |      spacing: Spacing | None = None,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      center: bool = False,
+ |      top: bool = False,
+ |      origin_visible: bool = True,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      x_axis: bool = True,
+ |      y_axis: bool = True,
+ |      immediate: bool = False
+ |  ) -> Offset
+ |      Scrolls a given region into view, if required.
+ |
+ |      This method will scroll the least distance required to move `region` fully within
+ |      the scrollable area.
+ |
+ |      Args:
+ |          region: A region that should be visible.
+ |          spacing: Optional spacing around the region.
+ |          animate: `True` to animate, or `False` to jump.
+ |          speed: Speed of scroll if `animate` is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          top: Scroll `region` to top of container.
+ |          origin_visible: Ensure that the top left of the widget is within the window.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          x_axis: Allow scrolling on X axis?
+ |          y_axis: Allow scrolling on Y axis?
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |      Returns:
+ |          The distance that was scrolled.
+ |
+ |  scroll_to_widget(
+ |      self,
+ |      widget: Widget,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      center: bool = False,
+ |      top: bool = False,
+ |      origin_visible: bool = True,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False
+ |  ) -> bool
+ |      Scroll scrolling to bring a widget into view.
+ |
+ |      Args:
+ |          widget: A descendant widget.
+ |          animate: `True` to animate, or `False` to jump.
+ |          speed: Speed of scroll if `animate` is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          top: Scroll widget to top of container.
+ |          origin_visible: Ensure that the top left of the widget is within the window.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |      Returns:
+ |          `True` if any scrolling has occurred in any descendant, otherwise `False`.
+ |
+ |  scroll_up(
+ |      self,
+ |      *,
+ |      animate: bool = True,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False
+ |  ) -> None
+ |      Scroll one line up.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if `animate` is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and speed is `None`.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |  scroll_visible(
+ |      self,
+ |      animate: bool = True,
+ |      *,
+ |      speed: float | None = None,
+ |      duration: float | None = None,
+ |      top: bool = False,
+ |      easing: EasingFunction | str | None = None,
+ |      force: bool = False,
+ |      on_complete: CallbackType | None = None,
+ |      level: AnimationLevel = 'basic',
+ |      immediate: bool = False
+ |  ) -> None
+ |      Scroll the container to make this widget visible.
+ |
+ |      Args:
+ |          animate: Animate scroll.
+ |          speed: Speed of scroll if animate is `True`; or `None` to use `duration`.
+ |          duration: Duration of animation, if `animate` is `True` and `speed` is `None`.
+ |          top: Scroll to top of container.
+ |          easing: An easing method for the scrolling animation.
+ |          force: Force scrolling even when prohibited by overflow styling.
+ |          on_complete: A callable to invoke when the animation is finished.
+ |          level: Minimum level required for the animation to take place (inclusive).
+ |          immediate: If `False` the scroll will be deferred until after a screen refresh,
+ |              set to `True` to scroll immediately.
+ |
+ |  selection_updated(self, selection: Selection | None) -> None
+ |      Called when the selection is updated.
+ |
+ |      Args:
+ |          selection: Selection information or `None` if no selection.
+ |
+ |  set_loading(self, loading: bool) -> None
+ |      Set or reset the loading state of this widget.
+ |
+ |      A widget in a loading state will display a `LoadingIndicator` or a custom widget
+ |      set through overriding the `get_loading_widget` method.
+ |
+ |      Args:
+ |          loading: `True` to put the widget into a loading state, or `False` to reset the loading state.
+ |
+ |  set_scroll(self, x: float | None, y: float | None) -> None
+ |      Set the scroll position without any validation.
+ |
+ |      This is a low-level method for when you want to see the scroll position in the next frame.
+ |      For a more fully featured method, see [`scroll_to`][textual.widget.Widget.scroll_to].
+ |
+ |      Args:
+ |          x: Desired `X` coordinate.
+ |          y: Desired `Y` coordinate.
+ |
+ |  async stop_animation(self, attribute: str, complete: bool = True) -> None
+ |      Stop an animation on an attribute.
+ |
+ |      Args:
+ |          attribute: Name of the attribute whose animation should be stopped.
+ |          complete: Should the animation be set to its final value?
+ |
+ |      Note:
+ |          If there is no animation scheduled or running, this is a no-op.
+ |
+ |  suppress_click(self) -> None
+ |      Suppress a click event.
+ |
+ |      This will prevent a [Click][textual.events.Click] event being sent,
+ |      if called after a mouse down event and before the click itself.
+ |
+ |  text_select_all(self) -> None
+ |      Select the entire widget.
+ |
+ |  validate_scroll_target_x(self, value: float) -> float
+ |
+ |  validate_scroll_target_y(self, value: float) -> float
+ |
+ |  validate_scroll_x(self, value: float) -> float
+ |
+ |  validate_scroll_y(self, value: float) -> float
+ |
+ |  watch_disabled(self, disabled: bool) -> None
+ |      Update the styles of the widget and its children when disabled is toggled.
+ |
+ |  watch_has_focus(self, _has_focus: bool) -> None
+ |      Update from CSS if has focus state changes.
+ |
+ |  watch_hover_style(self, previous_hover_style: Style, hover_style: Style) -> None
+ |
+ |  with_tooltip(self, tooltip: Visual | RenderableType | None) -> Self
+ |      Chainable method to set a tooltip.
+ |
+ |      Example:
+ |          ```python
+ |          def compose(self) -> ComposeResult:
+ |              yield Label("Hello").with_tooltip("A greeting")
+ |          ```
+ |
+ |      Args:
+ |          tooltip: New tooltip, or `None` to clear the tooltip.
+ |
+ |      Returns:
+ |          Self.
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods inherited from textual.widget.Widget:
+ |
+ |  __init_subclass__(
+ |      can_focus: bool | None = None,
+ |      can_focus_children: bool | None = None,
+ |      inherit_css: bool = True,
+ |      inherit_bindings: bool = True
+ |  ) -> None
+ |      This method is called when a class is subclassed.
+ |
+ |      The default implementation does nothing. It may be
+ |      overridden to extend subclasses.
+ |
+ |  get_common_ancestor(
+ |      widget1: Widget,
+ |      widget2: Widget,
+ |      *,
+ |      default: Widget | None = None
+ |  ) -> Widget
+ |      Get a common ancestors to both widgets.
+ |
+ |      Raises:
+ |          ValueError: If there is no common ancestor and `default` is not provided (will not occur if both widgets are attached to the same DOM).
+ |
+ |      Args:
+ |          widget1: A Widget.
+ |          widget2: A second widgets.
+ |          default: A widget to return if no common ancestor is found.
+ |
+ |      Returns:
+ |          A common ancestor widgets.
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties inherited from textual.widget.Widget:
+ |
+ |  allow_horizontal_scroll
+ |      Check if horizontal scroll is permitted.
+ |
+ |      May be overridden if you want different logic regarding allowing scrolling.
+ |
+ |  allow_select
+ |      Check if this widget permits text selection.
+ |
+ |      Returns:
+ |          `True` if the widget supports text selection, otherwise `False`.
+ |
+ |  allow_vertical_scroll
+ |      Check if vertical scroll is permitted.
+ |
+ |      May be overridden if you want different logic regarding allowing scrolling.
+ |
+ |  container_scroll_offset
+ |      The scroll offset the nearest container ancestor.
+ |
+ |  container_size
+ |      The size of the container (parent widget).
+ |
+ |      Returns:
+ |          Container size.
+ |
+ |  container_viewport
+ |      The viewport region (parent window).
+ |
+ |      Returns:
+ |          The region that contains this widget.
+ |
+ |  content_offset
+ |      An offset from the Widget origin where the content begins.
+ |
+ |      Returns:
+ |          Offset from widget's origin.
+ |
+ |  content_region
+ |      Gets an absolute region containing the content (minus padding and border).
+ |
+ |      Returns:
+ |          Screen region that contains a widget's content.
+ |
+ |  content_size
+ |      The size of the content area.
+ |
+ |      Returns:
+ |          Content area size.
+ |
+ |  dock_gutter
+ |      Space allocated to docks in the parent.
+ |
+ |      Returns:
+ |          Space to be subtracted from scrollable area.
+ |
+ |  first_child
+ |      Is this the first widget in its siblings?
+ |
+ |  first_of_type
+ |      Is this the first widget of its type in its siblings?
+ |
+ |  focusable
+ |      Can this widget currently be focused?
+ |
+ |  gutter
+ |      Spacing for padding / border / scrollbars.
+ |
+ |      Returns:
+ |          Additional spacing around content area.
+ |
+ |  has_focus_within
+ |      Are any descendants focused?
+ |
+ |  horizontal_scrollbar
+ |      The horizontal scrollbar.
+ |
+ |      Note:
+ |          This will *create* a scrollbar if one doesn't exist.
+ |
+ |      Returns:
+ |          ScrollBar Widget.
+ |
+ |  is_anchored
+ |      Is this widget anchored?
+ |
+ |      See [anchor()][textual.widget.Widget.anchor] for an explanation of anchoring.
+ |
+ |  is_disabled
+ |      Is the widget disabled either because `disabled=True` or an ancestor has `disabled=True`.
+ |
+ |  is_even
+ |      Is this widget at an evenly numbered position within its siblings?
+ |
+ |  is_horizontal_scroll_end
+ |      Is the horizontal scroll position at the maximum?
+ |
+ |  is_horizontal_scrollbar_grabbed
+ |      Is the user dragging the vertical scrollbar?
+ |
+ |  is_in_maximized_view
+ |      Is this widget, or a parent maximized?
+ |
+ |  is_maximized
+ |      Is this widget maximized?
+ |
+ |  is_mounted
+ |      Check if this widget is mounted.
+ |
+ |  is_mouse_over
+ |      Is the mouse currently over this widget?
+ |
+ |      Note this will be `True` if the mouse pointer is within the widget's region, even if
+ |      the mouse pointer is not directly over the widget (there could be another widget between
+ |      the mouse pointer and self).
+ |
+ |  is_odd
+ |      Is this widget at an oddly numbered position within its siblings?
+ |
+ |  is_on_screen
+ |      Check if the node was displayed in the last screen update.
+ |
+ |  is_scrolling
+ |      Is this widget currently scrolling?
+ |
+ |  is_vertical_scroll_end
+ |      Is the vertical scroll position at the maximum?
+ |
+ |  is_vertical_scrollbar_grabbed
+ |      Is the user dragging the vertical scrollbar?
+ |
+ |  last_child
+ |      Is this the last widget in its siblings?
+ |
+ |  last_of_type
+ |      Is this the last widget of its type in its siblings?
+ |
+ |  layer
+ |      Get the name of this widgets layer.
+ |
+ |      Returns:
+ |          Name of layer.
+ |
+ |  layers
+ |      Layers of from parent.
+ |
+ |      Returns:
+ |          Tuple of layer names.
+ |
+ |  layout
+ |      Get the layout object if set in styles, or a default layout.
+ |
+ |      Returns:
+ |          A layout object.
+ |
+ |  link_style
+ |      Style of links.
+ |
+ |      Returns:
+ |          Rich style.
+ |
+ |  link_style_hover
+ |      Style of links underneath the mouse cursor.
+ |
+ |      Returns:
+ |          Rich Style.
+ |
+ |  max_scroll_x
+ |      The maximum value of `scroll_x`.
+ |
+ |  max_scroll_y
+ |      The maximum value of `scroll_y`.
+ |
+ |  opacity
+ |      Total opacity of widget.
+ |
+ |  outer_size
+ |      The size of the widget (including padding and border).
+ |
+ |      Returns:
+ |          Outer size.
+ |
+ |  region
+ |      The region occupied by this widget, relative to the Screen.
+ |
+ |      Returns:
+ |          Region within screen occupied by widget.
+ |
+ |  scroll_offset
+ |      Get the current scroll offset.
+ |
+ |      Returns:
+ |          Offset a container has been scrolled by.
+ |
+ |  scrollable_content_region
+ |      Gets an absolute region containing the scrollable content (minus padding, border, and scrollbars).
+ |
+ |      Returns:
+ |          Screen region that contains a widget's content.
+ |
+ |  scrollable_size
+ |      The size of the scrollable content.
+ |
+ |      Returns:
+ |          Scrollable content size.
+ |
+ |  scrollbar_corner
+ |      The scrollbar corner.
+ |
+ |      Note:
+ |          This will *create* a scrollbar corner if one doesn't exist.
+ |
+ |      Returns:
+ |          ScrollBarCorner Widget.
+ |
+ |  scrollbar_gutter
+ |      Spacing required to fit scrollbar(s).
+ |
+ |      Returns:
+ |          Scrollbar gutter spacing.
+ |
+ |  scrollbar_size_horizontal
+ |      Get the height used by the *horizontal* scrollbar.
+ |
+ |      Returns:
+ |          Number of rows in the horizontal scrollbar.
+ |
+ |  scrollbar_size_vertical
+ |      Get the width used by the *vertical* scrollbar.
+ |
+ |      Returns:
+ |          Number of columns in the vertical scrollbar.
+ |
+ |  scrollbars_enabled
+ |      A tuple of booleans that indicate if scrollbars are enabled.
+ |
+ |      Returns:
+ |          A tuple of (<vertical scrollbar enabled>, <horizontal scrollbar enabled>)
+ |
+ |  scrollbars_space
+ |      The number of cells occupied by scrollbars for width and height
+ |
+ |  select_container
+ |      The widget's container used when selecting text..
+ |
+ |      Returns:
+ |          A widget which contains this widget.
+ |
+ |  siblings
+ |      Get the widget's siblings (self is removed from the return list).
+ |
+ |      Returns:
+ |          A list of siblings.
+ |
+ |  size
+ |      The size of the content area.
+ |
+ |      Returns:
+ |          Content area size.
+ |
+ |  text_selection
+ |      Text selection information, or `None` if no text is selected in this widget.
+ |
+ |  vertical_scrollbar
+ |      The vertical scrollbar (create if necessary).
+ |
+ |      Note:
+ |          This will *create* a scrollbar if one doesn't exist.
+ |
+ |      Returns:
+ |          ScrollBar Widget.
+ |
+ |  virtual_region
+ |      The widget region relative to its container (which may not be visible,
+ |      depending on scroll offset).
+ |
+ |
+ |      Returns:
+ |          The virtual region.
+ |
+ |  virtual_region_with_margin
+ |      The widget region relative to its container (*including margin*), which may not be visible,
+ |      depending on the scroll offset.
+ |
+ |      Returns:
+ |          The virtual region of the Widget, inclusive of its margin.
+ |
+ |  visible_siblings
+ |      A list of siblings which will be shown.
+ |
+ |      Returns:
+ |          List of siblings.
+ |
+ |  visual_style
+ |      The widget's current style.
+ |
+ |  window_region
+ |      The region within the scrollable area that is currently visible.
+ |
+ |      Returns:
+ |          New region.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from textual.widget.Widget:
+ |
+ |  auto_links
+ |
+ |  border_subtitle
+ |
+ |  border_title
+ |
+ |  disabled
+ |
+ |  expand
+ |
+ |  has_focus
+ |
+ |  highlight_link_id
+ |
+ |  hover_style
+ |
+ |  loading
+ |
+ |  mouse_hover
+ |
+ |  offset
+ |      Widget offset from origin.
+ |
+ |      Returns:
+ |          Relative offset.
+ |
+ |  scroll_target_x
+ |
+ |  scroll_target_y
+ |
+ |  scroll_x
+ |
+ |  scroll_y
+ |
+ |  show_horizontal_scrollbar
+ |
+ |  show_vertical_scrollbar
+ |
+ |  shrink
+ |
+ |  tooltip
+ |      Tooltip for the widget, or `None` for no tooltip.
+ |
+ |  virtual_size
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes inherited from textual.widget.Widget:
+ |
+ |  ALLOW_SELECT = True
+ |
+ |  BLANK = False
+ |
+ |  BORDER_SUBTITLE = ''
+ |
+ |  BORDER_TITLE = ''
+ |
+ |  ExpectType = ~ExpectType
+ |
+ |  FOCUS_ON_CLICK = True
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from textual.dom.DOMNode:
+ |
+ |  async action_toggle(self, attribute_name: str) -> None
+ |      Toggle an attribute on the node.
+ |
+ |      Assumes the attribute is a bool.
+ |
+ |      Args:
+ |          attribute_name: Name of the attribute.
+ |
+ |  add_class(self, *class_names: str, update: bool = True) -> Self
+ |      Add class names to this Node.
+ |
+ |      Args:
+ |          *class_names: CSS class names to add.
+ |          update: Also update styles.
+ |
+ |      Returns:
+ |          Self.
+ |
+ |  automatic_refresh(self) -> None
+ |      Perform an automatic refresh.
+ |
+ |      This method is called when you set the `auto_refresh` attribute.
+ |      You could implement this method if you want to perform additional work
+ |      during an automatic refresh.
+ |
+ |  check_action(self, action: str, parameters: tuple[object, ...]) -> bool | None
+ |      Check whether an action is enabled.
+ |
+ |      Implement this method to add logic for [dynamic actions](/guide/actions#dynamic-actions) / bindings.
+ |
+ |      Args:
+ |          action: The name of an action.
+ |          parameters: A tuple of any action parameters.
+ |
+ |      Returns:
+ |          `True` if the action is enabled+visible,
+ |              `False` if the action is disabled+hidden,
+ |              `None` if the action is disabled+visible (grayed out in footer)
+ |
+ |  data_bind(self, *reactives: Reactive[Any], **bind_vars: Reactive[Any] | object) -> Self
+ |      Bind reactive data so that changes to a reactive automatically change the reactive on another widget.
+ |
+ |      Reactives may be given as positional arguments or keyword arguments.
+ |      See the [guide on data binding](/guide/reactivity#data-binding).
+ |
+ |      Example:
+ |          ```python
+ |          def compose(self) -> ComposeResult:
+ |              yield WorldClock("Europe/London").data_bind(WorldClockApp.time)
+ |              yield WorldClock("Europe/Paris").data_bind(WorldClockApp.time)
+ |              yield WorldClock("Asia/Tokyo").data_bind(WorldClockApp.time)
+ |          ```
+ |
+ |      Raises:
+ |          ReactiveError: If the data wasn't bound.
+ |
+ |      Returns:
+ |          Self.
+ |
+ |  get_component_styles(self, *names: str) -> RenderStyles
+ |      Get a "component" styles object (must be defined in COMPONENT_CLASSES classvar).
+ |
+ |      Args:
+ |          names: Names of the components.
+ |
+ |      Raises:
+ |          KeyError: If the component class doesn't exist.
+ |
+ |      Returns:
+ |          A Styles object.
+ |
+ |  get_pseudo_classes(self) -> set[str]
+ |      Pseudo classes for a widget.
+ |
+ |      Returns:
+ |          Names of the pseudo classes.
+ |
+ |  has_class(self, *class_names: str) -> bool
+ |      Check if the Node has all the given class names.
+ |
+ |      Args:
+ |          *class_names: CSS class names to check.
+ |
+ |      Returns:
+ |          ``True`` if the node has all the given class names, otherwise ``False``.
+ |
+ |  has_pseudo_class(self, class_name: str) -> bool
+ |      Check the node has the given pseudo class.
+ |
+ |      Args:
+ |          class_name: The pseudo class to check for.
+ |
+ |      Returns:
+ |          `True` if the DOM node has the pseudo class, `False` if not.
+ |
+ |  has_pseudo_classes(self, class_names: set[str]) -> bool
+ |      Check the node has all the given pseudo classes.
+ |
+ |      Args:
+ |          class_names: Set of class names to check for.
+ |
+ |      Returns:
+ |          `True` if all pseudo class names are present.
+ |
+ |  mutate_reactive(self, reactive: Reactive[ReactiveType]) -> None
+ |      Force an update to a mutable reactive.
+ |
+ |      Example:
+ |          ```python
+ |          self.reactive_name_list.append("Jessica")
+ |          self.mutate_reactive(MyClass.reactive_name_list)
+ |          ```
+ |
+ |      Textual will automatically detect when a reactive is set to a new value, but it is unable
+ |      to detect if a value is _mutated_ (such as updating a list, dict, or attribute of an object).
+ |      If you do wish to use a collection or other mutable object in a reactive, then you can call
+ |      this method after your reactive is updated. This will ensure that all the reactive _superpowers_
+ |      work.
+ |
+ |      !!! note
+ |
+ |          This method will cause watchers to be called, even if the value hasn't changed.
+ |
+ |      Args:
+ |          reactive: A reactive property (use the class scope syntax, i.e. `MyClass.my_reactive`).
+ |
+ |  query(self, selector: str | type[QueryType] | None = None) -> DOMQuery[Widget] | DOMQuery[QueryType]
+ |      Query the DOM for children that match a selector or widget type.
+ |
+ |      Args:
+ |          selector: A CSS selector, widget type, or `None` for all nodes.
+ |
+ |      Returns:
+ |          A query object.
+ |
+ |  query_ancestor(
+ |      self,
+ |      selector: str | type[QueryType],
+ |      expect_type: type[QueryType] | None = None
+ |  ) -> DOMNode
+ |      Get an ancestor which matches a query.
+ |
+ |      Args:
+ |          selector: A TCSS selector.
+ |          expect_type: Expected type, or `None` for any DOMNode.
+ |
+ |      Raises:
+ |          InvalidQueryFormat: If the selector is invalid.
+ |          NoMatches: If there are no matching ancestors.
+ |
+ |      Returns:
+ |          A DOMNode or subclass if `expect_type` is provided.
+ |
+ |  query_children(self, selector: str | type[QueryType] | None = None) -> DOMQuery[Widget] | DOMQuery[QueryType]
+ |      Query the DOM for the immediate children that match a selector or widget type.
+ |
+ |      Note that this will not return child widgets more than a single level deep.
+ |      If you want to a query to potentially match all children in the widget tree,
+ |      see [query][textual.dom.DOMNode.query].
+ |
+ |      Args:
+ |          selector: A CSS selector, widget type, or `None` for all nodes.
+ |
+ |      Returns:
+ |          A query object.
+ |
+ |  query_exactly_one(
+ |      self,
+ |      selector: str | type[QueryType],
+ |      expect_type: type[QueryType] | None = None
+ |  ) -> QueryType | Widget
+ |      Get a widget from this widget's children that matches a selector or widget type.
+ |
+ |      !!! Note
+ |          This method is similar to [query_one][textual.dom.DOMNode.query_one].
+ |          The only difference is that it will raise `TooManyMatches` if there is more than a single match.
+ |
+ |      Args:
+ |          selector: A selector or widget type.
+ |          expect_type: Require the object be of the supplied type, or None for any type.
+ |
+ |      Raises:
+ |          WrongType: If the wrong type was found.
+ |          NoMatches: If no node matches the query.
+ |          TooManyMatches: If there is more than one matching node in the query (and `exactly_one==True`).
+ |
+ |      Returns:
+ |          A widget matching the selector.
+ |
+ |  query_one(
+ |      self,
+ |      selector: str | type[QueryType],
+ |      expect_type: type[QueryType] | None = None
+ |  ) -> QueryType | Widget
+ |      Get a widget from this widget's children that matches a selector or widget type.
+ |
+ |      Args:
+ |          selector: A selector or widget type.
+ |          expect_type: Require the object be of the supplied type, or None for any type.
+ |
+ |      Raises:
+ |          WrongType: If the wrong type was found.
+ |          NoMatches: If no node matches the query.
+ |
+ |      Returns:
+ |          A widget matching the selector.
+ |
+ |  query_one_optional(
+ |      self,
+ |      selector: str | type[QueryType],
+ |      expect_type: type[QueryType] | None = None
+ |  ) -> QueryType | Widget | None
+ |      Get a widget from this widget's children that matches a selector or widget type,
+ |      or `None` if there is no match.
+ |
+ |      Args:
+ |          selector: A selector or widget type.
+ |          expect_type: Require the object be of the supplied type, or None for any type.
+ |
+ |      Raises:
+ |          WrongType: If the wrong type was found.
+ |
+ |      Returns:
+ |          A widget matching the selector, or `None`.
+ |
+ |  refresh_bindings(self) -> None
+ |      Call to prompt widgets such as the [Footer][textual.widgets.Footer] to update
+ |      the display of key bindings.
+ |
+ |      See [actions](/guide/actions#dynamic-actions) for how to use this method.
+ |
+ |  remove_class(self, *class_names: str, update: bool = True) -> Self
+ |      Remove class names from this Node.
+ |
+ |      Args:
+ |          *class_names: CSS class names to remove.
+ |          update: Also update styles.
+ |
+ |      Returns:
+ |          Self.
+ |
+ |  reset_styles(self) -> None
+ |      Reset styles back to their initial state.
+ |
+ |  run_worker(
+ |      self,
+ |      work: WorkType[ResultType],
+ |      name: str | None = '',
+ |      group: str = 'default',
+ |      description: str = '',
+ |      exit_on_error: bool = True,
+ |      start: bool = True,
+ |      exclusive: bool = False,
+ |      thread: bool = False
+ |  ) -> Worker[ResultType]
+ |      Run work in a worker.
+ |
+ |      A worker runs a function, coroutine, or awaitable, in the *background* as an async task or as a thread.
+ |
+ |      Args:
+ |          work: A function, async function, or an awaitable object to run in a worker.
+ |          name: A short string to identify the worker (in logs and debugging).
+ |          group: A short string to identify a group of workers.
+ |          description: A longer string to store longer information on the worker.
+ |          exit_on_error: Exit the app if the worker raises an error. Set to `False` to suppress exceptions.
+ |          start: Start the worker immediately.
+ |          exclusive: Cancel all workers in the same group.
+ |          thread: Mark the worker as a thread worker.
+ |
+ |      Returns:
+ |          New Worker instance.
+ |
+ |  set_class(self, add: bool, *class_names: str, update: bool = True) -> Self
+ |      Add or remove class(es) based on a condition.
+ |
+ |      This can condense the four lines required to implement the equivalent branch into a single line.
+ |
+ |      Example:
+ |          ```python
+ |          #if foo:
+ |          #    self.add_class("-foo")
+ |          #else:
+ |          #    self.remove_class("-foo")
+ |          self.set_class(foo, "-foo")
+ |          ```
+ |
+ |      Args:
+ |          add: Add the classes if True, otherwise remove them.
+ |          update: Also update styles.
+ |
+ |      Returns:
+ |          Self.
+ |
+ |  set_classes(self, classes: str | Iterable[str]) -> Self
+ |      Replace all classes.
+ |
+ |      Args:
+ |          classes: A string containing space separated classes, or an
+ |              iterable of class names.
+ |
+ |      Returns:
+ |          Self.
+ |
+ |  set_reactive(self, reactive: Reactive[ReactiveType], value: ReactiveType) -> None
+ |      Sets a reactive value *without* invoking validators or watchers.
+ |
+ |      Example:
+ |          ```python
+ |          self.set_reactive(App.theme, "textual-light")
+ |          ```
+ |
+ |      Args:
+ |          reactive: A reactive property (use the class scope syntax, i.e. `MyClass.my_reactive`).
+ |          value: New value of reactive.
+ |
+ |      Raises:
+ |          AttributeError: If the first argument is not a reactive.
+ |
+ |  set_styles(self, css: str | None = None, **update_styles: Any) -> Self
+ |      Set custom styles on this object.
+ |
+ |      Args:
+ |          css: Styles in CSS format.
+ |          update_styles: Keyword arguments map style names onto style values.
+ |
+ |      Returns:
+ |          Self.
+ |
+ |  sort_children(
+ |      self,
+ |      *,
+ |      key: Callable[[Widget], SupportsRichComparison] | None = None,
+ |      reverse: bool = False
+ |  ) -> None
+ |      Sort child widgets with an optional key function.
+ |
+ |      If `key` is not provided then widgets will be sorted in the order they are constructed.
+ |
+ |      Example:
+ |          ```python
+ |          # Sort widgets by name
+ |          screen.sort_children(key=lambda widget: widget.name or "")
+ |          ```
+ |
+ |      Args:
+ |          key: A callable which accepts a widget and returns something that can be sorted,
+ |              or `None` to sort without a key function.
+ |          reverse: Sort in descending order.
+ |
+ |  toggle_class(self, *class_names: str) -> Self
+ |      Toggle class names on this Node.
+ |
+ |      Args:
+ |          *class_names: CSS class names to toggle.
+ |
+ |      Returns:
+ |          Self.
+ |
+ |  trap_focus(self, trap_focus: bool = True) -> None
+ |      Trap the focus.
+ |
+ |      When applied to a container, this will limit tab-to-focus to the children of that
+ |      container (once focus is within that container).
+ |
+ |      This can be useful for widgets that act like modal dialogs, where you want to restrict
+ |      the user to the controls within the dialog.
+ |
+ |      Args:
+ |          trap_focus: `True` to trap focus. `False` to restore default behavior.
+ |
+ |  update_node_styles(self, animate: bool = True) -> None
+ |      Request an update of this node's styles.
+ |
+ |      Called by Textual whenever CSS classes / pseudo classes change.
+ |
+ |  walk_children(
+ |      self,
+ |      filter_type: type[WalkType] | None = None,
+ |      *,
+ |      with_self: bool = False,
+ |      method: WalkMethod = 'depth',
+ |      reverse: bool = False
+ |  ) -> list[DOMNode] | list[WalkType]
+ |      Walk the subtree rooted at this node, and return every descendant encountered in a list.
+ |
+ |      Args:
+ |          filter_type: Filter only this type, or None for no filter.
+ |          with_self: Also yield self in addition to descendants.
+ |          method: One of "depth" or "breadth".
+ |          reverse: Reverse the order (bottom up).
+ |
+ |      Returns:
+ |          A list of nodes.
+ |
+ |  watch(
+ |      self,
+ |      obj: DOMNode,
+ |      attribute_name: str,
+ |      callback: WatchCallbackType,
+ |      init: bool = True
+ |  ) -> None
+ |      Watches for modifications to reactive attributes on another object.
+ |
+ |      Example:
+ |          ```python
+ |          def on_theme_change(old_value:str, new_value:str) -> None:
+ |              # Called when app.theme changes.
+ |              print(f"App.theme went from {old_value} to {new_value}")
+ |
+ |          self.watch(self.app, "theme", self.on_theme_change, init=False)
+ |          ```
+ |
+ |      Args:
+ |          obj: Object containing attribute to watch.
+ |          attribute_name: Attribute to watch.
+ |          callback: A callback to run when attribute changes.
+ |          init: Check watchers on first call.
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties inherited from textual.dom.DOMNode:
+ |
+ |  ancestors
+ |      A list of ancestor nodes found by tracing a path all the way back to App.
+ |
+ |      Returns:
+ |          A list of nodes.
+ |
+ |  ancestors_with_self
+ |      A list of ancestor nodes found by tracing a path all the way back to App.
+ |
+ |      Note:
+ |          This is inclusive of ``self``.
+ |
+ |      Returns:
+ |          A list of nodes.
+ |
+ |  background_colors
+ |      Background colors adjusted for opacity.
+ |
+ |      Returns:
+ |          `(<background color>, <color>)`
+ |
+ |  children
+ |      A view on to the children.
+ |
+ |      Returns:
+ |          The node's children.
+ |
+ |  colors
+ |      The widget's background and foreground colors, and the parent's background and foreground colors.
+ |
+ |      Returns:
+ |          `(<parent background>, <parent color>, <background>, <color>)`
+ |
+ |  css_identifier
+ |      A CSS selector that identifies this DOM node.
+ |
+ |  css_identifier_styled
+ |      A syntax highlighted CSS identifier.
+ |
+ |      Returns:
+ |          A Rich Text object.
+ |
+ |  css_path_nodes
+ |      A list of nodes from the App to this node, forming a "path".
+ |
+ |      Returns:
+ |          A list of nodes, where the first item is the App, and the last is this node.
+ |
+ |  css_tree
+ |      A Rich tree to display the DOM, annotated with the node's CSS.
+ |
+ |      Log this to visualize your app in the textual console.
+ |
+ |      Example:
+ |          ```python
+ |          self.log(self.css_tree)
+ |          ```
+ |
+ |      Returns:
+ |          A Tree renderable.
+ |
+ |  displayed_and_visible_children
+ |      The displayed children (where `node.display==True` and `node.visible==True`).
+ |
+ |      Returns:
+ |          A sequence of widgets.
+ |
+ |  displayed_children
+ |      The displayed children (where `node.display==True`).
+ |
+ |      Returns:
+ |          A sequence of widgets.
+ |
+ |  is_empty
+ |      Are there no displayed children?
+ |
+ |  is_modal
+ |      Is the node a modal?
+ |
+ |  name
+ |      The name of the node.
+ |
+ |  parent
+ |      The parent node.
+ |
+ |      All nodes have parent once added to the DOM, with the exception of the App which is the *root* node.
+ |
+ |  pseudo_classes
+ |      A (frozen) set of all pseudo classes.
+ |
+ |  rich_style
+ |      Get a Rich Style object for this DOMNode.
+ |
+ |      Returns:
+ |          A Rich style.
+ |
+ |  screen
+ |      The screen containing this node.
+ |
+ |      Returns:
+ |          A screen object.
+ |
+ |      Raises:
+ |          NoScreen: If this node isn't mounted (and has no screen).
+ |
+ |  selection_style
+ |      The style of selected text.
+ |
+ |  text_style
+ |      Get the text style object.
+ |
+ |      A widget's style is influenced by its parent. for instance if a parent is bold, then
+ |      the child will also be bold.
+ |
+ |      Returns:
+ |          A Rich Style.
+ |
+ |  tree
+ |      A Rich tree to display the DOM.
+ |
+ |      Log this to visualize your app in the textual console.
+ |
+ |      Example:
+ |          ```python
+ |          self.log(self.tree)
+ |          ```
+ |
+ |      Returns:
+ |          A Tree renderable.
+ |
+ |  workers
+ |      The app's worker manager. Shortcut for `self.app.workers`.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from textual.dom.DOMNode:
+ |
+ |  auto_refresh
+ |      Number of seconds between automatic refresh, or `None` for no automatic refresh.
+ |
+ |  classes
+ |
+ |  display
+ |      Should the DOM node be displayed?
+ |
+ |      May be set to a boolean to show or hide the node, or to any valid value for the `display` rule.
+ |
+ |      Example:
+ |          ```python
+ |          my_widget.display = False  # Hide my_widget
+ |          ```
+ |
+ |  id
+ |      The ID of this node, or None if the node has no ID.
+ |
+ |  visible
+ |      Is this widget visible in the DOM?
+ |
+ |      If a widget hasn't had its visibility set explicitly, then it inherits it from its
+ |      DOM ancestors.
+ |
+ |      This may be set explicitly to override inherited values.
+ |      The valid values include the valid values for the `visibility` rule and the booleans
+ |      `True` or `False`, to set the widget to be visible or invisible, respectively.
+ |
+ |      When a node is invisible, Textual will reserve space for it, but won't display anything.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes inherited from textual.dom.DOMNode:
+ |
+ |  BINDING_GROUP_TITLE = None
+ |
+ |  DEFAULT_CLASSES = ''
+ |
+ |  HELP = None
+ |
+ |  SCOPED_CSS = True
+ |
+ |  WalkType = ~WalkType
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from textual.message_pump.MessagePump:
+ |
+ |  call_after_refresh(self, callback: Callback, *args: Any, **kwargs: Any) -> bool
+ |      Schedule a callback to run after all messages are processed and the screen
+ |      has been refreshed. Positional and keyword arguments are passed to the callable.
+ |
+ |      Args:
+ |          callback: A callable.
+ |
+ |      Returns:
+ |          `True` if the callback was scheduled, or `False` if the callback could not be
+ |              scheduled (may occur if the message pump was closed or closing).
+ |
+ |  call_later(self, callback: Callback, *args: Any, **kwargs: Any) -> bool
+ |      Schedule a callback to run after all messages are processed in this object.
+ |      Positional and keywords arguments are passed to the callable.
+ |
+ |      Args:
+ |          callback: Callable to call next.
+ |          *args: Positional arguments to pass to the callable.
+ |          **kwargs: Keyword arguments to pass to the callable.
+ |
+ |      Returns:
+ |          `True` if the callback was scheduled, or `False` if the callback could not be
+ |              scheduled (may occur if the message pump was closed or closing).
+ |
+ |  call_next(self, callback: Callback, *args: Any, **kwargs: Any) -> None
+ |      Schedule a callback to run immediately after processing the current message.
+ |
+ |      Args:
+ |          callback: Callable to run after current event.
+ |          *args: Positional arguments to pass to the callable.
+ |          **kwargs: Keyword arguments to pass to the callable.
+ |
+ |  check_idle(self) -> None
+ |      Prompt the message pump to call idle if the queue is empty.
+ |
+ |  disable_messages(self, *messages: type[Message]) -> None
+ |      Disable message types from being processed.
+ |
+ |  enable_messages(self, *messages: type[Message]) -> None
+ |      Enable processing of messages types.
+ |
+ |  async on_callback(self, event: events.Callback) -> None
+ |
+ |  async on_event(self, event: events.Event) -> None
+ |      Called to process an event.
+ |
+ |      Args:
+ |          event: An Event object.
+ |
+ |  async on_timer(self, event: events.Timer) -> None
+ |
+ |  prevent(self, *message_types: type[Message]) -> Generator[None, None, None]
+ |      A context manager to *temporarily* prevent the given message types from being posted.
+ |
+ |      Example:
+ |          ```python
+ |          input = self.query_one(Input)
+ |          with self.prevent(Input.Changed):
+ |              input.value = "foo"
+ |          ```
+ |
+ |  set_interval(
+ |      self,
+ |      interval: float,
+ |      callback: TimerCallback | None = None,
+ |      *,
+ |      name: str | None = None,
+ |      repeat: int = 0,
+ |      pause: bool = False
+ |  ) -> Timer
+ |      Call a function at periodic intervals.
+ |
+ |      Args:
+ |          interval: Time (in seconds) between calls.
+ |          callback: Function to call.
+ |          name: Name of the timer object.
+ |          repeat: Number of times to repeat the call or 0 for continuous.
+ |          pause: Start the timer paused.
+ |
+ |      Returns:
+ |          A timer object.
+ |
+ |  set_timer(
+ |      self,
+ |      delay: float,
+ |      callback: TimerCallback | None = None,
+ |      *,
+ |      name: str | None = None,
+ |      pause: bool = False
+ |  ) -> Timer
+ |      Call a function after a delay.
+ |
+ |      Example:
+ |          ```python
+ |          def ready():
+ |              self.notify("Your soft boiled egg is ready!")
+ |          # Call ready() after 3 minutes
+ |          self.set_timer(3 * 60, ready)
+ |          ```
+ |
+ |      Args:
+ |          delay: Time (in seconds) to wait before invoking callback.
+ |          callback: Callback to call after time has expired.
+ |          name: Name of the timer (for debug).
+ |          pause: Start timer paused.
+ |
+ |      Returns:
+ |          A timer object.
+ |
+ |  async wait_for_refresh(self) -> bool
+ |      Wait for the next refresh.
+ |
+ |      This method should only be called from a task other than the one running this widget.
+ |      If called from the same task, it will return immediately to avoid blocking the event loop.
+ |
+ |      Returns:
+ |          `True` if waiting for refresh was successful, or `False` if the call was a null-op
+ |              due to calling it within the node's own task.
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties inherited from textual.message_pump.MessagePump:
+ |
+ |  app
+ |      Get the current app.
+ |
+ |      Returns:
+ |          The current app.
+ |
+ |      Raises:
+ |          NoActiveAppError: if no active app could be found for the current asyncio context
+ |
+ |  has_parent
+ |      Does this object have a parent?
+ |
+ |  is_attached
+ |      Is this node linked to the app through the DOM?
+ |
+ |  is_dom_root
+ |      Is this a root node (i.e. the App)?
+ |
+ |  is_parent_active
+ |      Is the parent active?
+ |
+ |  is_running
+ |      Is the message pump running (potentially processing messages)?
+ |
+ |  log
+ |      Get a logger for this object.
+ |
+ |      Returns:
+ |          A logger.
+ |
+ |  message_queue_size
+ |      The current size of the message queue.
+ |
+ |  task
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from textual.message_pump.MessagePump:
+ |
+ |  __dict__
+ |      dictionary for instance variables
+ |
+ |  __weakref__
+ |      list of weak references to the object
+

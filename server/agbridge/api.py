@@ -419,6 +419,34 @@ def _handle_file_read(engine, data):
         return {"ok": False, "error": str(e)}
 
 
+def _handle_file_read_diff(engine, data):
+    path = data.get("path", "")
+    if not path:
+        return {"ok": False, "error": "path is required"}
+
+    full_path = os.path.join(engine.workspace_root, path)
+    full_path = os.path.realpath(full_path)
+
+    if not full_path.startswith(engine.workspace_root):
+        return {"ok": False, "error": "path outside workspace"}
+
+    if not os.path.isfile(full_path):
+        return {"ok": False, "error": "file not found"}
+
+    try:
+        from agbridge.collectors.git_tracker import run_git_command
+        result = run_git_command(engine.workspace_root, "diff", ["-U999999", "--", path])
+        if result["returncode"] == 0 and result["stdout"].strip():
+            return {"ok": True, "content": result["stdout"], "is_diff": True, "path": path}
+        
+        # Fallback to normal file read
+        with open(full_path, "r", encoding="utf-8", errors="replace") as f:
+            content = f.read()
+        return {"ok": True, "content": content, "is_diff": False, "path": path}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
+
 def _handle_workspace_create(engine, data):
     path = data.get("path", "")
     entry_type = data.get("type", "directory")
@@ -529,6 +557,7 @@ def _handle_list_rules(engine, data):
 
 _COMMAND_HANDLERS = {
     protocol.CMD_FILE_READ: _handle_file_read,
+    protocol.CMD_FILE_READ_DIFF: _handle_file_read_diff,
     protocol.CMD_WORKSPACE_CREATE: _handle_workspace_create,
     protocol.CMD_WORKSPACE_DELETE: _handle_workspace_delete,
     protocol.CMD_GIT_OP: _handle_git_op,
