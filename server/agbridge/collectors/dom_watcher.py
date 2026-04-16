@@ -18,10 +18,22 @@ flooding the CDP channel with rapid successive mutations.
 
 import json
 import logging
+import os
 
 from agbridge.config import CDP_DEBOUNCE_MS
 
 logger = logging.getLogger("agbridge.dom_watcher")
+
+# Load runtime_bootstrap.js once at module level
+_BOOTSTRAP_JS_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)),
+    "editor", "runtime_bootstrap.js",
+)
+
+_BOOTSTRAP_JS = ""
+if os.path.isfile(_BOOTSTRAP_JS_PATH):
+    with open(_BOOTSTRAP_JS_PATH, encoding="utf-8") as _f:
+        _BOOTSTRAP_JS = _f.read()
 
 # Binding function name injected into Renderer global scope
 BINDING_NAME = "__agb__"
@@ -37,15 +49,20 @@ class DOMWatcher:
     def is_installed(self):
         return self._installed
 
-    async def install(self, bridge):
-        """Inject MutationObserver JS into IDE Renderer.
+    async def install(self, bridge, workspace_id="default"):
+        """Inject MutationObserver JS and runtime bootstrap into IDE Renderer.
 
         Creates observers for each UI section with per-section
         debouncing. All observers share the __agb__ binding.
+        Also injects runtime_bootstrap.js to register window.__agbridge API.
 
         Args:
             bridge: CDPBridge instance (must be connected).
+            workspace_id: Unique identifier to inject for frontend state isolation.
         """
+        # Expose workspace ID for React State Isolation (Phase 2)
+        await bridge.execute_js(f"window.__agbridge_workspace = '{workspace_id}';")
+
         # Register the binding first
         await bridge.add_binding(BINDING_NAME)
 
@@ -59,6 +76,18 @@ class DOMWatcher:
         else:
             logger.warning("DOMWatcher install returned: %s", result)
             self._installed = False
+
+        # Inject runtime_bootstrap.js for window.__agbridge API
+        if _BOOTSTRAP_JS:
+            bootstrap_result = await bridge.execute_js(_BOOTSTRAP_JS)
+            if bootstrap_result is None:
+                logger.warning("runtime_bootstrap.js injection returned None")
+            else:
+                logger.info("runtime_bootstrap.js injected (v=%s)",
+                            getattr(bootstrap_result, '__agbridge', {}).get('version', '?')
+                            if isinstance(bootstrap_result, dict) else '1')
+        else:
+            logger.warning("runtime_bootstrap.js not found at %s", _BOOTSTRAP_JS_PATH)
 
     async def uninstall(self, bridge):
         """Disconnect all observers and remove binding."""
@@ -87,10 +116,10 @@ class DOMWatcher:
         self._installed = False
         logger.info("DOMWatcher uninstalled")
 
-    async def reinstall(self, bridge):
+    async def reinstall(self, bridge, workspace_id="default"):
         """Re-inject observers after page reload or reconnection."""
         self._installed = False
-        await self.install(bridge)
+        await self.install(bridge, workspace_id)
 
     @staticmethod
     def parse_event(payload_str):

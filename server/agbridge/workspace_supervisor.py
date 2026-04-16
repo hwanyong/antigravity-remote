@@ -5,15 +5,15 @@ Merges the former ProcessScanner and WorkspaceRegistry into a single
 Supervisor using a Kubernetes-style reconciliation loop.
 
 Key design decisions:
-- No intermediate state cache (_known_windows) — CG API is the single
+- No intermediate state cache — AX API + NSWorkspace is the single
   source of truth, queried every reconcile cycle.
 - Engines never self-terminate — only the Supervisor spawns/stops them.
 - _engines dict is the only authoritative record of managed workspaces.
 
 Reconciliation pattern:
-  desired = discover_windows()   (from CG API, stateless)
+  desired = discover_windows()   (from AX API, stateless)
   actual  = self._engines        (Supervisor's managed state)
-  diff    = desired ⊕ actual     (spawn / stop / update)
+  diff    = desired ⊕ actual     (spawn / stop)
 """
 
 import asyncio
@@ -26,8 +26,11 @@ from agbridge import protocol
 from agbridge.config import (
     OWNER_NAME,
     POLL_AWAIT_IDE_INTERVAL,
+    CDP_BASE_PORT,
+    CDP_PORT_RANGE,
 )
 from agbridge.engine import Engine
+from agbridge.cdp.port_allocator import PortAllocator
 from agbridge.window_discovery import (
     discover_windows,
     get_window_states,
@@ -46,6 +49,7 @@ class WorkspaceSupervisor:
     - Spawn/stop Engines based on window presence
     - Manage WS client connections and event broadcasting
     - Provide workspace query API for HTTP/WS handlers
+    - Allocate/release CDP ports per workspace
     """
 
     # Timeout for pending close entries (seconds)
@@ -59,6 +63,10 @@ class WorkspaceSupervisor:
         self._launched_paths = {}   # basename → full_path (from launch_ide)
         self._pending_closes = {}   # workspace_path → close_timestamp
         self._reconcile_interval = POLL_AWAIT_IDE_INTERVAL
+        self._port_allocator = PortAllocator(
+            base_port=CDP_BASE_PORT,
+            port_range=CDP_PORT_RANGE,
+        )
 
     # ── Lifecycle ────────────────────────────────────────────
 
@@ -104,7 +112,9 @@ class WorkspaceSupervisor:
         from the OS, making zombie states structurally impossible.
         """
         # 1. Desired state: what CG API says exists right now
-        discovered = discover_windows()
+        discovered = await asyncio.to_thread(
+            discover_windows, fallback_paths=self._launched_paths
+        )
 
         desired_by_id = {}
         for win in discovered:
@@ -128,17 +138,7 @@ class WorkspaceSupervisor:
         for ws_id in actual_ids - desired_ids:
             await self._stop_engine(ws_id)
 
-        # 5. Update: in both — refresh window_id if changed
-        for ws_id in desired_ids & actual_ids:
-            win = desired_by_id[ws_id]
-            engine = self._engines[ws_id]
-            if engine.window_id != win.window_id:
-                engine.window_id = win.window_id
-                logger.debug(
-                    "[%s] Window ID updated: %s", ws_id, win.window_id,
-                )
-
-        # 6. Cleanup pending_closes: remove entries whose CG window
+        # 5. Cleanup pending_closes: remove entries whose window
         #    has actually disappeared, or that have timed out
         active_paths = {
             os.path.realpath(w.workspace_path) for w in discovered
@@ -155,13 +155,31 @@ class WorkspaceSupervisor:
     # ── Engine spawn / stop ──────────────────────────────────
 
     async def _spawn_engine(self, ws_id, win):
-        """Create, start, and register a new Engine."""
+        """Create, start, and register a new Engine with dynamic CDP port."""
         workspace_title = os.path.basename(
             os.path.realpath(win.workspace_path)
         )
-        engine = Engine(ws_id, win.workspace_path, win.pid,
-                        target_title=workspace_title)
-        engine.window_id = win.window_id
+
+        # 1. Lookup existing engine sharing the same PID (N:1 multiplexing)
+        existing_port = None
+        for eng in self._engines.values():
+            if eng.ide and eng.ide.pid == win.pid:
+                existing_port = eng.cdp_port
+                break
+
+        if existing_port:
+            cdp_port = existing_port
+            self._port_allocator.register_reuse(ws_id, cdp_port)
+            logger.info("PID %d is shared; reusing existing CDP port %d for workspace %s", win.pid, cdp_port, ws_id)
+        else:
+            # Allocate a new CDP port for this workspace
+            cdp_port = self._port_allocator.allocate(ws_id)
+
+        engine = Engine(
+            ws_id, win.workspace_path, win.pid,
+            target_title=workspace_title,
+            cdp_port=cdp_port,
+        )
         engine.set_broadcast_callback(self.broadcast)
 
         self._engines[ws_id] = engine
@@ -170,8 +188,8 @@ class WorkspaceSupervisor:
         self._tasks[ws_id] = task
 
         logger.info(
-            "Engine spawned: id=%s path=%s pid=%d wid=%s",
-            ws_id, win.workspace_path, win.pid, win.window_id,
+            "Engine spawned: id=%s path=%s pid=%d cdp_port=%d",
+            ws_id, win.workspace_path, win.pid, cdp_port,
         )
 
         await self._broadcast_global(protocol.SYS_WORKSPACE_REGISTERED, {
@@ -195,7 +213,7 @@ class WorkspaceSupervisor:
             logger.error("[%s] Engine crashed: %s", ws_id, e)
 
     async def _stop_engine(self, ws_id):
-        """Stop and unregister an Engine."""
+        """Stop and unregister an Engine, releasing its CDP port."""
         engine = self._engines.pop(ws_id, None)
         if not engine:
             return
@@ -203,6 +221,9 @@ class WorkspaceSupervisor:
         task = self._tasks.pop(ws_id, None)
 
         engine.stop()
+
+        # Release CDP port back to the pool
+        self._port_allocator.release(ws_id)
 
         if task and not task.done():
             task.cancel()
@@ -223,20 +244,15 @@ class WorkspaceSupervisor:
         """Return Engine by workspace_id, or None."""
         return self._engines.get(workspace_id)
 
-    def list_all(self):
+    async def list_all(self):
         """Return summary of all managed workspaces with window state."""
-        window_states = get_window_states()
-
-        # Build reverse map: ws_id → window_id
-        id_to_wid = {}
-        for ws_id, engine in self._engines.items():
-            if engine.window_id:
-                id_to_wid[ws_id] = engine.window_id
+        window_states = await asyncio.to_thread(
+            get_window_states, known_workspaces=set(self._engines.keys())
+        )  # {workspace_name → state}
 
         result = []
         for ws_id, engine in self._engines.items():
-            wid = id_to_wid.get(ws_id)
-            window_state = window_states.get(wid, "CLOSED") if wid else "PENDING"
+            window_state = window_states.get(ws_id, "CLOSED")
 
             result.append({
                 "workspace_id": ws_id,
@@ -280,13 +296,18 @@ class WorkspaceSupervisor:
 
         Pre-registers basename → path so the next reconcile cycle
         can resolve the CG window even before workspaceStorage updates.
+        Allocates a CDP port for the new workspace.
 
         Returns:
             int | None: PID of launched process.
         """
         basename = os.path.basename(os.path.realpath(path))
         self._launched_paths[basename] = os.path.realpath(path)
-        return launch_ide(path)
+
+        # Pre-allocate CDP port for the workspace being launched
+        cdp_port = self._port_allocator.allocate(basename)
+
+        return launch_ide(path, port=cdp_port)
 
     # ── WebSocket client management ──────────────────────────
 
@@ -391,25 +412,30 @@ class WorkspaceSupervisor:
 
     def _log_diagnostics(self):
         """Log diagnostic info when no workspaces found."""
-        import Quartz as Q
+        from agbridge.window_discovery import _get_ag_pids
+        ag_apps_len = len(_get_ag_pids())
 
-        windows = Q.CGWindowListCopyWindowInfo(
-            Q.kCGWindowListOptionAll | Q.kCGWindowListExcludeDesktopElements,
-            Q.kCGNullWindowID,
-        )
-        total = len(windows) if windows else 0
-        ag_all = [
-            w for w in (windows or [])
-            if w.get("kCGWindowOwnerName") == OWNER_NAME
-        ]
-        ag_titled = [w for w in ag_all if w.get("kCGWindowName")]
         logger.warning(
             "Zero workspaces found. Diagnostics: "
-            "CG total=%d, Antigravity windows=%d (titled=%d)",
-            total, len(ag_all), len(ag_titled),
+            "Antigravity processes=%d",
+            ag_apps_len,
         )
-        for w in ag_all:
-            logger.warning(
-                "  AG window: wid=%s title=%r",
-                w.get("kCGWindowNumber"), w.get("kCGWindowName", ""),
-            )
+        for pid in _get_ag_pids():
+            try:
+                from ApplicationServices import (
+                    AXUIElementCreateApplication,
+                    AXUIElementCopyAttributeValue,
+                    kAXWindowsAttribute,
+                )
+                ax_app = AXUIElementCreateApplication(pid)
+                err, wins = AXUIElementCopyAttributeValue(ax_app, kAXWindowsAttribute, None)
+                if not wins:
+                    logger.debug("  PID %d: 0 windows (err=%s)", pid, err)
+                else:
+                    titles = []
+                    for w in wins:
+                        _, t = AXUIElementCopyAttributeValue(w, "AXTitle", None)
+                        if t: titles.append(t)
+                    logger.debug("  PID %d: %d windows, titles=%s", pid, len(wins), titles)
+            except Exception as e:
+                logger.debug("  PID %d: AX lookup failed: %s", pid, e)

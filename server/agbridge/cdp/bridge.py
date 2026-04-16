@@ -1,8 +1,13 @@
 """
-agbridge.collectors.cdp_bridge — CDP WebSocket connection manager
+agbridge.cdp.bridge — CDP WebSocket connection manager
 
 Per-workspace bridge to the Antigravity Renderer process via Chrome
 DevTools Protocol. Direct CDP mode only (--remote-debugging-port).
+
+Changes from original collectors/cdp_bridge.py:
+  - Constructor accepts `port` parameter (no global CDP_DIRECT_PORT ref)
+  - _discover_target fallback ("first page target") REMOVED
+  - Only exact workspace title matching is accepted
 
 Architecture:
   - Single _ws_reader_loop task receives ALL WebSocket messages
@@ -11,7 +16,7 @@ Architecture:
   - Runtime.addBinding: enables DOM→Python push notifications
 
 Usage:
-    bridge = CDPBridge(pid, workspace_name)
+    bridge = CDPBridge(pid, workspace_name, port=9333)
     bridge.set_event_handler(my_handler)
     await bridge.connect()
     result = await bridge.execute_js("document.title")
@@ -28,11 +33,10 @@ from websockets.exceptions import ConnectionClosed as _WSConnectionClosed
 
 from agbridge.config import (
     CDP_CONNECT_TIMEOUT,
-    CDP_DIRECT_PORT,
     CDP_RECONNECT_MAX,
 )
 
-logger = logging.getLogger("agbridge.cdp_bridge")
+logger = logging.getLogger("agbridge.cdp.bridge")
 
 
 class CDPBridge:
@@ -43,9 +47,16 @@ class CDPBridge:
     - _event_handler(method, params)     for CDP push events
     """
 
-    def __init__(self, pid, workspace_name):
+    def __init__(self, pid, workspace_name, port):
+        """
+        Args:
+            pid: OS process ID of the Antigravity IDE.
+            workspace_name: Basename of the workspace directory.
+            port: CDP debugging port for this workspace.
+        """
         self.pid = pid
         self.workspace_name = workspace_name
+        self._port = port
         self._ws = None
         self._msg_id = 0
         self._lock = asyncio.Lock()
@@ -56,6 +67,10 @@ class CDPBridge:
         self._reader_task = None      # _ws_reader_loop task
         self._event_handler = None    # async def handler(method, params)
         self._bindings = set()        # Active binding names
+
+    @property
+    def port(self):
+        return self._port
 
     @property
     def is_connected(self):
@@ -86,11 +101,11 @@ class CDPBridge:
           1. Enables Runtime domain
           2. Starts _ws_reader_loop background task
         """
-        ws_url = self._discover_target(CDP_DIRECT_PORT)
+        ws_url = self._discover_target()
         if not ws_url:
             raise ConnectionError(
                 f"CDP connection failed for PID {self.pid} "
-                f"(no page target on port {CDP_DIRECT_PORT})"
+                f"(no matching page target on port {self._port})"
             )
 
         await self._connect_ws(ws_url)
@@ -104,8 +119,8 @@ class CDPBridge:
         )
 
         logger.info(
-            "CDP connected (direct): PID=%d workspace=%s",
-            self.pid, self.workspace_name,
+            "CDP connected (direct): PID=%d workspace=%s port=%d",
+            self.pid, self.workspace_name, self._port,
         )
 
     async def disconnect(self):
@@ -160,9 +175,6 @@ class CDPBridge:
 
         Creates window.<name>() in the Renderer. When called from JS,
         triggers Runtime.bindingCalled event received by _event_handler.
-
-        Args:
-            name: Global function name to inject.
         """
         result = await self._send_command(
             "Runtime.addBinding", {"name": name}
@@ -197,9 +209,13 @@ class CDPBridge:
         async with self._lock:
             try:
                 return await self._eval_direct(js_code)
+            except asyncio.TimeoutError:
+                # JS Promise did not resolve — the WebSocket connection
+                # is still alive.  Do NOT mark _connected = False.
+                logger.warning("CDP execute_js timeout (Promise did not resolve)")
+                return None
             except (
                 _WSConnectionClosed,
-                asyncio.TimeoutError,
                 ConnectionError,
             ) as e:
                 logger.warning("CDP execute_js failed: %s", e)
@@ -270,11 +286,6 @@ class CDPBridge:
 
         Uses Input.dispatchKeyEvent which generates trusted events,
         unlike JavaScript-synthesized KeyboardEvents.
-
-        Args:
-            key: Key value string (e.g. "Tab", "Enter", "Escape").
-            code: Physical key code string (e.g. "Tab", "Enter").
-            key_code: Numeric virtual key code (e.g. 9 for Tab).
         """
         for event_type in ("keyDown", "keyUp"):
             await self._send_command("Input.dispatchKeyEvent", {
@@ -284,7 +295,6 @@ class CDPBridge:
                 "windowsVirtualKeyCode": key_code,
                 "nativeVirtualKeyCode": key_code,
             })
-
 
     # ── WebSocket Reader Loop ────────────────────────────────
 
@@ -394,15 +404,17 @@ class CDPBridge:
         # For objects returned by value
         return result_obj.get("value")
 
-    def _discover_target(self, port):
+    def _discover_target(self):
         """Discover WebSocket URL from CDP /json endpoint.
 
         Finds a 'page' target matching workspace title.
+        NO FALLBACK — returns None if no match found.
+        This prevents cross-workspace prompt injection.
 
         Returns:
             WebSocket URL string, or None if unavailable.
         """
-        url = f"http://localhost:{port}/json"
+        url = f"http://localhost:{self._port}/json"
         try:
             req = urllib.request.Request(url)
             with urllib.request.urlopen(req, timeout=2) as resp:
@@ -413,18 +425,22 @@ class CDPBridge:
         if not targets:
             return None
 
-        # Find page matching workspace name
+        # Find page matching workspace name — strict matching only
         from agbridge.config import TITLE_SEPARATOR
         for t in targets:
             if t.get("type") != "page":
                 continue
             title = t.get("title", "")
-            if title == self.workspace_name or title.startswith(self.workspace_name + TITLE_SEPARATOR):
+            if (title == self.workspace_name
+                    or title.startswith(self.workspace_name + TITLE_SEPARATOR)):
                 return t.get("webSocketDebuggerUrl")
 
-        # Fallback: return first page target
-        pages = [t for t in targets if t.get("type") == "page"]
-        if pages:
-            return pages[0].get("webSocketDebuggerUrl")
-
+        # NO FALLBACK — "first page target" is removed.
+        # If no match found, return None to prevent wrong-workspace injection.
+        logger.warning(
+            "CDP target not found: workspace=%s port=%d (available: %s)",
+            self.workspace_name,
+            self._port,
+            [t.get("title", "")[:40] for t in targets if t.get("type") == "page"],
+        )
         return None

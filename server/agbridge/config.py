@@ -70,10 +70,13 @@ WS_HEARTBEAT_INTERVAL = int(os.environ.get("AGBRIDGE_WS_HEARTBEAT", "60"))
 # ── CDP Settings ─────────────────────────────────────────────
 
 CDP_DIRECT_PORT = int(os.environ.get("AGBRIDGE_CDP_PORT", "9333"))
+CDP_BASE_PORT = CDP_DIRECT_PORT       # Base port for dynamic allocation
+CDP_PORT_RANGE = int(os.environ.get("AGBRIDGE_CDP_PORT_RANGE", "10"))
 CDP_CONNECT_TIMEOUT = float(os.environ.get("AGBRIDGE_CDP_TIMEOUT", "5.0"))
 CDP_RECONNECT_MAX = 3
-CDP_LAUNCH_FLAGS = [
-    f"--remote-debugging-port={CDP_DIRECT_PORT}",
+# CDP_LAUNCH_FLAGS: port is injected dynamically by supervisor
+CDP_LAUNCH_FLAGS_TEMPLATE = [
+    "--remote-debugging-port={port}",
     "--remote-allow-origins=http://localhost:*",
 ]
 

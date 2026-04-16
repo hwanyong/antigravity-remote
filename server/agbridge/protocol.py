@@ -87,6 +87,9 @@ CMD_GET_LAST_PROMPT = "CMD_GET_LAST_PROMPT"
 # Git commands
 CMD_GIT_OP = "CMD_GIT_OP"
 
+# Mention support
+CMD_LIST_RULES = "CMD_LIST_RULES"
+
 # ── Workspace lifecycle ──────────────────────────────────
 
 SYS_WORKSPACE_REGISTERED = "SYS_WORKSPACE_REGISTERED"

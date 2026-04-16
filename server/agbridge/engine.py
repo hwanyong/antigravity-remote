@@ -1,9 +1,11 @@
 """
-agbridge.engine — Per-workspace lifecycle engine (Cache Architecture)
+agbridge.engine — Per-workspace lifecycle engine (Refactored)
 
-In the multi-workspace model, each Engine is bound to one workspace and
-one IDE process. It drives the IDLE ↔ ACTIVE state machine.
-Discovery and lifecycle management are handled by WorkspaceSupervisor.
+Orchestrator only — owns a WorkspaceContext and delegates:
+  - State management → WorkspaceStateMachine
+  - Turn cache → ConversationCache
+  - CDP connection → cdp.bridge.CDPBridge
+  - Editor control → EditorGateway
 
 Data Collection (Cache Architecture):
   The server acts as an independent data collector. A background task
@@ -11,13 +13,9 @@ Data Collection (Cache Architecture):
   turns into a local cache. The TUI reads from this cache — it never
   triggers IDE scrolling. MutationObserver handles real-time updates
   for the current viewport (e.g. during AI generation).
-
-  Cache invalidation: CMD_CLEAR_CACHE resets the turn cache and
-  restarts the background collector.
 """
 
 import asyncio
-import json
 import logging
 import os
 import time
@@ -31,73 +29,93 @@ from agbridge.ide_monitor import IDEMonitor
 from agbridge.collectors import FSWatcher, scan_tree
 from agbridge.collectors.git_tracker import get_all_worktree_status
 from agbridge.collectors.dom_watcher import DOMWatcher, BINDING_NAME
+from agbridge.workspace.state_machine import WorkspaceStateMachine
+from agbridge.workspace.conversation_cache import ConversationCache
+from agbridge.workspace.context import WorkspaceContext
+from agbridge.editor.gateway import EditorGateway
 from agbridge import protocol
 
 logger = logging.getLogger("agbridge.engine")
 
 
 class Engine:
-    """Per-workspace lifecycle engine. Exists only while IDE is running."""
+    """Per-workspace lifecycle engine. Exists only while IDE is running.
 
-    # State constants (AWAIT_IDE removed — handled by Supervisor)
-    IDLE = "IDLE"
-    ACTIVE = "ACTIVE"
+    After refactoring: Owns a WorkspaceContext that holds all unified state.
+    Engine itself is a thin orchestrator (~200 lines).
+    """
 
-    def __init__(self, workspace_id, workspace_root, pid, target_title=None):
+    def __init__(self, workspace_id, workspace_root, pid, target_title=None, cdp_port=None):
         """
         Args:
             workspace_id: Unique identifier for this workspace.
             workspace_root: Absolute path to the workspace directory.
             pid: PID of the bound Antigravity IDE process.
             target_title: Workspace basename for window title matching.
+            cdp_port: CDP debugging port for this workspace (dynamic).
         """
         self.workspace_id = workspace_id
         self.workspace_root = os.path.realpath(workspace_root)
-        self.window_id = None     # CG window ID (set by Supervisor)
-        self._state = self.IDLE
         self._event_queue = asyncio.Queue()
         self._running = False
-        self._broadcast_callback = None  # Set by WorkspaceSupervisor
+        self._broadcast_callback = None
 
-        # Core components
+        # Core state objects
         cache_path = os.path.join(
             self.workspace_root, CACHE_DIR_NAME, CACHE_FILE_NAME
         )
-        self.store = StateStore(cache_path=cache_path)
-        self.ide = IDEMonitor(pid, target_title=target_title)
-        self._fs_watcher = None
+        store = StateStore(cache_path=cache_path)
+        ide = IDEMonitor(pid, target_title=target_title)
 
-        # CDP bridge + DOM watcher
-        self.cdp = None           # CDPBridge (initialized in run())
-        self._dom_watcher = DOMWatcher()
-        self._collector_task = None
-
-        # Turn cache — the source of truth for TUI data
-        self._turn_cache = {}          # {turn_index: [messages]}
-        self._cached_conv_title = ""   # invalidate on conversation switch
-        self._collecting = False       # True during background scroll+scrape
-        self._last_agent_scrape = 0.0  # monotonic timestamp for generating throttle
-        self._turn_cache_path = os.path.join(
-            self.workspace_root, CACHE_DIR_NAME, "turn_cache.json",
+        state_machine = WorkspaceStateMachine()
+        conversation = ConversationCache(
+            workspace_id,
+            os.path.join(self.workspace_root, CACHE_DIR_NAME),
         )
+
+        # WorkspaceContext — unified state object
+        self.ctx = WorkspaceContext(
+            workspace_id=workspace_id,
+            workspace_root=self.workspace_root,
+            state_machine=state_machine,
+            store=store,
+            conversation=conversation,
+            cdp=None,  # Set in _init_cdp
+            ide=ide,
+        )
+        self.ctx.set_push_event(self.push_event)
+
+        # Convenience aliases (used by supervisor/api/input_queue during migration)
+        self.store = store
+        self.ide = ide
+        self.cdp = None  # Set in _init_cdp
+
+        self._cdp_port = cdp_port
+        self._dom_watcher = DOMWatcher()
+        self._fs_watcher = None
+        self._collector_task = None
+        self._collecting = False
+        self._last_agent_scrape = 0.0
+        self._is_tui_scanning = False
 
     @property
     def current_state(self):
-        return self._state
+        return self.ctx.state_machine.current
+
+    @property
+    def cdp_port(self):
+        return self._cdp_port
+
+    def _set_state(self, event):
+        """Apply a state transition via the state machine."""
+        self.ctx.state_machine.transition(event)
 
     def set_broadcast_callback(self, callback):
-        """
-        Set the broadcast function.
-
-        Args:
-            callback: async def callback(workspace_id, event_type, payload)
-        """
         self._broadcast_callback = callback
 
     # ── Broadcasting ─────────────────────────────────────────
 
     async def _broadcast(self, event_type, payload=None):
-        """Propagate an event via the registry's broadcast system."""
         if self._broadcast_callback:
             await self._broadcast_callback(
                 self.workspace_id, event_type, payload
@@ -106,14 +124,12 @@ class Engine:
     # ── Event queue ──────────────────────────────────────────
 
     def push_event(self, event_type, payload=None):
-        """Enqueue an event from a synchronous context."""
         try:
             self._event_queue.put_nowait((event_type, payload))
         except asyncio.QueueFull:
             pass
 
     async def _drain_events(self):
-        """Broadcast all queued events at once."""
         while not self._event_queue.empty():
             event_type, payload = self._event_queue.get_nowait()
             await self._broadcast(event_type, payload)
@@ -121,8 +137,6 @@ class Engine:
     # ── FS event callback ────────────────────────────────────
 
     def _on_fs_batch(self, events):
-        """Callback invoked after watchdog debouncing delivers a batch."""
-        # Update FS tree
         tree = scan_tree(self.workspace_root)
         changed = self.store.update("fs_tree", tree)
         if changed:
@@ -134,7 +148,6 @@ class Engine:
                 }.get(ev["event"], protocol.FS_OP_MODIFIED)
                 self.push_event(ev_type, {"path": ev["path"]})
 
-        # Update Git status (supports bare repo + worktree layout)
         git_data = get_all_worktree_status(self.workspace_root)
         git_changed = self.store.update("git_status", git_data)
         if git_changed:
@@ -151,31 +164,32 @@ class Engine:
             self.workspace_id, self.workspace_root, self.ide.pid,
         )
 
-        # FS Watcher — always active
+        # FS Watcher
         self._start_fs_watcher()
 
-        # Build initial FS tree
         tree = scan_tree(self.workspace_root)
         self.store.update("fs_tree", tree)
 
-        # Initial Git status (supports bare repo + worktree layout)
         git_data = get_all_worktree_status(self.workspace_root)
         self.store.update("git_status", git_data)
 
-        # IDE is already connected (ProcessScanner confirmed it)
         self.store.set_ide_connected(True)
 
         # Load turn cache from disk (survives restarts)
-        self._load_turn_cache()
+        self.ctx.conversation.load()
 
         # Initialize CDP bridge + DOM watcher
         await self._init_cdp()
 
-        # Initial viewport scrape (quick — current visible turns only)
+        # Initialize EditorGateway (requires CDP bridge)
+        editor = EditorGateway(self.ctx)
+        self.ctx.set_editor(editor)
+
+        # Initial viewport scrape
         await self._do_cdp_poll()
         self.store.flush_to_disk()
 
-        # Start background collector for incremental cache fill
+        # Start background collector
         self._collector_task = asyncio.create_task(
             self._background_collector()
         )
@@ -186,47 +200,45 @@ class Engine:
             await asyncio.sleep(0.05)
 
     async def _init_cdp(self):
-        """Initialize CDP bridge with event handler and DOM watcher.
+        """Initialize CDP bridge with dynamic port and event handler."""
+        from agbridge.cdp.bridge import CDPBridge
 
-        On failure, logs warning and sets self.cdp = None.
-        The Engine continues running (FS/Git still works) but
-        Agent Panel features are disabled.
-        """
-        from agbridge.collectors.cdp_bridge import CDPBridge
+        port = self._cdp_port
+        if port is None:
+            from agbridge.config import CDP_DIRECT_PORT
+            port = CDP_DIRECT_PORT
 
-        self.cdp = CDPBridge(
-            self.ide.pid, os.path.basename(self.workspace_root)
+        bridge = CDPBridge(
+            self.ide.pid,
+            os.path.basename(self.workspace_root),
+            port=port,
         )
 
-        # Register event handler BEFORE connect so reader loop routes events
-        self.cdp.set_event_handler(self._on_cdp_event)
+        # Register event handler BEFORE connect
+        bridge.set_event_handler(self._on_cdp_event)
 
         try:
-            await self.cdp.connect()
+            await bridge.connect()
             logger.info(
-                "[%s] CDP bridge connected (mode=%s)",
-                self.workspace_id, self.cdp.mode,
+                "[%s] CDP bridge connected (mode=%s port=%d)",
+                self.workspace_id, bridge.mode, port,
             )
+            self.cdp = bridge
+            self.ctx.cdp = bridge
 
-            # Install DOM watcher (MutationObserver injection)
-            await self._dom_watcher.install(self.cdp)
+            # Install DOM watcher + runtime_bootstrap.js
+            await self._dom_watcher.install(bridge, self.workspace_id)
 
         except Exception as e:
             logger.warning(
-                "[%s] CDP init failed: %s — Agent Panel disabled",
+                "[%s] Initial CDP connection delayed (waiting for frontend): %s",
                 self.workspace_id, e,
             )
-            self.cdp = None
+            # Retain self.cdp so _background_collector can self-heal
 
     # ── CDP event handling ────────────────────────────────────
 
     async def _on_cdp_event(self, method, params):
-        """Handle CDP push events from the reader loop.
-
-        Routes:
-        - Runtime.bindingCalled → parse section → selective re-scrape
-        - Runtime.executionContextCreated → re-inject DOM watcher
-        """
         if method == "Runtime.bindingCalled":
             name = params.get("name", "")
             if name == BINDING_NAME:
@@ -237,49 +249,46 @@ class Engine:
                     await self._on_dom_change(event_data)
 
         elif method == "Runtime.executionContextCreated":
-            # Page reload detected — re-inject observers
             if self.cdp and self._dom_watcher.is_installed:
                 logger.info(
                     "[%s] Execution context created — reinstalling watcher",
                     self.workspace_id,
                 )
-                await self._dom_watcher.reinstall(self.cdp)
+                await self._dom_watcher.reinstall(self.cdp, self.workspace_id)
 
     async def _on_dom_change(self, event_data):
         """Real-time update triggered by MutationObserver.
 
-        Scrapes the current viewport and merges into the turn cache.
-        Does NOT scroll the IDE — only processes what is visible.
-        The background collector handles uncached turns separately.
-
         During ACTIVE (generating) state, agent section scrapes are
-        throttled to 500ms intervals to reduce unnecessary CDP calls
-        and WS pushes. Idle state retains full 100ms responsiveness.
+        throttled to 500ms intervals to reduce unnecessary CDP calls.
         """
         if not self.cdp or not self.cdp.is_connected:
             return
-        
+
         section = event_data.get("section")
-        
-        # 0. Fast-path independent state management
+        sm = self.ctx.state_machine
+
+        # Fast-path: state change from button observer
         if section == "state":
             new_state = event_data.get("status", "idle")
-            if new_state == "generating" and self._state == self.IDLE:
-                self._state = self.ACTIVE
-                self.push_event(protocol.UI_CONV_STATE_CHANGE, {"state": "generating"})
-                logger.info("[%s] Agent generating → ACTIVE", self.workspace_id)
-            elif new_state == "idle" and self._state == self.ACTIVE:
-                self._state = self.IDLE
-                self.push_event(protocol.UI_CONV_STATE_CHANGE, {"state": "idle"})
-                logger.info("[%s] AI generation complete → IDLE", self.workspace_id)
-                self.store.flush_to_disk()
+            if new_state == "generating":
+                result = sm.transition("gen_detected")
+                if result:
+                    self.push_event(protocol.UI_CONV_STATE_CHANGE, {"state": "generating"})
+                    logger.info("[%s] Agent generating → ACTIVE", self.workspace_id)
+            elif new_state == "idle":
+                result = sm.transition("idle_detected")
+                if result:
+                    self.push_event(protocol.UI_CONV_STATE_CHANGE, {"state": "idle"})
+                    logger.info("[%s] AI generation complete → IDLE", self.workspace_id)
+                    self.store.flush_to_disk()
             return
 
         if self._collecting:
-            return  # Skip while background collector is scrolling
+            return
 
-        # Generating throttle: limit agent scrapes to 500ms intervals
-        if section == "agent" and self._state == self.ACTIVE:
+        # Generating throttle
+        if section == "agent" and sm.is_active():
             now = time.monotonic()
             if now - self._last_agent_scrape < 0.5:
                 return
@@ -290,7 +299,7 @@ class Engine:
         try:
             if section == "agent":
                 agent_data = await dom_scraper.collect_agent_panel(self.cdp)
-                agent_data = self._merge_turn_cache(agent_data)
+                agent_data = self.ctx.conversation.merge(agent_data)
                 self._push_cache_to_tui(agent_data)
 
             elif section == "controls":
@@ -299,8 +308,6 @@ class Engine:
                     self.push_event(
                         protocol.UI_EDIT_ACTIONS_UPDATE, edit_actions
                     )
-
-                # Models/modes also live in the controls area
                 current_info = await dom_scraper.collect_models_and_modes(
                     self.cdp
                 )
@@ -343,26 +350,24 @@ class Engine:
     # ── Background Collector ──────────────────────────────────
 
     async def _background_collector(self):
-        """Incrementally collect uncached turns in the background.
-
-        Runs continuously. Each sweep:
-        1. Gets the height map (all turn positions)
-        2. Finds the first uncached turn
-        3. Scrolls to it, waits for render, scrapes
-        4. Merges into cache and pushes to TUI
-        5. Waits before the next step
-
-        When all turns are cached, waits longer before re-checking
-        (new turns may appear during AI generation).
-        """
-        STEP_DELAY = 0.3    # seconds between scroll steps
-        SWEEP_DELAY = 3.0   # seconds between full sweeps when complete
-        SETTLE_MS = 200     # milliseconds to wait after scroll
+        """Incrementally collect uncached turns in the background."""
+        STEP_DELAY = 0.3
+        SWEEP_DELAY = 3.0
+        SETTLE_MS = 200
 
         from agbridge.collectors import dom_scraper
 
         while self._running:
             if not self.cdp or not self.cdp.is_connected:
+                if self.cdp:
+                    try:
+                        logger.info("[%s] Attempting CDP self-healing / reconnect...", self.workspace_id)
+                        await self.cdp.reconnect()
+                        await self._dom_watcher.reinstall(self.cdp, self.workspace_id)
+                        logger.info("[%s] CDP connection restored! Triggering deferred scrape.", self.workspace_id)
+                        await self._do_cdp_poll()
+                    except Exception as e:
+                        logger.debug("[%s] Background reconnect still waiting: %s", self.workspace_id, e)
                 await asyncio.sleep(2)
                 continue
 
@@ -370,20 +375,52 @@ class Engine:
                 height_map = await dom_scraper.get_conversation_height_map(
                     self.cdp,
                 )
-                if not height_map:
+                if not height_map or height_map == "__EMPTY_PLACEHOLDER__":
+                    sm = self.ctx.state_machine
+                    
+                    if height_map == "__EMPTY_PLACEHOLDER__" and self.ctx.conversation.turn_count > 0:
+                        logger.info("[%s] Definitive empty placeholder detected — clearing cache.", self.workspace_id)
+                        self.clear_cache()
+                        # Transition to IDLE if we were in another active state
+                        if not sm.is_idle():
+                            sm.transition("idle_detected")
+
+                    if sm.is_initializing():
+                        sm.transition("empty_conversation")
+                        logger.info(
+                            "[%s] No conversation turns — INITIALIZING → IDLE",
+                            self.workspace_id,
+                        )
+                    if self._is_tui_scanning:
+                        self._is_tui_scanning = False
+                        self.push_event(
+                            protocol.UI_CONV_SCAN_STATE,
+                            {"scanning": False},
+                        )
                     await asyncio.sleep(SWEEP_DELAY)
                     continue
 
                 total_turns = len(height_map)
+                turn_cache = self.ctx.conversation
+
+                needs_scan = any(
+                    ti not in turn_cache._turns for ti in range(total_turns)
+                )
+                if needs_scan and not self._is_tui_scanning:
+                    self._is_tui_scanning = True
+                    self.push_event(
+                        protocol.UI_CONV_SCAN_STATE,
+                        {"scanning": True, "title": ""},
+                    )
+
                 collected_any = False
 
                 for ti in range(total_turns):
                     if not self._running:
                         break
-                    if ti in self._turn_cache:
+                    if ti in turn_cache._turns:
                         continue
 
-                    # Scroll to uncached turn
                     self._collecting = True
                     scroll_pos = height_map[ti]["scrollStart"]
                     await dom_scraper.scroll_conversation_to(
@@ -391,18 +428,15 @@ class Engine:
                     )
                     await asyncio.sleep(SETTLE_MS / 1000)
 
-                    # Scrape visible turns
                     data = await dom_scraper.collect_agent_panel(self.cdp)
                     self._collecting = False
 
-                    # Merge into cache
-                    data = self._merge_turn_cache(data)
+                    data = turn_cache.merge(data)
                     self._push_cache_to_tui(data)
                     collected_any = True
 
                     await asyncio.sleep(STEP_DELAY)
 
-                # Restore scroll to bottom after sweep
                 if collected_any and height_map:
                     self._collecting = True
                     total_height = sum(h["height"] for h in height_map)
@@ -410,20 +444,28 @@ class Engine:
                         self.cdp, total_height,
                     )
                     self._collecting = False
-
-                    self.push_event(
-                        protocol.UI_CONV_SCAN_STATE,
-                        {"scanning": False},
-                    )
                     self.store.flush_to_disk()
                     logger.info(
                         "[%s] Background collector: %d/%d turns cached",
                         self.workspace_id,
-                        len(self._turn_cache), total_turns,
+                        turn_cache.turn_count, total_turns,
+                    )
+
+                if self._is_tui_scanning:
+                    self._is_tui_scanning = False
+                    self.push_event(
+                        protocol.UI_CONV_SCAN_STATE,
+                        {"scanning": False},
                     )
 
             except Exception as e:
                 self._collecting = False
+                if self._is_tui_scanning:
+                    self._is_tui_scanning = False
+                    self.push_event(
+                        protocol.UI_CONV_SCAN_STATE,
+                        {"scanning": False},
+                    )
                 logger.warning(
                     "[%s] Background collector error: %s",
                     self.workspace_id, e,
@@ -439,7 +481,7 @@ class Engine:
             if self.cdp:
                 try:
                     await self.cdp.reconnect()
-                    await self._dom_watcher.reinstall(self.cdp)
+                    await self._dom_watcher.reinstall(self.cdp, self.workspace_id)
                 except ConnectionError:
                     pass
             return
@@ -447,21 +489,27 @@ class Engine:
         from agbridge.collectors import dom_scraper
 
         try:
-            # Scrape current viewport (fast)
             agent_data = await dom_scraper.collect_agent_panel(self.cdp)
-            agent_data = self._merge_turn_cache(agent_data)
+            agent_data = self.ctx.conversation.merge(agent_data)
             self._push_cache_to_tui(agent_data)
 
-            # Notify TUI that background collection is starting
+            # Notify TUI that scanning starts
+            self._is_tui_scanning = True
             self.push_event(
                 protocol.UI_CONV_SCAN_STATE,
                 {"scanning": True, "title": ""},
             )
 
-            if agent_data.get("state") == "generating" and self._state == self.IDLE:
-                self._state = self.ACTIVE
+            # Transition out of INITIALIZING
+            sm = self.ctx.state_machine
+            scraped_state = agent_data.get("state", "unknown")
+            if scraped_state == "generating":
+                sm.transition("gen_detected")
                 self.push_event(protocol.UI_CONV_STATE_CHANGE, {"state": "generating"})
                 logger.info("[%s] Agent generating → ACTIVE", self.workspace_id)
+            elif sm.is_initializing() and scraped_state != "unknown":
+                sm.transition("idle_detected")
+                logger.info("[%s] Initial scrape done (state=%s) → IDLE", self.workspace_id, scraped_state)
 
             edit_actions = await dom_scraper.collect_edit_actions(self.cdp)
             if self.store.update("edit_actions", edit_actions):
@@ -484,11 +532,8 @@ class Engine:
                 "available_modes": existing.get("available_modes", []),
             }
             if self.store.update("models_info", merged):
-                self.push_event(
-                    protocol.UI_MODELS_UPDATE, merged
-                )
+                self.push_event(protocol.UI_MODELS_UPDATE, merged)
 
-            # Confirm Undo dialog — detect modal overlay
             undo_dialog = await dom_scraper.detect_confirm_undo_dialog(self.cdp)
             if self.store.update("confirm_undo_dialog", undo_dialog):
                 self.push_event(
@@ -498,113 +543,24 @@ class Engine:
         except Exception as e:
             logger.warning("[%s] CDP poll failed: %s", self.workspace_id, e)
 
-    def _start_fs_watcher(self):
-        """Start watchdog monitoring."""
-        self._fs_watcher = FSWatcher(
-            self.workspace_root, self._on_fs_batch
-        )
-        self._fs_watcher.start()
-        logger.info("[%s] FS Watcher started", self.workspace_id)
-    # ── Turn cache (file-backed) ───────────────────────────────
-
-    def _load_turn_cache(self):
-        """Load turn cache from disk file."""
-        if not os.path.isfile(self._turn_cache_path):
-            return
-        try:
-            with open(self._turn_cache_path, "r", encoding="utf-8") as f:
-                payload = json.load(f)
-            self._cached_conv_title = payload.get("title", "")
-            raw = payload.get("turns", {})
-            # JSON keys are strings — convert back to int
-            self._turn_cache = {int(k): v for k, v in raw.items()}
-            logger.info(
-                "[%s] Turn cache loaded: %d turns (conv='%s')",
-                self.workspace_id, len(self._turn_cache),
-                self._cached_conv_title[:40],
-            )
-        except (json.JSONDecodeError, ValueError, OSError) as e:
-            logger.warning("[%s] Turn cache load failed: %s", self.workspace_id, e)
-            self._turn_cache.clear()
-
-    def _save_turn_cache(self):
-        """Persist turn cache to disk file."""
-        cache_dir = os.path.dirname(self._turn_cache_path)
-        os.makedirs(cache_dir, exist_ok=True)
-
-        payload = {
-            "title": self._cached_conv_title,
-            "turns": self._turn_cache,
-        }
-        tmp = self._turn_cache_path + ".tmp"
-        with open(tmp, "w", encoding="utf-8") as f:
-            json.dump(payload, f, ensure_ascii=False)
-        os.replace(tmp, self._turn_cache_path)
-
-    def _delete_turn_cache_file(self):
-        """Remove turn cache file from disk."""
-        try:
-            os.remove(self._turn_cache_path)
-        except FileNotFoundError:
-            pass
-
-    def _merge_turn_cache(self, agent_data):
-        """Merge scraped messages into the turn cache.
-
-        Groups incoming messages by _ti (turn index) and replaces
-        the cache entry for each scraped turn. Auto-invalidates
-        on conversation title change. Persists to disk after merge.
-        """
-        conv_title = agent_data.get("conversation_title", "")
-        if conv_title and conv_title != self._cached_conv_title:
-            self._turn_cache.clear()
-            self._cached_conv_title = conv_title
-            self._delete_turn_cache_file()
-            logger.info(
-                "[%s] Conversation changed to '%s' — cache cleared",
-                self.workspace_id, conv_title[:40],
-            )
-
-        messages = agent_data.get("messages", [])
-
-        turn_groups: dict[int, list] = {}
-        for msg in messages:
-            ti = msg.pop("_ti", -1)
-            if ti >= 0:
-                turn_groups.setdefault(ti, []).append(msg)
-
-        if turn_groups:
-            for ti, msgs in turn_groups.items():
-                self._turn_cache[ti] = msgs
-            self._save_turn_cache()
-
-        return agent_data
+    # ── TUI push helpers ──────────────────────────────────────
 
     def _push_cache_to_tui(self, agent_data):
         """Flatten turn cache and push to TUI if data changed."""
-        flat = []
-        for ti in sorted(self._turn_cache.keys()):
-            for msg in self._turn_cache[ti]:
-                flat.append({**msg, "_turn_idx": ti})
-
+        flat = self.ctx.conversation.flatten()
         agent_data["messages"] = flat
         agent_data["_total_turns"] = agent_data.get("_total_turns", 0)
-        agent_data["_cached_turns"] = len(self._turn_cache)
+        agent_data["_cached_turns"] = self.ctx.conversation.turn_count
 
         if self.store.update("agent_panel", agent_data):
             self.push_event(protocol.UI_AGENT_UPDATE, agent_data)
 
     def clear_cache(self):
-        """Clear turn cache and restart background collection.
-
-        Called by CMD_CLEAR_CACHE from TUI.
-        """
-        self._turn_cache.clear()
-        self._cached_conv_title = ""
-        self._delete_turn_cache_file()
+        """Clear turn cache and restart background collection."""
+        self.ctx.conversation.clear()
         logger.info("[%s] Cache cleared by user request", self.workspace_id)
 
-        # Push empty state to TUI
+        self._is_tui_scanning = True
         self.push_event(
             protocol.UI_CONV_SCAN_STATE,
             {"scanning": True, "title": ""},
@@ -615,24 +571,25 @@ class Engine:
         )
 
     def truncate_turn_cache(self, turn_idx):
-        """Truncate the turn cache from the given turn index onwards.
-        
-        Slices the collection locally and immediately pushes the updated
-        state to the TUI to eliminate DOM scraping delays during destructive
-        actions like undo.
-        """
-        keys_to_delete = [k for k in self._turn_cache.keys() if k >= turn_idx]
-        for k in keys_to_delete:
-            del self._turn_cache[k]
-        self._save_turn_cache()
-
-        agent_data = self.store.get("agent_panel") or {}
+        """Truncate the turn cache from the given turn index onwards."""
+        agent_data = self.ctx.conversation.truncate(turn_idx)
         self._push_cache_to_tui(agent_data)
-        logger.info(
-            "[%s] Turn cache truncated at index %d (deleted %d turns)",
-            self.workspace_id, turn_idx, len(keys_to_delete)
-        )
         return agent_data
+
+    # ── Backward compatibility ────────────────────────────────
+
+    async def wait_for_idle(self, timeout=15.0):
+        """Wait until state is IDLE or ACTIVE."""
+        return await self.ctx.state_machine.wait_for_idle(timeout)
+
+    # ── FS watcher ────────────────────────────────────────────
+
+    def _start_fs_watcher(self):
+        self._fs_watcher = FSWatcher(
+            self.workspace_root, self._on_fs_batch
+        )
+        self._fs_watcher.start()
+        logger.info("[%s] FS Watcher started", self.workspace_id)
 
     # ── Shutdown ─────────────────────────────────────────────
 
@@ -640,12 +597,10 @@ class Engine:
         """Graceful shutdown: stop loop, stop FS watcher, disconnect CDP."""
         self._running = False
 
-        # Cancel background collector
         if self._collector_task and not self._collector_task.done():
             self._collector_task.cancel()
         self._collector_task = None
 
-        # Disconnect CDP bridge
         if self.cdp:
             asyncio.ensure_future(self.cdp.disconnect())
 

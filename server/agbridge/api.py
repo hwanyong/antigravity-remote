@@ -112,7 +112,8 @@ def create_app(supervisor, input_queue, lifespan=None):
         auth_error = _check_auth(request)
         if auth_error:
             return auth_error
-        return JSONResponse(content={"workspaces": supervisor.list_all()})
+        res = await supervisor.list_all()
+        return JSONResponse(content={"workspaces": res})
 
     @app.post("/api/workspaces")
     async def open_workspace(request: Request):
@@ -504,10 +505,33 @@ def _handle_list_workflows(engine, data):
     return {"ok": True, "workflows": sorted(list(set(wfs)))}
 
 
+def _handle_list_rules(engine, data):
+    """List available rule files from global and project directories."""
+    import glob
+
+    global_dir = os.path.expanduser("~/.gemini/antigravity")
+    project_dir = os.path.join(engine.workspace_root, ".gemini")
+
+    rules = []
+
+    # Global rules (excluding subdirectories like global_workflows, skills, etc.)
+    if os.path.isdir(global_dir):
+        for f in glob.glob(os.path.join(global_dir, "*.md")):
+            rules.append(os.path.basename(f)[:-3])
+
+    # Project-level rules
+    if os.path.isdir(project_dir):
+        for f in glob.glob(os.path.join(project_dir, "*.md")):
+            rules.append(os.path.basename(f)[:-3])
+
+    return {"ok": True, "rules": sorted(list(set(rules)))}
+
+
 _COMMAND_HANDLERS = {
     protocol.CMD_FILE_READ: _handle_file_read,
     protocol.CMD_WORKSPACE_CREATE: _handle_workspace_create,
     protocol.CMD_WORKSPACE_DELETE: _handle_workspace_delete,
     protocol.CMD_GIT_OP: _handle_git_op,
     protocol.CMD_LIST_WORKFLOWS: _handle_list_workflows,
+    protocol.CMD_LIST_RULES: _handle_list_rules,
 }

@@ -8,8 +8,6 @@ Data-driven: apply_data(workspaces, active_id) updates the entire list.
 
 import os
 
-from rich.text import Text
-
 from textual.binding import Binding
 from textual.message import Message
 from textual.reactive import reactive
@@ -38,8 +36,8 @@ class WorkspaceItem(ListItem):
         self.ws_id = ws_id
         self.basename = basename
         self.is_active = is_active
+        self.is_active = is_active
         self.window_state = window_state
-        self._btn_just_pressed = False
 
     def compose(self):
         indicator = "●" if self.is_active else "○"
@@ -66,13 +64,7 @@ class WorkspaceItem(ListItem):
     def on_button_pressed(self, event: Button.Pressed):
         """Intercept button press and ask WorkspaceList to handle it."""
         event.stop()
-        self._btn_just_pressed = True
         self.post_message(WorkspaceList.WorkspaceCloseRequest(self.ws_id))
-        self.set_timer(0.2, self._reset_btn_flag)
-
-    def _reset_btn_flag(self):
-        """Reset the button-press guard after event loop settles."""
-        self._btn_just_pressed = False
 
 
 class OpenActionItem(ListItem):
@@ -129,9 +121,11 @@ class WorkspaceList(Static):
 
     def _rebuild(self):
         """Rebuild the ListView from current data."""
+        from textual.css.query import NoMatches
+
         try:
             lv = self.query_one("#ws-list-view", WorkspaceListView)
-        except Exception:
+        except NoMatches:
             return
 
         lv.clear()
@@ -149,26 +143,22 @@ class WorkspaceList(Static):
 
             items.append(WorkspaceItem(ws_id, basename, is_active, window_state))
 
-        if self._workspaces:
-            items.append(OpenActionItem())
+        items.append(OpenActionItem())
 
         lv.extend(items)
 
     def on_list_view_selected(self, event: ListView.Selected):
         """Handle workspace selection or open action."""
         item = event.item
-        if not item:
-            return
+        app = self.app
 
-        # Guard: ignore selection triggered by close-button click
-        if isinstance(item, WorkspaceItem) and item._btn_just_pressed:
+        # Early return guards
+        if not item or not app:
             return
 
         # Open workspace action
         if isinstance(item, OpenActionItem):
-            app = self.app
-            if app:
-                app.run_worker(app.action_cmd_open_workspace())
+            app.run_worker(app.action_cmd_open_workspace())
             return
 
         # Workspace switch
@@ -178,8 +168,6 @@ class WorkspaceList(Static):
                 return
 
             if self._switch_callback:
-                app = self.app
-                if app:
-                    app.run_worker(self._switch_callback(ws_id))
+                app.run_worker(self._switch_callback(ws_id))
 
 

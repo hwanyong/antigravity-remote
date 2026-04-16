@@ -29,11 +29,10 @@ def _check_native_deps():
     Must be called before any module that imports pyobjc.
     """
     try:
-        import Quartz  # noqa: F401
         import AppKit  # noqa: F401
         import ApplicationServices  # noqa: F401
     except ImportError:
-        print("\n  ✗ 필수 의존성 누락: pyobjc-framework-Quartz")
+        print("\n  ✗ 필수 의존성 누락: pyobjc-framework-Cocoa / pyobjc-framework-ApplicationServices")
         print()
         print("  이 서버는 macOS 네이티브 API에 의존합니다.")
         print("  올바른 가상 환경에서 실행해주세요:")
@@ -42,77 +41,22 @@ def _check_native_deps():
         print()
         print("  또는 pip install로 의존성을 설치하세요:")
         print()
-        print("    pip install pyobjc-framework-Quartz pyobjc-framework-Cocoa pyobjc-framework-ApplicationServices")
+        print("    pip install pyobjc-framework-Cocoa pyobjc-framework-ApplicationServices")
         print()
         sys.exit(1)
 
     import time
     from ApplicationServices import AXIsProcessTrustedWithOptions
-    import Quartz
 
     print(f"\n  Checking permissions for Python: {sys.executable}")
 
-    # 1. Accessibility 권한 체크
+    # Accessibility 권한 체크 (Screen Recording은 더 이상 불필요)
     if not AXIsProcessTrustedWithOptions({"AXTrustedCheckOptionPrompt": True}):
         print("  WAITING: Please grant Accessibility permissions to this process in System Settings.")
         while not AXIsProcessTrustedWithOptions({"AXTrustedCheckOptionPrompt": False}):
             time.sleep(3)
-    print("  ✓ Accessibility permissions verified.")
+    print("  ✓ Accessibility permissions verified.\n")
 
-    # 2. Screen Recording 권한 체크
-    def check_screen_recording():
-        if hasattr(Quartz, "CGPreflightScreenCaptureAccess"):
-            return Quartz.CGPreflightScreenCaptureAccess()
-            
-        # Fallback for old macOS: 윈도우 타이틀 휴리스틱
-        windows = Quartz.CGWindowListCopyWindowInfo(
-            Quartz.kCGWindowListOptionAll | Quartz.kCGWindowListExcludeDesktopElements,
-            Quartz.kCGNullWindowID,
-        )
-        if not windows:
-            return False
-            
-        import os
-        my_pid = os.getpid()
-        system_apps = ("WindowServer", "Dock", "ControlCenter", "SystemUIServer", "Spotlight", "loginwindow", "NotificationCenter")
-        
-        visible = 0
-        titled = 0
-        ag_visible = 0
-        ag_titled = 0
-        
-        for w in windows:
-            if w.get("kCGWindowOwnerPID") == my_pid:
-                continue
-            if w.get("kCGWindowOwnerName", "") in system_apps:
-                continue
-                
-            visible += 1
-            if w.get("kCGWindowName"):
-                titled += 1
-                
-            if w.get("kCGWindowOwnerName") == "Antigravity":
-                ag_visible += 1
-                if w.get("kCGWindowName"):
-                    ag_titled += 1
-                    
-        # Antigravity 창이 켜져있는데도 타이틀을 하나도 못 읽어온다면 권한 차단됨
-        if ag_visible > 0 and ag_titled == 0:
-            return False
-        # Antigravity는 없지만 타사 창이 있는데 전부 제목이 없다면 권한 차단 의심
-        if visible > 0 and titled == 0:
-            return False
-            
-        return True
-
-    if not check_screen_recording():
-        if hasattr(Quartz, "CGRequestScreenCaptureAccess"):
-            Quartz.CGRequestScreenCaptureAccess()
-            
-        print("  WAITING: Please grant Screen Recording permissions to this process in System Settings.")
-        while not check_screen_recording():
-            time.sleep(3)
-    print("  ✓ Screen Recording permissions verified.\n")
 
 def _configure_logging(log_level_name):
     """Set up dual logging: console (user level) + file (DEBUG).
@@ -149,6 +93,11 @@ def _configure_logging(log_level_name):
     ))
     root.addHandler(file_handler)
 
+    # Disable overly verbose third-party loggers
+    logging.getLogger("watchdog").setLevel(logging.WARNING)
+    logging.getLogger("fsevents").setLevel(logging.WARNING)
+    logging.getLogger("watchdog.observers.fsevents").setLevel(logging.WARNING)
+
     logging.info("File logging enabled: %s (max %dMB × %d)",
                  LOG_FILE, LOG_MAX_BYTES // (1024 * 1024), LOG_BACKUP_COUNT)
 
@@ -160,6 +109,7 @@ def run():
     from agbridge.workspace_supervisor import WorkspaceSupervisor
     from agbridge.input_queue import InputQueue
     from agbridge.api import create_app
+    from agbridge.actions.registry import build_default_registry
 
     parser = argparse.ArgumentParser(
         description="Antigravity Remote Bridge — Daemon Server"
@@ -196,7 +146,8 @@ def run():
 
     # Create multi-workspace infrastructure
     supervisor = WorkspaceSupervisor()
-    input_queue = InputQueue(supervisor)
+    action_registry = build_default_registry()
+    input_queue = InputQueue(supervisor, action_registry)
 
     @asynccontextmanager
     async def lifespan(app):

@@ -19,7 +19,7 @@ from agbridge.config import FS_DEBOUNCE_SECONDS
 # Directories to ignore during scanning and monitoring
 _IGNORE_DIRS = {
     ".git", "node_modules", "__pycache__", ".venv",
-    ".agbridge_cache", ".DS_Store",
+    ".agbridge_cache", ".DS_Store", ".bare", "worktrees",
 }
 
 

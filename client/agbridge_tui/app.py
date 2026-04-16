@@ -44,6 +44,11 @@ from agbridge_tui.modals.confirm_modal import ConfirmModal
 from agbridge_tui.modals.file_explorer_modal import FileExplorerModal
 from agbridge_tui.modals.select_modal import SelectModal
 from agbridge_tui.modals.conversation_modal import ConversationModal
+from agbridge_tui.modals.mention_picker_modal import (
+    MentionCategoryModal,
+    MentionItemModal,
+    MENTION_CATEGORIES,
+)
 
 logger = logging.getLogger("agbridge_tui")
 
@@ -786,37 +791,110 @@ class AgbridgeTUI(App):
         ))
 
     def on_agent_panel_select_mention_request(self, event: AgentPanel.SelectMentionRequest):
+        """Launch 2-phase mention picker matching IDE's @ typeahead UX."""
         event.stop()
         ws_id = self.ws_mgr.active_id
         if not ws_id:
             return
-        
-        # Build file list from fs_tree cache
+
+        def on_category_selected(category_id):
+            if not category_id:
+                return
+            self._open_mention_items(ws_id, category_id)
+
+        self.push_screen(MentionCategoryModal(), on_category_selected)
+
+    def _open_mention_items(self, ws_id, category_id):
+        """Phase 2 of mention picker — show items for the selected category."""
+        cat = next((c for c in MENTION_CATEGORIES if c["id"] == category_id), None)
+        if not cat:
+            return
+
         cache = self.ws_mgr._cache.get(ws_id, {})
         fs_tree = cache.get("fs_tree", {})
-        
-        items = []
-        def _traverse(node, prefix=""):
-            for k, v in node.items():
-                path = f"{prefix}/{k}" if prefix else k
-                if v == "directory":
-                    items.append(path + "/")
-                else:
-                    items.append(path)
-                if isinstance(v, dict):
-                    _traverse(v, path)
-        _traverse(fs_tree)
 
-        def on_selected(selected_name):
-            if selected_name:
+        if category_id == "files":
+            items = self._collect_fs_items(fs_tree, files_only=True)
+            self._show_mention_item_modal(cat, items, "file")
+
+        elif category_id == "directories":
+            items = self._collect_fs_items(fs_tree, dirs_only=True)
+            self._show_mention_item_modal(cat, items, "directory")
+
+        elif category_id == "workflows":
+            # Reuse existing workflow listing via server
+            self._pending_select = {
+                "type": "mention_workflow",
+                "ws_id": ws_id,
+                "cat": cat,
+            }
+            self.run_worker(self.conn.ws_send_command(ws_id, "CMD_LIST_WORKFLOWS"))
+
+        elif category_id == "conversations":
+            self._pending_select = {
+                "type": "mention_conversation",
+                "ws_id": ws_id,
+                "cat": cat,
+            }
+            self.run_worker(self.conn.ws_send_command(ws_id, "CMD_LIST_CONVERSATIONS"))
+
+        elif category_id == "rules":
+            self._pending_select = {
+                "type": "mention_rule",
+                "ws_id": ws_id,
+                "cat": cat,
+            }
+            self.run_worker(self.conn.ws_send_command(ws_id, "CMD_LIST_RULES"))
+
+    def _collect_fs_items(self, fs_tree, files_only=False, dirs_only=False):
+        """Extract file or directory paths from fs_tree.
+
+        fs_tree is a flat dict: {relative_path: {"type": "file"|"dir", ...}}
+        NOT a nested tree structure.
+        """
+        items = []
+        for path, meta in fs_tree.items():
+            if not isinstance(meta, dict):
+                continue
+            entry_type = meta.get("type", "")
+            is_dir = entry_type == "dir"
+            is_file = entry_type == "file"
+
+            if dirs_only and is_dir:
+                items.append(path)
+            elif files_only and is_file:
+                items.append(path)
+            elif not files_only and not dirs_only:
+                items.append(path)
+
+        return sorted(items)
+
+    def _show_mention_item_modal(self, cat, items, syntax_type):
+        """Show Phase 2 modal and inject the selected mention syntax."""
+        def on_item_selected(selected_name):
+            if not selected_name:
+                return
+            if syntax_type == "workflow":
+                self._inject_into_agent_input(f"@[/{selected_name}]", replace_char="@")
+            elif syntax_type == "conversation":
+                self._inject_into_agent_input(
+                    f'@[conversation:"{selected_name}"]', replace_char="@",
+                )
+            elif syntax_type == "rule":
+                self._inject_into_agent_input(
+                    f"@[rule:{selected_name}]", replace_char="@",
+                )
+            else:
+                # file, directory
                 self._inject_into_agent_input(f"@[{selected_name}]", replace_char="@")
 
         self.push_screen(
-            SelectModal(
-                title="Select Mention",
-                items=sorted(items),
+            MentionItemModal(
+                category_label=cat["label"],
+                items=items,
+                icon=cat["icon"],
             ),
-            on_selected,
+            on_item_selected,
         )
 
     def _inject_into_agent_input(self, text: str, replace_char: str):
@@ -997,6 +1075,40 @@ class AgbridgeTUI(App):
                             items=wfs,
                         ),
                         on_selected,
+                    )
+
+        if event_type == "CMD_LIST_WORKFLOWS_DONE":
+            pending = self._pending_select
+            if pending and pending["type"] == "mention_workflow":
+                self._pending_select = None
+                if data and data.get("ok"):
+                    wfs = data.get("workflows", [])
+                    self._show_mention_item_modal(
+                        pending["cat"], wfs, "workflow",
+                    )
+
+        if event_type == "CMD_LIST_CONVERSATIONS_DONE":
+            pending = self._pending_select
+            if pending and pending["type"] == "mention_conversation":
+                self._pending_select = None
+                if data and data.get("ok"):
+                    convs = data.get("conversations", [])
+                    titles = [
+                        c.get("title", "") for c in convs
+                        if c.get("type") == "conversation" and c.get("title")
+                    ]
+                    self._show_mention_item_modal(
+                        pending["cat"], titles, "conversation",
+                    )
+
+        if event_type == "CMD_LIST_RULES_DONE":
+            pending = self._pending_select
+            if pending and pending["type"] == "mention_rule":
+                self._pending_select = None
+                if data and data.get("ok"):
+                    rules = data.get("rules", [])
+                    self._show_mention_item_modal(
+                        pending["cat"], rules, "rule",
                     )
 
         if event_type == "CMD_LIST_CONVERSATIONS_DONE":

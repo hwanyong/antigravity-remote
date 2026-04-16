@@ -282,7 +282,11 @@ _COLLECT_AGENT_PANEL_JS = """
             if (!picked) break;
             walker = picked;
         }
-        if (walker !== conv && walker.children.length > 1) msgContainer = walker;
+        if (walker !== conv && walker.children.length > 1) {
+            if (walker.querySelector('.sticky')) {
+                msgContainer = walker;
+            }
+        }
     }
 
     // 6b. Parse each turn
@@ -315,10 +319,12 @@ _COLLECT_AGENT_PANEL_JS = """
                     // Clone to avoid mutating the live DOM
                     var pwClone = preWrap.cloneNode(true);
                     // Reconstruct pill syntax from mention spans
+                    // Classification: icon present → file/dir mention, no icon → workflow
                     var mentions = pwClone.querySelectorAll('.context-scope-mention');
                     for (var mi = 0; mi < mentions.length; mi++) {
                         var mText = mentions[mi].textContent.trim();
-                        var pill = '@[/' + mText + ']';
+                        var hasIcon = mentions[mi].querySelector('img, svg') !== null;
+                        var pill = hasIcon ? ('@[' + mText + ']') : ('@[/' + mText + ']');
                         var replacement = document.createTextNode(pill);
                         mentions[mi].replaceWith(replacement);
                     }
@@ -475,9 +481,35 @@ _HEIGHT_MAP_JS = """
     for (var i = 0; i < divs.length; i++) {
         var cls = (divs[i].className || '').toString();
         if (cls.indexOf('gap-y-') !== -1 && cls.indexOf('px-') !== -1) {
-            container = divs[i]; break;
+            if (divs[i].children.length >= 1) {
+                container = divs[i];
+                break;
+            }
         }
     }
+
+    if (!container) {
+        var walker = conv;
+        while (walker && walker.children.length <= 2) {
+            var picked = null;
+            for (var wi = 0; wi < walker.children.length; wi++) {
+                if ((walker.children[wi].textContent || '').trim().length > 100) {
+                    picked = walker.children[wi];
+                    break;
+                }
+            }
+            if (!picked) break;
+            walker = picked;
+        }
+        if (walker !== conv && walker.children.length > 1) {
+            if (walker.querySelector('.sticky')) {
+                container = walker;
+            } else {
+                return '"__EMPTY_PLACEHOLDER__"';
+            }
+        }
+    }
+
     if (!container) return '[]';
 
     var heights = [];
