@@ -347,7 +347,7 @@ class AgentPanel(Vertical):
 
         # Bottom bar — mode / model
         with Horizontal(classes="agent-bottom-bar"):
-            yield Button("▽ —", id="agent-mode-btn", classes="agent-mode-btn")
+            yield Button("+ Mode", id="agent-mode-btn", classes="agent-mode-btn")
             yield Button("▽ —", id="agent-model-btn", classes="agent-model-btn")
 
     # ── Watchers ─────────────────────────────────────────
@@ -450,7 +450,10 @@ class AgentPanel(Vertical):
             btn = self.query_one("#agent-mode-btn", Button)
         except Exception:
             return
-        btn.label = f"▽ {mode}" if mode else "▽ —"
+        if mode:
+            btn.label = f"[ {mode} ✕ ]"
+        else:
+            btn.label = "+ Mode"
 
     def watch_workspace_name(self, name):
         try:

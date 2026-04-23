@@ -48,7 +48,7 @@ SELECTORS = {
 
     # Dropdowns
     "model_dropdown":       'button[aria-label*="Select model"]',
-    "mode_dropdown":        'button[aria-label*="conversation mode"]',
+    "mode_dropdown":        'button[aria-label="Add context"]',
 
     # Conversation panel
     "past_conversations":   '[data-tooltip-id="past-conversations-tooltip"]',

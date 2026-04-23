@@ -60,6 +60,22 @@ class UndoToPromptAction:
             "turn_idx": turn_idx,
         }
 
+        # 1. Scroll to the turn to ensure it is mounted (handling React virtualization)
+        if turn_idx >= 0:
+            try:
+                from agbridge.collectors.dom_scraper import get_conversation_height_map, scroll_conversation_to
+                height_map = await get_conversation_height_map(ctx.cdp)
+                if height_map and turn_idx < len(height_map):
+                    scroll_pos = height_map[turn_idx].get("scrollStart", 0)
+                    await scroll_conversation_to(ctx.cdp, scroll_pos)
+                    import asyncio
+                    await asyncio.sleep(0.3)  # Allow DOM to render
+            except Exception:
+                pass  # Fallback to naive execution if scrolling fails
+
+        import json
+        safe_prompt = json.dumps(prompt_text)
+
         result = await ctx.cdp.execute_js(f"""
             (function() {{
                 var conv = document.getElementById('conversation');
@@ -79,11 +95,29 @@ class UndoToPromptAction:
                     }});
                 }}
 
-                var idx = {index};
-                if (idx < 0 || idx >= undoBtns.length) return false;
+                var targetText = {safe_prompt}.trim().toLowerCase();
+                if (targetText && targetText.length > 3) {{
+                    for (var i = 0; i < undoBtns.length; i++) {{
+                        var btn = undoBtns[i];
+                        var sticky = btn.closest('.sticky');
+                        if (sticky) {{
+                            var text = sticky.textContent.trim().toLowerCase();
+                            if (text.indexOf(targetText) !== -1 || targetText.indexOf(text.substring(0,20)) !== -1) {{
+                                btn.click();
+                                return true;
+                            }}
+                        }}
+                    }}
+                }}
 
-                undoBtns[idx].click();
-                return true;
+                // Fallback: use raw index (brittle if fake messages exist or virtualization unmounted earlier msgs)
+                var idx = {index};
+                if (idx >= 0 && idx < undoBtns.length) {{
+                    undoBtns[idx].click();
+                    return true;
+                }}
+
+                return false;
             }})();
         """)
 

@@ -200,34 +200,35 @@ class SelectModeAction:
         if not mode_name:
             return ActionResult.fail("mode name is required")
 
-        # 1. Fetch current list to identify index via normalization
-        list_action = ListModesAction()
-        available = await list_action._fetch(ctx)
-        
-        target_norm = normalize_label(mode_name)
-        index = -1
-        
-        for i, m in enumerate(available):
-            if normalize_label(m) == target_norm:
-                index = i
-                break
-
         from agbridge.cdp.selectors import SELECTORS
         selector = SELECTORS["mode_dropdown"]
 
-        if index != -1:
-            ok = await ctx.cdp.execute_js(
-                _JS_SELECT_BY_INDEX.format(
-                    trigger_selector=selector, index=index,
-                )
-            )
-        else:
-            js_name = json.dumps(mode_name)
-            ok = await ctx.cdp.execute_js(
-                _JS_SELECT_DROPDOWN_ITEM.format(
-                    trigger_selector=selector, item_name=js_name,
-                )
-            )
+        # Mode is now a menuitem inside the "Add context" popup.
+        # Open the menu, find the item by text, and click it.
+        js_name = json.dumps(mode_name)
+        ok = await ctx.cdp.execute_js(f"""
+            (async function() {{
+                var trigger = document.querySelector('{selector}');
+                if (!trigger) return false;
+
+                trigger.click();
+                await new Promise(function(r) {{ setTimeout(r, 300); }});
+
+                var items = Array.from(document.querySelectorAll('[role="menuitem"]'));
+                var target = items.find(function(item) {{
+                    return (item.textContent || '').trim() === {js_name};
+                }});
+
+                if (!target) {{
+                    document.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Escape', bubbles: true}}));
+                    return false;
+                }}
+
+                target.click();
+                return true;
+            }})();
+        """
+        )
 
         if ok == True:
             return ActionResult.success()
@@ -273,9 +274,24 @@ class ListModesAction:
     async def _fetch(self, ctx):
         from agbridge.cdp.selectors import SELECTORS
         selector = SELECTORS["mode_dropdown"]
-        result = await ctx.cdp.execute_js(
-            _JS_LIST_DROPDOWN_ITEMS.format(trigger_selector=selector)
-        )
+        result = await ctx.cdp.execute_js(f"""
+            (async function() {{
+                var trigger = document.querySelector('{selector}');
+                if (!trigger) return JSON.stringify([]);
+
+                trigger.click();
+                await new Promise(function(r) {{ setTimeout(r, 300); }});
+
+                var items = Array.from(document.querySelectorAll('[role="menuitem"]'))
+                    .map(function(item) {{ return (item.textContent || '').trim(); }})
+                    .filter(function(n) {{ return n.length > 0; }});
+
+                document.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Escape', bubbles: true}}));
+                await new Promise(function(r) {{ setTimeout(r, 100); }});
+
+                return JSON.stringify(items);
+            }})();
+        """)
         if not result:
             return []
         try:

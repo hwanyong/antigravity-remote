@@ -208,18 +208,23 @@ _COLLECT_AGENT_PANEL_JS = """
 
     // ── 4. Model / Mode ─────────────────────────────────
     var modelBtn = document.querySelector('button[aria-label*="Select model"]');
-    var modeBtn = document.querySelector('button[aria-label*="conversation mode"]');
     var currentModel = '';
     var currentMode = '';
     if (modelBtn) {
         var mLabel = modelBtn.getAttribute('aria-label') || '';
         var mMatch = mLabel.match(/current:\\s*(.+)/);
         if (mMatch) currentModel = mMatch[1].trim();
-    }
-    if (modeBtn) {
-        var dLabel = modeBtn.getAttribute('aria-label') || '';
-        var dMatch = dLabel.match(/current:\\s*(.+)/);
-        if (dMatch) currentMode = dMatch[1].trim();
+        // Mode is now a chip rendered as a sibling of the model button's wrapper
+        var modeContainer = modelBtn.parentElement
+            ? modelBtn.parentElement.closest('.flex.items-center.gap-1')
+            : null;
+        if (modeContainer) {
+            var modeChips = modeContainer.querySelectorAll('.group.transition-colors');
+            if (modeChips.length > 0) {
+                var modeSpan = modeChips[0].querySelector('span.select-none');
+                if (modeSpan) currentMode = modeSpan.textContent.trim();
+            }
+        }
     }
 
     // ── 5. Conversation title ────────────────────────────
@@ -293,6 +298,13 @@ _COLLECT_AGENT_PANEL_JS = """
     if (msgContainer) {
         for (var ti = 0; ti < msgContainer.children.length; ti++) {
             var turn = msgContainer.children[ti];
+            // New IDE: turn might be wrapped in div.flex.items-start
+            if (turn && turn.children && turn.children.length > 0) {
+                var innerTurn = turn.querySelector('.group.flex-col') || turn.children[0];
+                if (innerTurn && innerTurn.children && innerTurn.children.length >= 1) {
+                    turn = innerTurn;
+                }
+            }
             var turnText = (turn.textContent || '').trim();
             if (turnText.length < 3) continue;
 
@@ -678,6 +690,10 @@ _CONVERSATION_STATE_JS = """
     if (allow && deny) return 'permission_required';
 
     var sendBtn = document.querySelector('button[aria-label="Send message"]');
+    // New IDE: Mic button when empty
+    if (!sendBtn) {
+        sendBtn = document.querySelector('button[aria-label="Record voice memo"]');
+    }
     // New IDE: Submit text button
     if (!sendBtn) {
         var allBtns2 = document.querySelectorAll('button');
@@ -780,18 +796,23 @@ async def get_active_editor_info(bridge):
 _MODELS_AND_MODES_JS = """
 (function() {
     var modelBtn = document.querySelector('button[aria-label*="Select model"]');
-    var modeBtn = document.querySelector('button[aria-label*="conversation mode"]');
     var currentModel = '';
     var currentMode = '';
     if (modelBtn) {
         var mLabel = modelBtn.getAttribute('aria-label') || '';
         var mMatch = mLabel.match(/current:\\s*(.+)/);
         if (mMatch) currentModel = mMatch[1].trim();
-    }
-    if (modeBtn) {
-        var dLabel = modeBtn.getAttribute('aria-label') || '';
-        var dMatch = dLabel.match(/current:\\s*(.+)/);
-        if (dMatch) currentMode = dMatch[1].trim();
+        // Mode is now a chip rendered as a sibling of the model button's wrapper
+        var modeContainer = modelBtn.parentElement
+            ? modelBtn.parentElement.closest('.flex.items-center.gap-1')
+            : null;
+        if (modeContainer) {
+            var modeChips = modeContainer.querySelectorAll('.group.transition-colors');
+            if (modeChips.length > 0) {
+                var modeSpan = modeChips[0].querySelector('span.select-none');
+                if (modeSpan) currentMode = modeSpan.textContent.trim();
+            }
+        }
     }
     return JSON.stringify({current_model: currentModel, current_mode: currentMode});
 })();
